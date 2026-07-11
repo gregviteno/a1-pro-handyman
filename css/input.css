@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-paper text-ink font-sans text-body antialiased;
+  }
+  h1, h2 {
+    @apply font-display text-navy;
+  }
+  ::selection {
+    background: #f26a1b33;
+  }
+  a, button, input, select, textarea, summary {
+    @apply outline-none;
+  }
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  select:focus-visible, textarea:focus-visible, summary:focus-visible {
+    outline: 3px solid #f26a1b;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-wrap px-4 sm:px-6 lg:px-8;
+  }
+  .h1 {
+    @apply font-display font-bold uppercase text-h1;
+  }
+  .h2 {
+    @apply font-display font-bold text-h2;
+  }
+  .eyebrow {
+    @apply inline-block font-semibold uppercase tracking-[0.14em] text-sm text-orange mb-3;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold
+      px-7 text-center transition-colors duration-150 cursor-pointer select-none;
+    min-height: 48px;
+  }
+  .btn-primary {
+    @apply btn bg-orange text-white hover:bg-orange-press active:bg-orange-press;
+  }
+  .btn-outline {
+    @apply btn border-2 border-navy text-navy hover:bg-navy hover:text-white;
+  }
+  .btn-outline-light {
+    @apply btn border-2 border-white/80 text-white hover:bg-white hover:text-navy;
+  }
+  .field-label {
+    @apply block font-mono text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-steel mb-1;
+  }
+  .field {
+    @apply w-full rounded-card border border-line bg-white px-3.5 text-ink placeholder-steel/60
+      focus:border-navy;
+    min-height: 48px;
+    font-size: 1rem;
+  }
+  textarea.field {
+    @apply py-3;
+    min-height: 5.5rem;
+  }
+  .card {
+    @apply rounded-card bg-white border border-line shadow-card;
+  }
+  .chip-avail {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5
+      text-sm font-semibold text-navy whitespace-nowrap;
+  }
+  .icon-tile {
+    @apply flex flex-col items-center gap-3 rounded-card border border-white/15 p-6 text-center
+      text-white transition-colors hover:border-orange hover:bg-white/5;
+  }
+  .faq-item {
+    @apply card overflow-hidden;
+  }
+  .faq-item > summary {
+    @apply flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4
+      font-semibold text-navy;
+    min-height: 48px;
+  }
+  .faq-item > summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq-item[open] > summary .faq-chevron {
+    transform: rotate(180deg);
+  }
+  .faq-body {
+    @apply px-5 pb-5 text-steel;
+  }
+  .nav-link {
+    @apply inline-flex items-center gap-1 rounded-card px-3 py-2 font-semibold text-navy hover:text-orange;
+  }
+  .dropdown-panel {
+    @apply absolute left-0 top-full z-40 hidden min-w-[15rem] rounded-card border border-line
+      bg-white py-2 shadow-lift;
+  }
+  .dropdown-link {
+    @apply block px-5 py-2.5 text-[0.95rem] font-medium text-ink hover:bg-paper hover:text-orange;
+  }
+  .footer-link {
+    @apply block py-1 text-[0.95rem] text-white/70 hover:text-white;
+  }
+  .check-item {
+    @apply flex items-start gap-3;
+  }
+  .prose-block p + p {
+    @apply mt-4;
+  }
+}
