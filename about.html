@@ -7,6 +7,7 @@
   <meta name="description" content="A1 Pro Handyman is a family-owned, licensed & insured crew serving Westchester, Rockland, Nassau, Putnam, NYC & Fairfield CT, built around same-day response.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://a1prohandyman.com/about.html">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/logo-icon.svg">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="A1 Pro Handyman">
   <meta property="og:title" content="About Our Family-Owned Crew | A1 Pro Handyman">
@@ -65,6 +66,7 @@
   <!-- TODO(GREG): before launch, add to the LocalBusiness schema below: "address" (office/registered address), "openingHoursSpecification" (real hours), and "sameAs" (real Google Business Profile / Facebook / Instagram URLs). Phone is the CallRail-swappable placeholder. -->
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "https://a1prohandyman.com/#business", "name": "A1 Pro Handyman", "slogan": "Don't Settle For Less, Get A Pro", "url": "https://a1prohandyman.com/", "telephone": "+1-914-555-0123", "image": "https://a1prohandyman.com/assets/img/og-image.svg", "priceRange": "$$", "areaServed": [{"@type": "AdministrativeArea", "name": "Westchester County, NY"}, {"@type": "AdministrativeArea", "name": "Rockland County, NY"}, {"@type": "AdministrativeArea", "name": "Nassau County, NY"}, {"@type": "AdministrativeArea", "name": "Putnam County, NY"}, {"@type": "AdministrativeArea", "name": "Fairfield County, CT"}, {"@type": "AdministrativeArea", "name": "Manhattan, New York, NY"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://a1prohandyman.com/"}, {"@type": "ListItem", "position": 2, "name": "About", "item": "https://a1prohandyman.com/about.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why choose a local family crew over a national franchise?", "acceptedAnswer": {"@type": "Answer", "text": "When you call us, you're talking to the crew that shows up. No call center, no dispatch queue, no subcontractor roulette. We live where we work, we can get there faster, and our name is on every job."}}, {"@type": "Question", "name": "Do you work with landlords and property managers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, all the time. Tenant turnovers, punch lists, storefront repairs, and recurring maintenance across multiple units. One call covers it, with photos of the finished work if you're managing from a distance."}}]}</script>
 </head>
 <body class="bg-paper">
   <!-- TODO(GREG): GTM body noscript snippet, paste directly after this comment.
@@ -76,7 +78,7 @@
   <header class="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
     <div class="wrap flex items-center justify-between gap-4 py-3">
       <a href="/" class="flex items-center gap-2.5" aria-label="A1 Pro Handyman home">
-        <span class="flex h-11 w-11 items-center justify-center rounded-card bg-orange font-display text-2xl font-bold text-white">A1</span>
+        <img src="/assets/img/logo-icon.svg" alt="" width="44" height="44" class="h-11 w-11">
         <span class="font-display text-2xl font-bold leading-none text-navy tracking-wide">PRO<br>HANDYMAN</span>
       </a>
 
@@ -187,6 +189,26 @@
     </div>
   </section>
 
+  <!-- FAQ: why choose us -->
+  <section class="bg-white py-16 sm:py-20">
+    <div class="wrap max-w-3xl">
+      <div class="text-center max-w-3xl mx-auto">
+        <p class="eyebrow">Why Us</p>
+        <h2 class="h2 text-ink">Why Homeowners Choose A1 Pro</h2>
+      </div>
+      <div class="mt-10"><div class="grid gap-3" data-faq-group>
+      <details class="faq-item" open>
+        <summary><span>Why choose a local family crew over a national franchise?</span><span class="faq-chevron flex-none text-orange transition-transform"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+        <div class="faq-body"><p>When you call us, you're talking to the crew that shows up. No call center, no dispatch queue, no subcontractor roulette. We live where we work, we can get there faster, and our name is on every job.</p></div>
+      </details>
+      <details class="faq-item" open>
+        <summary><span>Do you work with landlords and property managers?</span><span class="faq-chevron flex-none text-orange transition-transform"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+        <div class="faq-body"><p>Yes, all the time. Tenant turnovers, punch lists, storefront repairs, and recurring maintenance across multiple units. One call covers it, with photos of the finished work if you're managing from a distance.</p></div>
+      </details>
+      </div></div>
+    </div>
+  </section>
+
   <!-- Final CTA band -->
   <section class="bg-navy-deep py-16 text-center text-white sm:py-20">
     <div class="wrap">
@@ -205,7 +227,7 @@
     <div class="wrap grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
       <div>
         <a href="/" class="flex items-center gap-2.5" aria-label="A1 Pro Handyman home">
-          <span class="flex h-10 w-10 items-center justify-center rounded-card bg-orange font-display text-xl font-bold text-white">A1</span>
+          <img src="/assets/img/logo-icon.svg" alt="" width="40" height="40" class="h-10 w-10">
           <span class="font-display text-xl font-bold leading-none tracking-wide">PRO<br>HANDYMAN</span>
         </a>
         <p class="mt-4 font-display text-lg font-semibold text-orange">Don't Settle For Less, Get A Pro</p>
