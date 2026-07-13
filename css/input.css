@@ -10,8 +10,8 @@
   body {
     @apply bg-paper text-ink font-sans text-body antialiased;
   }
-  h1, h2 {
-    @apply font-display text-navy;
+  h1, h2, h3 {
+    @apply font-display text-ink;
   }
   ::selection {
     background: #f26a1b33;

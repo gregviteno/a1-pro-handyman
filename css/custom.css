@@ -133,10 +133,81 @@
   box-shadow: 0 -4px 16px rgba(14, 35, 56, 0.18);
 }
 
+/* ---- Hero quote funnel: step label + gentle reveal between steps ---- */
+.funnel-progress {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5a6873;
+}
+[data-funnel-step] {
+  animation: funnel-step-in 0.25s ease;
+}
+@keyframes funnel-step-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 /* ---- No-JS fallbacks ---- */
+.no-js [data-funnel-step] { display: grid !important; } /* show both steps if JS is off */
+.no-js [data-funnel-next], .no-js [data-funnel-back] { display: none; } /* no-op controls without JS */
 .no-js #mobile-menu { display: block; }
 .no-js .faq-item:not([open]) > .faq-body { display: block; } /* safety if details unsupported */
 .no-js .needs-js { display: none; }
+
+/* ---- File upload field ---- */
+.field-file {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: rgb(63 74 84);
+}
+.field-file::file-selector-button {
+  margin-right: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  border: 0;
+  border-radius: 9999px;
+  background: rgb(22 50 79);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.field-file::file-selector-button:hover {
+  background: rgb(242 106 27);
+}
+
+/* ---- Process step cards: contained image panel ---- */
+.step-card {
+  display: flex;
+  flex-direction: column;
+}
+.step-media {
+  border-bottom: 1px solid rgb(229 223 213);
+}
+.step-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Service tile icons: zoom on hover / focus / press ---- */
+.icon-tile img {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+}
+.icon-tile:hover img,
+.icon-tile:focus-visible img {
+  transform: scale(1.14);
+}
+.icon-tile:active img {
+  transform: scale(1.06);
+}
 
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {

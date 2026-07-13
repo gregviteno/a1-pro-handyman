@@ -96,6 +96,85 @@
     });
   });
 
+  /* ---- Hero quote funnel: one question per step so the form card doesn't block the hero photo ---- */
+  document.querySelectorAll("form[data-funnel-form]").forEach(function (form) {
+    var steps = Array.prototype.slice.call(form.querySelectorAll("[data-funnel-step]"));
+    var progress = form.querySelector("[data-funnel-progress]");
+    if (!steps.length) return;
+    var total = steps.length;
+
+    var showStepError = function (input, msg) {
+      var err = input.parentElement.querySelector(".field-error");
+      if (!err) {
+        err = document.createElement("p");
+        err.className = "field-error mt-1 text-sm font-semibold text-orange-press";
+        input.parentElement.appendChild(err);
+      }
+      err.textContent = msg;
+      input.setAttribute("aria-invalid", "true");
+    };
+
+    var goToStep = function (index) {
+      steps.forEach(function (step, i) {
+        step.style.display = i === index ? "grid" : "none";
+      });
+      if (progress) progress.textContent = "Step " + (index + 1) + " of " + total;
+      var firstField = steps[index].querySelector("input, textarea, select");
+      if (firstField) firstField.focus();
+    };
+
+    var validateStep = function (step) {
+      var ok = true;
+      step.querySelectorAll("[required]").forEach(function (input) {
+        input.removeAttribute("aria-invalid");
+        var err = input.parentElement.querySelector(".field-error");
+        if (err) err.remove();
+        if (!input.value.trim()) {
+          showStepError(input, "Required — we need this to reach you.");
+          ok = false;
+        } else if (input.pattern && !new RegExp("^(?:" + input.pattern + ")$").test(input.value.trim())) {
+          showStepError(
+            input,
+            input.name === "zip" ? "Enter a 5-digit zip code." :
+            input.name === "phone" ? "Enter a valid phone number, e.g. (914) 555-0123." :
+            "Please check this field."
+          );
+          ok = false;
+        } else if (input.type === "email" && !input.checkValidity()) {
+          showStepError(input, "Enter a valid email, e.g. name@example.com.");
+          ok = false;
+        }
+      });
+      return ok;
+    };
+
+    steps.forEach(function (step, i) {
+      step.querySelectorAll("[data-funnel-next]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (!validateStep(step)) return;
+          if (i < total - 1) goToStep(i + 1);
+        });
+      });
+      step.querySelectorAll("[data-funnel-back]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (i > 0) goToStep(i - 1);
+        });
+      });
+    });
+
+    /* Enter key in a single-line field advances to the next step (or submits on the last) */
+    form.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" || e.target.tagName === "TEXTAREA") return;
+      var step = e.target.closest("[data-funnel-step]");
+      if (!step) return;
+      e.preventDefault();
+      var nextBtn = step.querySelector("[data-funnel-next]");
+      if (nextBtn) { nextBtn.click(); return; }
+      var submitBtn = step.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.click();
+    });
+  });
+
   /* ---- Forms: inline validation + disabled-while-submitting ---- */
   document.querySelectorAll("form[data-lead-form]").forEach(function (form) {
     var showError = function (input, msg) {
@@ -132,6 +211,9 @@
             input.name === "zip" ? "Enter a 5-digit zip code." :
             "Please check this field."
           );
+          ok = false;
+        } else if (input.type === "email" && !input.checkValidity()) {
+          showError(input, "Enter a valid email, e.g. name@example.com.");
           ok = false;
         }
       });
