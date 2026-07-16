@@ -96,7 +96,7 @@
     @apply px-5 pb-5 text-steel;
   }
   .nav-link {
-    @apply inline-flex items-center gap-1 rounded-card px-3 py-2 font-semibold text-navy hover:text-orange;
+    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-card px-2.5 py-2 font-semibold text-navy hover:text-orange;
   }
   .dropdown-panel {
     @apply absolute left-0 top-full z-40 hidden min-w-[15rem] rounded-card border border-line
