@@ -84,7 +84,7 @@
       <a href="/" class="flex items-center gap-2.5" aria-label="A1 Pro Handyman home">
         <picture>
           <source srcset="/assets/img/a1-prohandyman-logo.webp" type="image/webp">
-          <img src="/assets/img/a1-prohandyman-logo.png" alt="" width="96" height="96" style="width:96px;height:96px">
+          <img src="/assets/img/a1-prohandyman-logo.png" alt="" width="106" height="106" class="h-[106px] w-[106px] lg:h-[152px] lg:w-[152px] lg:-my-[23px]">
         </picture>
         <span class="font-display text-2xl font-bold leading-none text-navy tracking-wide">PRO<br>HANDYMAN</span>
       </a>
@@ -158,25 +158,53 @@
         <a href="tel:+12123350360" data-call-location="hero" class="btn-primary mt-7 text-lg"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (212) 335-0360</a>
       </div>
       <div>
-        <form data-lead-form id="quote-manhattan" method="post" action="/contact-handler.php" class="work-order" novalidate>
+        <form data-lead-form data-funnel-form id="quote-manhattan" method="post" action="https://formspree.io/f/xqerpnav" enctype="multipart/form-data" class="work-order" novalidate>
       <div class="work-order-head">
         <span class="work-order-no flex items-center gap-1.5"><img src="/assets/img/favicon.svg" alt="" aria-hidden="true" class="h-5 w-5 flex-none">Work Order · A1 Pro · Manhattan / NYC</span>
         <span class="stamp-chip">Same-Day</span>
       </div>
-      <div class="grid gap-4 px-5 pb-6 pt-2 sm:px-6">
-        
-        <div><label class="field-label" for="quote-manhattan-name">Name</label>
-          <input class="field" id="quote-manhattan-name" name="name" type="text" autocomplete="name" required></div>
-        <div><label class="field-label" for="quote-manhattan-phone">Phone</label>
-          <input class="field" id="quote-manhattan-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[\d\s\-\(\)\.\+]{7,20}" required></div>
-        <div><label class="field-label" for="quote-manhattan-zip">Zip</label>
-          <input class="field" id="quote-manhattan-zip" name="zip" type="text" autocomplete="postal-code" inputmode="numeric" pattern="\d{5}" required></div>
-        <div><label class="field-label" for="quote-manhattan-msg">What needs fixing?</label>
-          <textarea class="field" id="quote-manhattan-msg" name="message" rows="2"></textarea></div>
-        <button type="submit" class="btn-primary w-full">Get My Fast Quote <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
-        <p class="text-sm text-steel">We reply fast, usually within minutes during business hours.</p>
+      <div class="px-5 pt-2 sm:px-6">
+        <p data-funnel-progress class="funnel-progress">Step 1 of 3</p>
       </div>
-      <input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="gclid" value=""><input type="hidden" name="fbclid" value=""><input type="hidden" name="landing_page" value=""><input type="hidden" name="referrer" value=""><input type="hidden" name="source_page" value=""><input type="hidden" name="form_ts" value=""><div class="field-company" aria-hidden="true"><label>Company website <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="grid gap-4 px-5 pb-6 pt-3 sm:px-6">
+
+        <div data-funnel-step="1" class="grid gap-4">
+          <div><label class="field-label" for="quote-manhattan-name">What's your name?</label>
+            <input class="field" id="quote-manhattan-name" name="name" type="text" autocomplete="name" required></div>
+          <div><label class="field-label" for="quote-manhattan-address">What's your address?</label>
+            <input class="field" id="quote-manhattan-address" name="address" type="text" autocomplete="street-address" required></div>
+          <div><label class="field-label" for="quote-manhattan-email">Your email?</label>
+            <input class="field" id="quote-manhattan-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+          <button type="button" data-funnel-next class="btn-primary w-full">Next <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        </div>
+
+        <div data-funnel-step="2" class="grid gap-4" style="display:none">
+          <button type="button" data-funnel-back class="justify-self-start inline-flex items-center gap-1 text-sm font-semibold text-steel hover:text-navy"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+          <div><label class="field-label" for="quote-manhattan-msg">Tell us about your project? <span class="font-normal normal-case text-steel">(optional)</span></label>
+            <textarea class="field" id="quote-manhattan-msg" name="message" rows="2"></textarea></div>
+          <div><label class="field-label" for="quote-manhattan-photo">Add a photo <span class="font-normal normal-case text-steel">(optional)</span></label>
+            <input class="field field-file" id="quote-manhattan-photo" name="photo" type="file" accept="image/*,.pdf,.heic"></div>
+          <div><label class="field-label" for="quote-manhattan-phone">Best number for a call?</label>
+            <input class="field" id="quote-manhattan-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[\d\s\-\(\)\.\+]{7,20}" required></div>
+          <button type="button" data-funnel-next class="btn-primary w-full">Next <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        </div>
+
+        <div data-funnel-step="3" class="grid gap-4" style="display:none">
+          <button type="button" data-funnel-back class="justify-self-start inline-flex items-center gap-1 text-sm font-semibold text-steel hover:text-navy"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+          <div><label class="field-label" for="quote-manhattan-besttime">When's the best time to call?</label>
+            <select class="field" id="quote-manhattan-besttime" name="best_time" required>
+              <option value="" disabled selected>Choose a time window</option>
+              <option value="Morning (8am-12pm)">Morning (8am-12pm)</option>
+              <option value="Afternoon (12-4pm)">Afternoon (12-4pm)</option>
+              <option value="Evening (4-7pm)">Evening (4-7pm)</option>
+              <option value="Anytime">Anytime</option>
+            </select></div>
+          <button type="submit" class="btn-primary w-full">Get My Fast Quote <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+          <p class="text-sm text-steel">We reply fast, usually within minutes during business hours.</p>
+        </div>
+
+      </div>
+      <input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="gclid" value=""><input type="hidden" name="fbclid" value=""><input type="hidden" name="landing_page" value=""><input type="hidden" name="referrer" value=""><input type="hidden" name="source_page" value=""><input type="hidden" name="form_ts" value=""><input type="hidden" name="_next" value="https://a1prohandyman.com/thank-you.html"><input type="hidden" name="_subject" value="New lead from A1 Pro Handyman website"><div class="field-company" aria-hidden="true"><label>Company website <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
     </form>
         <p class="mt-4 text-center text-white/85">or call <a href="tel:+12123350360" data-call-location="hero" class="font-bold text-white underline decoration-orange decoration-2 underline-offset-4 hover:text-orange">(212) 335-0360</a>, the fastest way to get on today's schedule</p>
       </div>
@@ -293,44 +321,68 @@
         <h2 class="h2 text-white">Get a Fast Quote in Manhattan / NYC</h2>
         <p class="mt-3 text-white/80">Tell us what's broken and when you need it fixed. We reply fast, usually within minutes during business hours.</p>
       </div>
-      <div class="mx-auto mt-10 max-w-2xl"><form data-lead-form id="quote-manhattan-main" method="post" action="/contact-handler.php" class="work-order" novalidate>
+      <div class="mx-auto mt-10 max-w-2xl"><form data-lead-form data-funnel-form id="quote-manhattan-main" method="post" action="https://formspree.io/f/xqerpnav" enctype="multipart/form-data" class="work-order" novalidate>
       <div class="work-order-head">
         <span class="work-order-no flex items-center gap-1.5"><img src="/assets/img/favicon.svg" alt="" aria-hidden="true" class="h-5 w-5 flex-none">Work Order · A1 Pro · Manhattan / NYC</span>
         <span class="stamp-chip">Same-Day</span>
       </div>
-      <div class="grid gap-4 px-5 pb-6 pt-2 sm:px-6">
-        
-        <div class="grid gap-4 sm:grid-cols-2">
+      <div class="px-5 pt-2 sm:px-6">
+        <p data-funnel-progress class="funnel-progress">Step 1 of 3</p>
+      </div>
+      <div class="grid gap-4 px-5 pb-6 pt-3 sm:px-6">
+
+        <div data-funnel-step="1" class="grid gap-4 sm:grid-cols-2">
           <div><label class="field-label" for="quote-manhattan-main-name">Name</label>
             <input class="field" id="quote-manhattan-main-name" name="name" type="text" autocomplete="name" required></div>
-          <div><label class="field-label" for="quote-manhattan-main-phone">Phone</label>
-            <input class="field" id="quote-manhattan-main-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[\d\s\-\(\)\.\+]{7,20}" required></div>
-          <div class="sm:col-span-2"><label class="field-label" for="quote-manhattan-main-email">Email</label>
-            <input class="field" id="quote-manhattan-main-email" name="email" type="email" autocomplete="email"></div>
+          <div><label class="field-label" for="quote-manhattan-main-email">Email</label>
+            <input class="field" id="quote-manhattan-main-email" name="email" type="email" autocomplete="email" required></div>
           <div class="sm:col-span-2"><label class="field-label" for="quote-manhattan-main-street">Street Address</label>
-            <input class="field" id="quote-manhattan-main-street" name="street" type="text" autocomplete="street-address"></div>
+            <input class="field" id="quote-manhattan-main-street" name="street" type="text" autocomplete="street-address" required></div>
           <div><label class="field-label" for="quote-manhattan-main-city">City</label>
-            <input class="field" id="quote-manhattan-main-city" name="city" type="text" autocomplete="address-level2"></div>
+            <input class="field" id="quote-manhattan-main-city" name="city" type="text" autocomplete="address-level2" required></div>
           <div class="grid grid-cols-2 gap-4">
             <div><label class="field-label" for="quote-manhattan-main-state">State</label>
               <select class="field" id="quote-manhattan-main-state" name="state"><option value="NY">NY</option><option value="CT">CT</option></select></div>
             <div><label class="field-label" for="quote-manhattan-main-zip">Zip</label>
               <input class="field" id="quote-manhattan-main-zip" name="zip" type="text" autocomplete="postal-code" inputmode="numeric" pattern="\d{5}" required></div>
           </div>
-          <div class="sm:col-span-2"><label class="field-label" for="quote-manhattan-main-msg">Tell us about your project</label>
+          <button type="button" data-funnel-next class="btn-primary w-full sm:col-span-2">Next <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        </div>
+
+        <div data-funnel-step="2" class="grid gap-4" style="display:none">
+          <button type="button" data-funnel-back class="justify-self-start inline-flex items-center gap-1 text-sm font-semibold text-steel hover:text-navy"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+          <div><label class="field-label" for="quote-manhattan-main-msg">Tell us about your project? <span class="font-normal normal-case text-steel">(optional)</span></label>
             <textarea class="field" id="quote-manhattan-main-msg" name="message" rows="4"></textarea></div>
-          <div class="sm:col-span-2"><label class="field-label" for="quote-manhattan-main-timeline">When do you need it done?</label>
+          <div><label class="field-label" for="quote-manhattan-main-photo">Add a photo <span class="font-normal normal-case text-steel">(optional)</span></label>
+            <input class="field field-file" id="quote-manhattan-main-photo" name="photo" type="file" accept="image/*,.pdf,.heic"></div>
+          <div><label class="field-label" for="quote-manhattan-main-phone">Phone</label>
+            <input class="field" id="quote-manhattan-main-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[\d\s\-\(\)\.\+]{7,20}" required></div>
+          <div><label class="field-label" for="quote-manhattan-main-timeline">When do you need it done?</label>
             <select class="field" id="quote-manhattan-main-timeline" name="timeline">
               <option value="Today (emergency)">Today (emergency)</option>
               <option value="Within 48 hours">Within 48 hours</option>
               <option value="This week">This week</option>
               <option value="Flexible" selected>Flexible</option>
             </select></div>
+          <button type="button" data-funnel-next class="btn-primary w-full">Next <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
         </div>
-        <button type="submit" class="btn-primary w-full sm:w-auto">Get My Estimate</button>
-        <p class="text-sm text-steel">By submitting, you agree we may contact you by phone, text, or email about your project. No spam, ever.</p>
+
+        <div data-funnel-step="3" class="grid gap-4" style="display:none">
+          <button type="button" data-funnel-back class="justify-self-start inline-flex items-center gap-1 text-sm font-semibold text-steel hover:text-navy"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
+          <div><label class="field-label" for="quote-manhattan-main-besttime">When's the best time to call?</label>
+            <select class="field" id="quote-manhattan-main-besttime" name="best_time" required>
+              <option value="" disabled selected>Choose a time window</option>
+              <option value="Morning (8am-12pm)">Morning (8am-12pm)</option>
+              <option value="Afternoon (12-4pm)">Afternoon (12-4pm)</option>
+              <option value="Evening (4-7pm)">Evening (4-7pm)</option>
+              <option value="Anytime">Anytime</option>
+            </select></div>
+          <button type="submit" class="btn-primary w-full sm:w-auto">Get My Estimate</button>
+          <p class="text-sm text-steel">By submitting, you agree we may contact you by phone, text, or email about your project. No spam, ever.</p>
+        </div>
+
       </div>
-      <input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="gclid" value=""><input type="hidden" name="fbclid" value=""><input type="hidden" name="landing_page" value=""><input type="hidden" name="referrer" value=""><input type="hidden" name="source_page" value=""><input type="hidden" name="form_ts" value=""><div class="field-company" aria-hidden="true"><label>Company website <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+      <input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="gclid" value=""><input type="hidden" name="fbclid" value=""><input type="hidden" name="landing_page" value=""><input type="hidden" name="referrer" value=""><input type="hidden" name="source_page" value=""><input type="hidden" name="form_ts" value=""><input type="hidden" name="_next" value="https://a1prohandyman.com/thank-you.html"><input type="hidden" name="_subject" value="New lead from A1 Pro Handyman website"><div class="field-company" aria-hidden="true"><label>Company website <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
     </form></div>
     </div>
   </section>
