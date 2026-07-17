@@ -42,7 +42,7 @@
   }
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold
-      px-7 text-center transition-colors duration-150 cursor-pointer select-none;
+      px-7 text-center whitespace-nowrap transition-colors duration-150 cursor-pointer select-none;
     min-height: 48px;
   }
   .btn-primary {
@@ -95,8 +95,16 @@
   .faq-body {
     @apply px-5 pb-5 text-steel;
   }
+  .site-logo {
+    transition: height 200ms ease, width 200ms ease, margin-bottom 200ms ease;
+  }
+  header.is-scrolled .site-logo {
+    height: 56px !important;
+    width: 56px !important;
+    margin-bottom: 0 !important;
+  }
   .nav-link {
-    @apply inline-flex items-center gap-1 whitespace-nowrap rounded-card px-2.5 py-2 font-semibold text-navy hover:text-orange;
+    @apply inline-flex items-center gap-1 shrink-0 whitespace-nowrap rounded-card px-2.5 py-2 font-semibold text-navy hover:text-orange;
   }
   .dropdown-panel {
     @apply absolute left-0 top-full z-40 hidden min-w-[15rem] rounded-card border border-line

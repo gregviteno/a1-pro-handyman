@@ -7,6 +7,16 @@
   document.documentElement.classList.remove("no-js");
   document.documentElement.classList.add("js");
 
+  /* ---- Sticky header: shrink logo once the page is scrolled ---- */
+  var stickyHeader = document.querySelector("header.sticky");
+  if (stickyHeader) {
+    var applyHeaderScrollState = function () {
+      stickyHeader.classList.toggle("is-scrolled", window.scrollY > 12);
+    };
+    applyHeaderScrollState();
+    window.addEventListener("scroll", applyHeaderScrollState, { passive: true });
+  }
+
   /* ---- Mobile nav toggle ---- */
   var navBtn = document.getElementById("nav-toggle");
   var menu = document.getElementById("mobile-menu");
