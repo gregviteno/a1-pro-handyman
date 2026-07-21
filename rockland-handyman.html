@@ -27,52 +27,23 @@
   <link rel="stylesheet" href="/css/custom.css">
   <script defer src="/js/main.js"></script>
   <script defer src="/js/tracking.js"></script>
-  <!-- =====================================================================
-       GOOGLE TAG MANAGER (primary tagging path)
-       TODO(GREG): paste the GTM head snippet here and replace GTM-XXXXXXX
-       with the real container ID. Fire GA4, Google Ads, Meta Pixel, and
-       CallRail number-swap from inside GTM.
-
-       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-       })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-       ===================================================================== -->
-  <!-- =====================================================================
-       FALLBACK: direct tags (use ONLY if GTM is not set up at launch)
-       TODO(GREG): if skipping GTM, uncomment and fill in the IDs below.
-
-       GA4 + Google Ads (gtag.js):
-       <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-       <script>
-         window.dataLayer = window.dataLayer || [];
-         function gtag(){dataLayer.push(arguments);}
-         gtag('js', new Date());
-         gtag('config', 'G-XXXXXXX');
-         gtag('config', 'AW-XXXXXXX');
-       </script>
-
-       Meta Pixel:
-       <script>
-         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-         n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-         n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-         t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-         document,'script','https://connect.facebook.net/en_US/fbevents.js');
-         fbq('init', 'XXXXXXXXXX');
-         fbq('track', 'PageView');
-       </script>
-       ===================================================================== -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KFFKDW95');</script>
+  <!-- End Google Tag Manager -->
   <!-- TODO(GREG): before launch, add to the LocalBusiness schema below: "address" (office/registered address), "openingHoursSpecification" (real hours), and "sameAs" (real Google Business Profile / Facebook / Instagram URLs). Phone is the CallRail-swappable placeholder. -->
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "https://a1prohandyman.com/#business", "name": "A1 Pro Handyman", "slogan": "Don't Settle For Less, Get A Pro", "url": "https://a1prohandyman.com/", "telephone": "+1-914-693-0009", "image": "https://a1prohandyman.com/assets/img/og-image.svg", "priceRange": "$$", "areaServed": [{"@type": "AdministrativeArea", "name": "Westchester County, NY"}, {"@type": "AdministrativeArea", "name": "Rockland County, NY"}, {"@type": "AdministrativeArea", "name": "Nassau County, NY"}, {"@type": "AdministrativeArea", "name": "Putnam County, NY"}, {"@type": "AdministrativeArea", "name": "Fairfield County, CT"}, {"@type": "AdministrativeArea", "name": "Manhattan, New York, NY"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which Rockland towns do you serve?", "acceptedAnswer": {"@type": "Answer", "text": "New City, Nanuet, Nyack, Suffern, Spring Valley, Pearl River, and the neighborhoods around them. If you're anywhere in Rockland County, call. We'll make it work."}}, {"@type": "Question", "name": "Can you really do same-day in Rockland?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We run Rockland routes most days, so a before-noon call usually means a same-day visit. The earlier you call, the better your window."}}, {"@type": "Question", "name": "Do you repair decks and outdoor structures?", "acceptedAnswer": {"@type": "Answer", "text": "Constantly, Rockland winters are hard on decks. Loose boards, wobbly railings, leaning fence posts, and gates that won't latch are bread-and-butter same-day calls for us, plus staining and sealing in season."}}, {"@type": "Question", "name": "Are you licensed and insured for work in Rockland?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, licensed and fully insured for handyman and small construction work in New York, and we're glad to share proof of insurance before the job starts."}}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://a1prohandyman.com/"}, {"@type": "ListItem", "position": 2, "name": "Rockland County's Same-Day Handyman", "item": "https://a1prohandyman.com/rockland-handyman.html"}]}</script>
 </head>
 <body class="bg-paper">
-  <!-- TODO(GREG): GTM body noscript snippet, paste directly after this comment.
-       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFFKDW95"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[70] focus:bg-orange focus:text-white focus:px-4 focus:py-2 focus:rounded-card">Skip to content</a>
 
   <!-- Header -->

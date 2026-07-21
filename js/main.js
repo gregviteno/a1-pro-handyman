@@ -233,6 +233,9 @@
         if (firstBad) firstBad.focus();
         return;
       }
+      /* Submit via fetch (works on Formspree's free plan) so we control the
+         redirect ourselves — Formspree's own "Redirect" setting is a paid feature. */
+      e.preventDefault();
       var btn = form.querySelector('button[type="submit"]');
       if (btn) {
         btn.disabled = true;
@@ -240,6 +243,29 @@
         btn.textContent = "Sending…";
       }
       /* tracking.js listens for submit too (generate_lead push) */
+      var formError = form.querySelector(".form-error");
+      if (formError) formError.remove();
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      }).then(function (response) {
+        if (response.ok) {
+          var next = form.querySelector('input[name="_next"]');
+          window.location.href = (next && next.value) || "/thank-you.html";
+        } else {
+          throw new Error("submit-failed");
+        }
+      }).catch(function () {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = btn.dataset.label;
+        }
+        var err = document.createElement("p");
+        err.className = "form-error mt-3 text-sm font-semibold text-orange-press";
+        err.textContent = "Something went wrong sending that. Please call us at (914) 693-0009 and we'll get you booked.";
+        form.appendChild(err);
+      });
     });
   });
 })();
