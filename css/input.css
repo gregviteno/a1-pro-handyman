@@ -96,7 +96,7 @@
     @apply px-5 pb-5 text-steel;
   }
   .site-logo {
-    transition: none;
+    transition: height 0.2s ease-out, width 0.2s ease-out, margin-bottom 0.2s ease-out;
   }
   header.is-scrolled .site-logo {
     height: 56px !important;

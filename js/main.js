@@ -10,11 +10,26 @@
   /* ---- Sticky header: shrink logo once the page is scrolled ---- */
   var stickyHeader = document.querySelector("header.sticky");
   if (stickyHeader) {
+    var headerTicking = false;
     var applyHeaderScrollState = function () {
-      stickyHeader.classList.toggle("is-scrolled", window.scrollY > 12);
+      headerTicking = false;
+      var y = window.scrollY;
+      // Hysteresis: enter/exit at different thresholds so scroll jitter near
+      // the boundary can't rapidly re-toggle the class and re-trigger the resize.
+      if (y > 80) {
+        stickyHeader.classList.add("is-scrolled");
+      } else if (y < 40) {
+        stickyHeader.classList.remove("is-scrolled");
+      }
     };
-    applyHeaderScrollState();
-    window.addEventListener("scroll", applyHeaderScrollState, { passive: true });
+    var onHeaderScroll = function () {
+      if (!headerTicking) {
+        headerTicking = true;
+        window.requestAnimationFrame(applyHeaderScrollState);
+      }
+    };
+    stickyHeader.classList.toggle("is-scrolled", window.scrollY > 80);
+    window.addEventListener("scroll", onHeaderScroll, { passive: true });
   }
 
   /* ---- Mobile nav toggle ---- */
