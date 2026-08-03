@@ -162,6 +162,58 @@
   white-space: nowrap;
 }
 
+/* tagline sitting just under the work-order stub line */
+.work-order-tagline {
+  margin: 0;
+  padding: 0 1.25rem 0.125rem;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #f26a1b;
+}
+@media (min-width: 640px) {
+  .work-order-tagline {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+/* ---- Attention wiggle: nudges the quote card once when it scrolls into
+       view so the form catches the eye. Softer and slower than the error
+       shake below, with a slight rotation so it reads as a nudge, not a fault. */
+@keyframes wo-attention {
+  0%   { transform: translateX(0) rotate(0deg); }
+  10%  { transform: translateX(-5px) rotate(-0.6deg); }
+  22%  { transform: translateX(5px) rotate(0.6deg); }
+  34%  { transform: translateX(-4px) rotate(-0.45deg); }
+  46%  { transform: translateX(4px) rotate(0.45deg); }
+  58%  { transform: translateX(-2px) rotate(-0.2deg); }
+  70%  { transform: translateX(2px) rotate(0.2deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+.is-attention {
+  animation: wo-attention 0.9s ease-in-out both;
+}
+
+/* ---- Shake: fires when a form is submitted with something invalid ---- */
+@keyframes wo-shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-6px); }
+  30% { transform: translateX(5px); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(3px); }
+  75% { transform: translateX(-2px); }
+}
+.is-shaking {
+  animation: wo-shake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-shaking, .is-attention { animation: none; }
+}
+
 /* circular trust stamp overlapping the trust photo */
 .trust-stamp {
   transform: rotate(-8deg);

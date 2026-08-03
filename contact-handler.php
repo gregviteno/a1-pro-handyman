@@ -11,8 +11,7 @@
  * redirect either way (both services support a redirect/return URL).
  */
 
-// TODO(GREG): leads email — confirm leads@a1prohandyman.com inbox exists before launch.
-$LEADS_EMAIL = 'leads@a1prohandyman.com';
+$LEADS_EMAIL = 'estimatingdept@a1prohandyman.com';
 $FROM_EMAIL  = 'forms@a1prohandyman.com'; // same-domain sender helps deliverability
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

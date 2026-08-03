@@ -200,6 +200,137 @@
     });
   });
 
+  /* ---- Photo attachments ----
+     Formspree's free plan rejects any submission carrying a file, and since we
+     POST the whole form in one shot that was failing the ENTIRE lead — the
+     customer got "Something went wrong" and we lost their name and phone along
+     with the photo. So the photo is stripped out of the Formspree POST and sent
+     on its own to /photo-handler.php, which emails it as an attachment. The
+     lead is never held hostage to the upload: if the photo send fails we still
+     redirect to the thank-you page. */
+
+  var MAX_PHOTO_BYTES = 10485760; /* 10 MB — keep in sync with photo-handler.php */
+  var MAX_PHOTO_EDGE = 1600;      /* longest edge after downscaling */
+  var PHOTO_TIMEOUT = 30000;
+  var PHOTO_TYPES = /^(image\/(jpeg|png|webp|gif|heic|heif)|application\/pdf)$/i;
+
+  var photoOf = function (form) {
+    var input = form.querySelector('input[type="file"]');
+    if (!input || !input.files || !input.files.length) return null;
+    return { input: input, file: input.files[0] };
+  };
+
+  /* Phone cameras produce 3-8 MB files; re-encoding to a sane size makes the
+     upload finish on cell data and keeps the emailed attachment small. Any
+     failure (PDF, HEIC on Android, no canvas) just falls back to the original. */
+  var shrinkImage = function (file) {
+    return new Promise(function (resolve) {
+      var canDecode = /^image\/(jpeg|png|webp)$/i.test(file.type);
+      if (!canDecode || file.size < 400000 || !window.createImageBitmap) {
+        resolve(file);
+        return;
+      }
+      window.createImageBitmap(file, { imageOrientation: "from-image" }).then(function (bmp) {
+        var scale = Math.min(1, MAX_PHOTO_EDGE / Math.max(bmp.width, bmp.height));
+        var canvas = document.createElement("canvas");
+        if (scale === 1 || !canvas.toBlob) {
+          if (bmp.close) bmp.close();
+          resolve(file);
+          return;
+        }
+        canvas.width = Math.round(bmp.width * scale);
+        canvas.height = Math.round(bmp.height * scale);
+        canvas.getContext("2d").drawImage(bmp, 0, 0, canvas.width, canvas.height);
+        if (bmp.close) bmp.close();
+        canvas.toBlob(function (blob) {
+          resolve(blob && blob.size < file.size ? blob : file);
+        }, "image/jpeg", 0.82);
+      }).catch(function () { resolve(file); });
+    });
+  };
+
+  var sendPhoto = function (form, file, btn) {
+    if (btn) btn.textContent = "Uploading photo…";
+    return shrinkImage(file).then(function (blob) {
+      var data = new FormData();
+      var name = (file.name || "photo").replace(/[^\w.\- ]+/g, "_");
+      /* A shrunk blob is re-encoded JPEG, so its old extension would lie. */
+      data.append("photo", blob, blob === file ? name : name.replace(/\.[^.]*$/, "") + ".jpg");
+      ["name", "phone", "email", "zip", "form_ts", "gclid", "source_page", "_gotcha"].forEach(function (field) {
+        var el = form.querySelector('[name="' + field + '"]');
+        if (el) data.append(field, el.value);
+      });
+      data.append("form_id", form.id || "lead_form");
+
+      var controller = window.AbortController ? new AbortController() : null;
+      var timer = window.setTimeout(function () { if (controller) controller.abort(); }, PHOTO_TIMEOUT);
+      return fetch("/photo-handler.php", {
+        method: "POST",
+        body: data,
+        signal: controller ? controller.signal : undefined
+      }).then(function (r) { window.clearTimeout(timer); return r; });
+    }).catch(function () {
+      /* Swallowed on purpose — the lead is already saved and the redirect
+         must happen regardless of what went wrong with the photo. */
+    });
+  };
+
+  /* Restart-safe: the class has to come off before it can re-trigger, so a
+     second failed submit shakes again instead of sitting still. */
+  var shake = function (el) {
+    if (!el) return;
+    el.classList.remove("is-shaking");
+    void el.offsetWidth; /* force reflow so the animation restarts */
+    el.classList.add("is-shaking");
+    var done = function () {
+      el.classList.remove("is-shaking");
+      el.removeEventListener("animationend", done);
+    };
+    el.addEventListener("animationend", done);
+  };
+
+  /* ---- Attention wiggle: nudge each quote card whenever it scrolls into view,
+     so the form keeps catching the eye on the way back up or down the page.
+     Re-arms only after the card has properly left the viewport (two thresholds
+     give it hysteresis) so hovering near the edge can't machine-gun it. */
+  (function () {
+    var cards = document.querySelectorAll("form.work-order");
+    if (!cards.length) return;
+
+    var nudge = function (card) {
+      /* Remove + reflow so a repeat nudge restarts the animation. */
+      card.classList.remove("is-attention");
+      void card.offsetWidth;
+      card.classList.add("is-attention");
+      card.addEventListener("animationend", function done() {
+        card.classList.remove("is-attention");
+        card.removeEventListener("animationend", done);
+      });
+    };
+
+    if (!window.IntersectionObserver) {
+      window.setTimeout(function () { nudge(cards[0]); }, 900);
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var card = entry.target;
+        if (entry.intersectionRatio >= 0.35) {
+          if (card.dataset.nudged === "1") return;
+          card.dataset.nudged = "1";
+          /* Small delay so the wiggle lands after the card has settled on
+             screen, rather than competing with the scroll itself. */
+          window.setTimeout(function () { nudge(card); }, 400);
+        } else if (entry.intersectionRatio <= 0.1) {
+          card.dataset.nudged = "";
+        }
+      });
+    }, { threshold: [0.1, 0.35] });
+
+    cards.forEach(function (card) { io.observe(card); });
+  })();
+
   /* ---- Forms: inline validation + disabled-while-submitting ---- */
   document.querySelectorAll("form[data-lead-form]").forEach(function (form) {
     var showError = function (input, msg) {
@@ -242,10 +373,30 @@
           ok = false;
         }
       });
+      /* The photo is optional, so it isn't covered by the [required] loop above. */
+      var photo = photoOf(form);
+      if (photo) {
+        clearError(photo.input);
+        if (photo.file.size > MAX_PHOTO_BYTES) {
+          showError(photo.input, "That photo is over 10 MB — please pick a smaller one, or send it later by text.");
+          ok = false;
+        } else if (photo.file.type && !PHOTO_TYPES.test(photo.file.type)) {
+          showError(photo.input, "Please attach a photo (JPG, PNG, HEIC) or a PDF.");
+          ok = false;
+        }
+      }
+
       if (!ok) {
         e.preventDefault();
         var firstBad = form.querySelector('[aria-invalid="true"]');
-        if (firstBad) firstBad.focus();
+        /* Shake the field itself when it's on screen; if the bad field is on a
+           collapsed funnel step there's nothing to see, so shake the card. */
+        if (firstBad && firstBad.offsetParent !== null) {
+          shake(firstBad);
+          firstBad.focus();
+        } else {
+          shake(form);
+        }
         return;
       }
       /* Submit via fetch (works on Formspree's free plan) so we control the
@@ -260,17 +411,24 @@
       /* tracking.js listens for submit too (generate_lead push) */
       var formError = form.querySelector(".form-error");
       if (formError) formError.remove();
+
+      var lead = new FormData(form);
+      /* Any file at all makes Formspree's free plan reject the whole request. */
+      if (photo) {
+        lead.delete(photo.input.name);
+        lead.append("photo", "Customer attached a photo — it follows in a separate email.");
+      }
+
       fetch(form.action, {
         method: "POST",
-        body: new FormData(form),
+        body: lead,
         headers: { "Accept": "application/json" }
       }).then(function (response) {
-        if (response.ok) {
-          var next = form.querySelector('input[name="_next"]');
-          window.location.href = (next && next.value) || "/thank-you.html";
-        } else {
-          throw new Error("submit-failed");
-        }
+        if (!response.ok) throw new Error("submit-failed");
+        return photo ? sendPhoto(form, photo.file, btn) : null;
+      }).then(function () {
+        var next = form.querySelector('input[name="_next"]');
+        window.location.href = (next && next.value) || "/thank-you.html";
       }).catch(function () {
         if (btn) {
           btn.disabled = false;
@@ -280,6 +438,7 @@
         err.className = "form-error mt-3 text-sm font-semibold text-orange-press";
         err.textContent = "Something went wrong sending that. Please call us at (914) 693-0009 and we'll get you booked.";
         form.appendChild(err);
+        shake(form);
       });
     });
   });

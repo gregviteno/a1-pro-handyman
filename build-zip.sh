@@ -16,7 +16,7 @@ const blob = texts.map(f=>fs.readFileSync(f,'utf8')).join('\n').replace(/%20/g,'
 const walk = d => fs.readdirSync(d, {withFileTypes:true}).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.join(d,e.name)]);
 const assets = walk('assets').filter(f => !f.endsWith('.DS_Store'));
 const referenced = assets.filter(a => blob.includes(path.basename(a)));
-const roots = [...fs.readdirSync('.').filter(f=>f.endsWith('.html')), 'css/styles.css','css/custom.css','js/main.js','js/tracking.js','contact-handler.php','.htaccess','robots.txt','sitemap.xml'];
+const roots = [...fs.readdirSync('.').filter(f=>f.endsWith('.html')), 'css/styles.css','css/custom.css','js/main.js','js/tracking.js','contact-handler.php','photo-handler.php','.htaccess','robots.txt','sitemap.xml'];
 for (const f of [...roots, ...referenced]) {
   const dest = path.join(STAGE, f);
   fs.mkdirSync(path.dirname(dest), {recursive:true});
