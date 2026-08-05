@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A1 Handyman — Westchester Campaign Build Checklist</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --ink:#16202e; --muted:#5d6b7f; --line:#e2e6ec;
+    --accent:#1a5fd0; --warn:#b45309; --warnbg:#fff8ec; --warnline:#f0d9b0;
+    --ok:#0f7a4d; --okbg:#eefaf4; --code:#eef1f5;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#12161c; --card:#1a1f27; --ink:#e6ebf2; --muted:#9aa7b8; --line:#2b323d;
+      --accent:#7aa9ff; --warn:#e0a341; --warnbg:#2a2117; --warnline:#4d3a1e;
+      --ok:#4ec98d; --okbg:#152a20; --code:#232a34;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12161c; --card:#1a1f27; --ink:#e6ebf2; --muted:#9aa7b8; --line:#2b323d;
+    --accent:#7aa9ff; --warn:#e0a341; --warnbg:#2a2117; --warnline:#4d3a1e;
+    --ok:#4ec98d; --okbg:#152a20; --code:#232a34;
+  }
+  :root[data-theme="light"]{
+    --bg:#f6f7f9; --card:#fff; --ink:#16202e; --muted:#5d6b7f; --line:#e2e6ec;
+    --accent:#1a5fd0; --warn:#b45309; --warnbg:#fff8ec; --warnline:#f0d9b0;
+    --ok:#0f7a4d; --okbg:#eefaf4; --code:#eef1f5;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:24px 18px 80px}
+  header.top{margin-bottom:8px}
+  h1{font-size:1.6rem; line-height:1.25; margin:0 0 6px}
+  .sub{color:var(--muted); font-size:.92rem; margin:0}
+  .bar{
+    position:sticky; top:0; z-index:20; background:var(--bg);
+    padding:12px 0 10px; border-bottom:1px solid var(--line); margin-bottom:22px;
+  }
+  .bar-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  .prog{flex:1 1 200px; height:8px; background:var(--line); border-radius:99px; overflow:hidden}
+  .prog i{display:block; height:100%; width:0; background:var(--ok); transition:width .25s}
+  .count{font-variant-numeric:tabular-nums; font-size:.85rem; color:var(--muted); white-space:nowrap}
+  button.util{
+    font:inherit; font-size:.82rem; padding:5px 11px; border-radius:7px;
+    border:1px solid var(--line); background:var(--card); color:var(--muted); cursor:pointer;
+  }
+  button.util:hover{color:var(--ink); border-color:var(--muted)}
+  section{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:16px}
+  h2{font-size:1.06rem; margin:0 0 4px; display:flex; align-items:baseline; gap:9px; flex-wrap:wrap}
+  h2 .n{
+    font-size:.72rem; font-weight:700; color:var(--accent); background:var(--code);
+    border-radius:5px; padding:2px 7px; letter-spacing:.04em;
+  }
+  h2 .done{font-size:.7rem; color:var(--ok); font-weight:600; opacity:0; transition:opacity .2s}
+  section.complete h2 .done{opacity:1}
+  section.complete{border-color:var(--ok)}
+  .lead{color:var(--muted); font-size:.9rem; margin:0 0 14px}
+  ul.checks{list-style:none; margin:0; padding:0}
+  ul.checks li{display:flex; gap:11px; padding:8px 0; border-top:1px solid var(--line); align-items:flex-start}
+  ul.checks li:first-child{border-top:0}
+  input[type=checkbox]{
+    appearance:none; -webkit-appearance:none; flex:0 0 auto; margin:3px 0 0;
+    width:19px; height:19px; border:1.5px solid var(--muted); border-radius:5px;
+    background:transparent; cursor:pointer; position:relative;
+  }
+  input[type=checkbox]:checked{background:var(--ok); border-color:var(--ok)}
+  input[type=checkbox]:checked::after{
+    content:""; position:absolute; left:6px; top:2px; width:5px; height:10px;
+    border:solid #fff; border-width:0 2px 2px 0; transform:rotate(42deg);
+  }
+  label.txt{cursor:pointer; flex:1}
+  li.checked label.txt{opacity:.5; text-decoration:line-through; text-decoration-thickness:1px}
+  .hint{display:block; color:var(--muted); font-size:.84rem; margin-top:2px; text-decoration:none}
+  li.checked .hint{text-decoration:line-through}
+  code, .val{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.86em;
+    background:var(--code); border-radius:5px; padding:1px 5px;
+  }
+  .copy{
+    display:inline-flex; align-items:center; gap:6px; cursor:pointer; border:0;
+    background:var(--code); color:var(--ink); border-radius:6px; padding:3px 9px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.84em;
+    text-align:left;
+  }
+  .copy:hover{outline:1.5px solid var(--accent)}
+  .copy::after{content:"⧉"; opacity:.45; font-family:inherit}
+  .copy.copied::after{content:"✓"; color:var(--ok); opacity:1}
+  .copy.all{background:var(--accent); color:#fff; font-family:inherit; font-size:.8rem; padding:4px 11px}
+  .copy.all::after{opacity:.7}
+  .rsa{border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:14px 0}
+  .rsa-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:4px}
+  .rsa-head b{font-size:.95rem}
+  .rsa-meta{color:var(--muted); font-size:.84rem; margin:0 0 10px}
+  .rsa h3, h3.sub-h{font-size:.76rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);
+          margin:18px 0 8px; font-weight:600}
+  h3.sub-h{display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+           padding-top:14px; border-top:1px solid var(--line)}
+  h3.sub-h:first-of-type{border-top:0; padding-top:0}
+  h3.sub-h .tag{color:var(--accent); background:var(--code); border-radius:5px;
+                padding:2px 6px; letter-spacing:.03em; font-size:.9em}
+  ol.lines{margin:0; padding:0; list-style:none; counter-reset:l}
+  ol.lines li{
+    counter-increment:l; display:flex; align-items:baseline; gap:9px;
+    padding:4px 0; border-top:1px solid var(--line); font-size:.9rem;
+  }
+  ol.lines li:first-child{border-top:0}
+  ol.lines li::before{
+    content:counter(l); flex:0 0 1.4em; text-align:right; color:var(--muted);
+    font-size:.78rem; font-variant-numeric:tabular-nums;
+  }
+  ol.lines .ln{flex:1; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.88em}
+  ol.lines .cc{flex:0 0 auto; color:var(--muted); font-size:.76rem; font-variant-numeric:tabular-nums}
+  .note{
+    background:var(--warnbg); border:1px solid var(--warnline); border-left:3px solid var(--warn);
+    border-radius:8px; padding:11px 14px; margin:12px 0; font-size:.88rem;
+  }
+  .note b{color:var(--warn)}
+  .facts{background:var(--okbg); border:1px solid var(--line); border-radius:10px; padding:14px 18px; margin-bottom:16px}
+  .facts dl{display:grid; grid-template-columns:auto 1fr; gap:5px 16px; margin:0; font-size:.9rem}
+  .facts dt{color:var(--muted)}
+  .facts dd{margin:0; font-weight:600}
+  .scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:12px 0}
+  table{border-collapse:collapse; width:100%; font-size:.84rem; min-width:440px}
+  th,td{text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); white-space:nowrap}
+  th{color:var(--muted); font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.04em}
+  td.kw{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; white-space:normal}
+  td.n{text-align:right; font-variant-numeric:tabular-nums}
+  /* sitelink cards */
+  .sl{border:1px solid var(--line); border-radius:9px; padding:11px 13px; margin-bottom:10px}
+  .sl-grid{display:grid; grid-template-columns:auto 1fr; gap:5px 12px; align-items:baseline; font-size:.86rem}
+  .sl-grid dt{color:var(--muted); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap}
+  .sl-grid dd{margin:0; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap}
+  .sl-grid .cc{color:var(--muted); font-size:.74rem; font-variant-numeric:tabular-nums}
+  /* chips */
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0}
+  .chips .copy{font-size:.82em}
+  .chip{
+    display:inline-block; background:var(--code); color:var(--muted);
+    border-radius:5px; padding:2px 8px; font-size:.8rem;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  details.neg{border:1px solid var(--line); border-radius:9px; padding:0; margin:12px 0}
+  details.neg summary{
+    cursor:pointer; padding:10px 14px; font-size:.88rem; font-weight:600;
+    display:flex; align-items:center; gap:9px; flex-wrap:wrap;
+  }
+  details.neg summary::-webkit-details-marker{display:none}
+  details.neg summary::before{content:"▸"; color:var(--muted); font-size:.8em}
+  details.neg[open] summary::before{content:"▾"}
+  details.neg .body{padding:0 14px 12px}
+  footer{color:var(--muted); font-size:.82rem; text-align:center; margin-top:28px; line-height:1.7}
+  @media print{
+    .bar,button.util,.copy::after{display:none}
+    body{background:#fff}
+    section{break-inside:avoid; border-color:#ccc}
+    details.neg[open] .body{display:block}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>Westchester Campaign — Build Checklist</h1>
+  <p class="sub">Campaign #1 · <code>A1 Handyman - Westchester - Urgency</code> · follows <code>08-westchester-launch-plan.md</code></p>
+</header>
+
+<div class="bar">
+  <div class="bar-row">
+    <div class="prog"><i id="pbar"></i></div>
+    <span class="count" id="pcount">0 / 0</span>
+    <button class="util" id="reset">Reset</button>
+  </div>
+</div>
+
+<div class="facts">
+  <dl>
+    <dt>Budget</dt><dd>$10.00/day (~$300/mo)</dd>
+    <dt>Expected</dt><dd>~37 clicks/mo → 3–6 leads/mo</dd>
+    <dt>Location</dt><dd>Westchester County NY only — Presence</dd>
+    <dt>Schedule</dt><dd>Mon–Fri 8am–7pm · Sat/Sun 8am–4pm ET</dd>
+    <dt>Bidding</dt><dd>Manual CPC</dd>
+    <dt>First CPL read</dt><dd>Week 8–10 (two ad groups splits the data)</dd>
+  </dl>
+</div>
+
+<section data-sec>
+  <h2><span class="n">STEP 1</span> Objective &amp; type <span class="done">✓ done</span></h2>
+  <p class="lead">Either <em>Create a campaign without guidance</em> or <em>Leads</em> works — they build the same campaign. Only the bidding default differs.</p>
+  <ul class="checks">
+    <li><input type="checkbox" id="c1a"><label class="txt" for="c1a">Objective selected<span class="hint">"Without guidance" or "Leads" — both fine</span></label></li>
+    <li><input type="checkbox" id="c1b"><label class="txt" for="c1b">Campaign type = <b>Search</b></label></li>
+    <li><input type="checkbox" id="c1c"><label class="txt" for="c1c">Conversion goals show Contacts, Phone call leads, Submit lead forms at $50<span class="hint">⚠️ on "Phone call leads" is expected — Call from Ads can't record until a call asset exists and the campaign runs. Clears itself.</span></label></li>
+  </ul>
+</section>
+
+<section data-sec>
+  <h2><span class="n">STEP 2</span> Name &amp; goal methods <span class="done">✓ done</span></h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="c2a"><label class="txt" for="c2a">Campaign name set to <button class="copy" data-copy="A1 Handyman - Westchester - Urgency">A1 Handyman - Westchester - Urgency</button><span class="hint">Exact string — <code>05</code> and <code>10</code> negative-keyword files key on it</span></label></li>
+    <li><input type="checkbox" id="c2b"><label class="txt" for="c2b">All five "ways to reach your goal" boxes left <b>unchecked</b><span class="hint">They only pre-populate asset prompts. "Phone calls" inlines a stripped call-asset step with no schedule option.</span></label></li>
+  </ul>
+</section>
+
+<section data-sec>
+  <h2><span class="n">STEP 3</span> Bidding — the screen that matters <span class="done">✓ done</span></h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="c3a"><label class="txt" for="c3a">"What do you want to focus on?" → <b>Clicks</b></label></li>
+    <li><input type="checkbox" id="c3b"><label class="txt" for="c3b">Clicked <b>"Or, select a bid strategy directly"</b><span class="hint">Small link below the dropdown, labeled "not recommended"</span></label></li>
+    <li><input type="checkbox" id="c3c"><label class="txt" for="c3c">Bid strategy = <b>Manual CPC</b></label></li>
+    <li><input type="checkbox" id="c3d"><label class="txt" for="c3d">Enhanced CPC <b>unchecked</b></label></li>
+  </ul>
+  <div class="note"><b>If Manual CPC isn't offered</b> (the Leads path sometimes hides it) — don't restart. Use <b>Maximize clicks</b> + check <b>"Set a maximum cost-per-click bid limit"</b> = <code>$9.00</code>. The cap stops one auction eating a chunk of a $10 day. Cost: per-keyword bids from <code>09</code> stop applying, so <b>pause Ad Group 2 for the first two weeks</b> to keep the urgency group's data clean.</div>
+</section>
+
+<section data-sec>
+  <h2><span class="n">STEP 4</span> Campaign settings <span class="done">✓ done</span></h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="c4a"><label class="txt" for="c4a">Search partners <b>unchecked</b></label></li>
+    <li><input type="checkbox" id="c4b"><label class="txt" for="c4b">Display Network <b>unchecked</b><span class="hint">Checked by default — this one quietly burns budget on junk placements</span></label></li>
+    <li><input type="checkbox" id="c4c"><label class="txt" for="c4c">Location = <button class="copy" data-copy="Westchester County, New York">Westchester County, New York</button></label></li>
+    <li><input type="checkbox" id="c4d"><label class="txt" for="c4d">Location options → <b>"Presence: People in or regularly in your targeted locations"</b><span class="hint">Defaults to "Presence or interest" — the most-missed setting in the whole build</span></label></li>
+    <li><input type="checkbox" id="c4e"><label class="txt" for="c4e">Language = English · Audience segments skipped</label></li>
+    <li><input type="checkbox" id="c4f"><label class="txt" for="c4f">Account timezone confirmed <b>Eastern</b><span class="hint">Check before the schedule — it saves in account time, not local</span></label></li>
+    <li><input type="checkbox" id="c4g"><label class="txt" for="c4g">Ad schedule set: Mon–Fri 8:00 AM–7:00 PM · Sat 8:00 AM–4:00 PM · Sun 8:00 AM–4:00 PM<span class="hint">Under "More settings" at the bottom. At ~1 click/day a missed call is a whole day's spend.</span></label></li>
+  </ul>
+</section>
+
+<section data-sec>
+  <h2><span class="n">STEP 5</span> Ad groups &amp; keywords <span class="done">✓ done</span></h2>
+  <p class="lead">The UI won't accept per-keyword Final URLs during creation — set an ad group default now, apply per-keyword URLs after publishing. Or skip the UI and import <code>09-westchester-import-keywords.csv</code> in Google Ads Editor, which is much faster.</p>
+  <ul class="checks">
+    <li><input type="checkbox" id="c5a"><label class="txt" for="c5a">Ad group <button class="copy" data-copy="Same-Day / Emergency">Same-Day / Emergency</button> created — default URL <code>/same-day-repairs.html</code></label></li>
+    <li><input type="checkbox" id="c5b"><label class="txt" for="c5b">11 urgency keywords added (table below)</label></li>
+    <li><input type="checkbox" id="c5c"><label class="txt" for="c5c">Ad group <button class="copy" data-copy="High-Value Repairs">High-Value Repairs</button> created — default URL <code>/drywall-repair.html</code></label></li>
+    <li><input type="checkbox" id="c5d"><label class="txt" for="c5d">7 repair keywords added (table below)</label></li>
+    <li><input type="checkbox" id="c5e"><label class="txt" for="c5e"><b>One</b> RSA per ad group, copy in <b>Step 5B</b> below<span class="hint">Not the two that <code>03</code> suggests — at ~37 clicks/mo Google can't test two, and a second RSA just splits delivery. Add the challenger at the first budget increase.</span></label></li>
+    <li><input type="checkbox" id="c5f"><label class="txt" for="c5f">Neither ad group is still named <code>Ad group 1</code> / <code>Ad group 2</code><span class="hint">Google's default names. <code>09</code>, <code>10</code> and <code>05</code> key on the exact strings above — a mismatch makes the Editor import create a third, empty ad group instead.</span></label></li>
+  </ul>
+
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Ad Group 1 — Same-Day / Emergency</th><th>Match</th><th class="n">Max CPC</th><th>Final URL</th></tr></thead>
+    <tbody>
+      <tr><td class="kw">emergency handyman</td><td>Exact</td><td class="n">10.00</td><td>/emergency-handyman.html</td></tr>
+      <tr><td class="kw">emergency handyman</td><td>Phrase</td><td class="n">9.00</td><td>/emergency-handyman.html</td></tr>
+      <tr><td class="kw">emergency handyman near me</td><td>Phrase</td><td class="n">9.00</td><td>/emergency-handyman.html</td></tr>
+      <tr><td class="kw">urgent handyman</td><td>Phrase</td><td class="n">8.00</td><td>/emergency-handyman.html</td></tr>
+      <tr><td class="kw">same day handyman</td><td>Exact</td><td class="n">10.00</td><td>/same-day-repairs.html</td></tr>
+      <tr><td class="kw">same day handyman</td><td>Phrase</td><td class="n">9.00</td><td>/same-day-repairs.html</td></tr>
+      <tr><td class="kw">same day handyman near me</td><td>Phrase</td><td class="n">9.00</td><td>/same-day-repairs.html</td></tr>
+      <tr><td class="kw">handyman available today</td><td>Phrase</td><td class="n">8.00</td><td>/same-day-repairs.html</td></tr>
+      <tr><td class="kw">same day handyman westchester</td><td>Phrase</td><td class="n">9.00</td><td>/westchester-handyman.html</td></tr>
+      <tr><td class="kw">handyman westchester</td><td>Phrase</td><td class="n">8.00</td><td>/westchester-handyman.html</td></tr>
+      <tr><td class="kw">handyman westchester ny</td><td>Phrase</td><td class="n">8.00</td><td>/westchester-handyman.html</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note"><b>Do not add "handyman near me" yet.</b> It's the highest-volume term available and would swallow most of $10/day alone, while pulling in low-ticket work (TV mounts, IKEA assembly). Week 3 decision — add it at $7.00 Phrase <em>only</em> if the campaign is underspending below $8/day.</div>
+
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Ad Group 2 — High-Value Repairs</th><th>Match</th><th class="n">Max CPC</th><th>Final URL</th></tr></thead>
+    <tbody>
+      <tr><td class="kw">drywall repair</td><td>Exact</td><td class="n">7.50</td><td>/drywall-repair.html</td></tr>
+      <tr><td class="kw">drywall repair near me</td><td>Phrase</td><td class="n">7.00</td><td>/drywall-repair.html</td></tr>
+      <tr><td class="kw">ceiling repair</td><td>Phrase</td><td class="n">6.00</td><td>/drywall-repair.html</td></tr>
+      <tr><td class="kw">water damage repair</td><td>Phrase</td><td class="n">7.00</td><td>/drywall-repair.html</td></tr>
+      <tr><td class="kw">door repair near me</td><td>Phrase</td><td class="n">6.00</td><td>/door-window-repair.html</td></tr>
+      <tr><td class="kw">window repair near me</td><td>Phrase</td><td class="n">6.00</td><td>/door-window-repair.html</td></tr>
+      <tr><td class="kw">handyman for repairs</td><td>Phrase</td><td class="n">6.00</td><td>/services.html</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section data-sec>
+  <h2><span class="n">STEP 5B</span> Ad copy — the two RSAs <span class="done">✓ done</span></h2>
+  <p class="lead">Full copy from <code>03-ad-copy-and-assets.md</code>. Every line re-counted 2026-07-29 — all 30 headlines ≤30 chars, all 8 descriptions ≤90, longest is 85. The "copy all" buttons put one per line, ready to paste down the fields.</p>
+  <ul class="checks">
+    <li><input type="checkbox" id="c5ba"><label class="txt" for="c5ba">AG1 RSA: 15 headlines + 4 descriptions entered</label></li>
+    <li><input type="checkbox" id="c5bb"><label class="txt" for="c5bb">AG2 RSA: 15 headlines + 4 descriptions entered</label></li>
+    <li><input type="checkbox" id="c5bc"><label class="txt" for="c5bc">Display paths set on both ads</label></li>
+    <li><input type="checkbox" id="c5bd"><label class="txt" for="c5bd"><b>Nothing pinned</b><span class="hint">Ad Strength nags to pin and to "make headlines unique" — ignore both. Pinning starves Google's mixing at the only stage where it's cheap to learn.</span></label></li>
+  </ul>
+
+  <div class="note"><b>Ignore Ad Strength "Incomplete"/"Poor."</b> It's a copy-diversity score, not a quality score, and it has no effect on cost or rank. It will still complain after all 15 headlines are in. The copy below is deliberately repetitive on <em>same-day</em> and <em>licensed &amp; insured</em> because that is what converts this audience.</div>
+
+  <div class="rsa">
+    <div class="rsa-head">
+      <b>Ad group <code>Same-Day / Emergency</code></b>
+      <button class="copy all" data-copy="Same-Day Handyman Westchester&#10;Same-Day Handyman Near You&#10;Emergency Handyman Repairs&#10;On Today's Schedule&#10;Call Before Noon, Done Today&#10;Licensed &amp; Insured Pros&#10;Upfront, Flat-Rate Pricing&#10;Fast Local Repair Crew&#10;Family-Owned &amp; Local&#10;Get a Fast Quote Today&#10;We Answer — Real People&#10;Free Second Opinions&#10;Same-Day Slots Available&#10;Westchester's Repair Crew&#10;Book Your Repair Window">Copy 15 headlines</button>
+      <button class="copy all" data-copy="Same-day &amp; emergency handyman repairs across Westchester. Licensed, insured, upfront.&#10;Call before noon and we can usually be there today. Flat quotes, no surprises.&#10;Drywall, doors, water damage, carpentry &amp; more. One local crew you can count on.&#10;Get a fast quote in minutes. Family-owned, upfront pricing, work guaranteed.">Copy 4 descriptions</button>
+    </div>
+    <p class="rsa-meta">
+      Final URL <button class="copy" data-copy="https://a1prohandyman.com/westchester-handyman.html">https://a1prohandyman.com/westchester-handyman.html</button>
+      · Display path <button class="copy" data-copy="Westchester">Westchester</button> <button class="copy" data-copy="Same-Day">Same-Day</button>
+    </p>
+
+    <h3>Headlines · 15</h3>
+    <ol class="lines">
+      <li><span class="ln">Same-Day Handyman Westchester</span><span class="cc">29</span></li>
+      <li><span class="ln">Same-Day Handyman Near You</span><span class="cc">26</span></li>
+      <li><span class="ln">Emergency Handyman Repairs</span><span class="cc">26</span></li>
+      <li><span class="ln">On Today's Schedule</span><span class="cc">19</span></li>
+      <li><span class="ln">Call Before Noon, Done Today</span><span class="cc">28</span></li>
+      <li><span class="ln">Licensed &amp; Insured Pros</span><span class="cc">23</span></li>
+      <li><span class="ln">Upfront, Flat-Rate Pricing</span><span class="cc">26</span></li>
+      <li><span class="ln">Fast Local Repair Crew</span><span class="cc">22</span></li>
+      <li><span class="ln">Family-Owned &amp; Local</span><span class="cc">20</span></li>
+      <li><span class="ln">Get a Fast Quote Today</span><span class="cc">22</span></li>
+      <li><span class="ln">We Answer — Real People</span><span class="cc">23</span></li>
+      <li><span class="ln">Free Second Opinions</span><span class="cc">20</span></li>
+      <li><span class="ln">Same-Day Slots Available</span><span class="cc">24</span></li>
+      <li><span class="ln">Westchester's Repair Crew</span><span class="cc">25</span></li>
+      <li><span class="ln">Book Your Repair Window</span><span class="cc">23</span></li>
+    </ol>
+
+    <h3>Descriptions · 4</h3>
+    <ol class="lines">
+      <li><span class="ln">Same-day &amp; emergency handyman repairs across Westchester. Licensed, insured, upfront.</span><span class="cc">85</span></li>
+      <li><span class="ln">Call before noon and we can usually be there today. Flat quotes, no surprises.</span><span class="cc">78</span></li>
+      <li><span class="ln">Drywall, doors, water damage, carpentry &amp; more. One local crew you can count on.</span><span class="cc">80</span></li>
+      <li><span class="ln">Get a fast quote in minutes. Family-owned, upfront pricing, work guaranteed.</span><span class="cc">76</span></li>
+    </ol>
+  </div>
+
+  <div class="rsa">
+    <div class="rsa-head">
+      <b>Ad group <code>High-Value Repairs</code></b>
+      <button class="copy all" data-copy="Westchester Home Repairs&#10;Drywall &amp; Ceiling Repair&#10;Water Damage Repairs&#10;Door &amp; Window Repair&#10;Handyman for Home Repairs&#10;Fast, Local Repair Crew&#10;Licensed &amp; Insured Pros&#10;Upfront Flat-Rate Quotes&#10;Same-Day When Available&#10;Free Second Opinions&#10;Fix It Right — One Crew&#10;Get a Fast Quote Today&#10;Family-Owned &amp; Local&#10;No Job Too Small or Big&#10;Repairs Done Right">Copy 15 headlines</button>
+      <button class="copy all" data-copy="Drywall, ceilings, water damage, doors &amp; windows. Repaired right by a licensed crew.&#10;One call handles the whole punch list. Upfront flat quotes, no surprises, guaranteed.&#10;Serving Westchester County. Family-owned, licensed &amp; insured. Same-day when we can.&#10;Got a pricey contractor quote? Get a free second opinion from A1 Pro Handyman.">Copy 4 descriptions</button>
+    </div>
+    <p class="rsa-meta">
+      Final URL <button class="copy" data-copy="https://a1prohandyman.com/services.html">https://a1prohandyman.com/services.html</button>
+      · Display path <button class="copy" data-copy="Home-Repairs">Home-Repairs</button> <button class="copy" data-copy="Westchester">Westchester</button>
+    </p>
+
+    <h3>Headlines · 15</h3>
+    <ol class="lines">
+      <li><span class="ln">Westchester Home Repairs</span><span class="cc">24</span></li>
+      <li><span class="ln">Drywall &amp; Ceiling Repair</span><span class="cc">24</span></li>
+      <li><span class="ln">Water Damage Repairs</span><span class="cc">20</span></li>
+      <li><span class="ln">Door &amp; Window Repair</span><span class="cc">20</span></li>
+      <li><span class="ln">Handyman for Home Repairs</span><span class="cc">25</span></li>
+      <li><span class="ln">Fast, Local Repair Crew</span><span class="cc">23</span></li>
+      <li><span class="ln">Licensed &amp; Insured Pros</span><span class="cc">23</span></li>
+      <li><span class="ln">Upfront Flat-Rate Quotes</span><span class="cc">24</span></li>
+      <li><span class="ln">Same-Day When Available</span><span class="cc">23</span></li>
+      <li><span class="ln">Free Second Opinions</span><span class="cc">20</span></li>
+      <li><span class="ln">Fix It Right — One Crew</span><span class="cc">23</span></li>
+      <li><span class="ln">Get a Fast Quote Today</span><span class="cc">22</span></li>
+      <li><span class="ln">Family-Owned &amp; Local</span><span class="cc">20</span></li>
+      <li><span class="ln">No Job Too Small or Big</span><span class="cc">23</span></li>
+      <li><span class="ln">Repairs Done Right</span><span class="cc">18</span></li>
+    </ol>
+
+    <h3>Descriptions · 4</h3>
+    <ol class="lines">
+      <li><span class="ln">Drywall, ceilings, water damage, doors &amp; windows. Repaired right by a licensed crew.</span><span class="cc">84</span></li>
+      <li><span class="ln">One call handles the whole punch list. Upfront flat quotes, no surprises, guaranteed.</span><span class="cc">85</span></li>
+      <li><span class="ln">Serving Westchester County. Family-owned, licensed &amp; insured. Same-day when we can.</span><span class="cc">83</span></li>
+      <li><span class="ln">Got a pricey contractor quote? Get a free second opinion from A1 Pro Handyman.</span><span class="cc">78</span></li>
+    </ol>
+  </div>
+
+  <div class="note"><b>AG2's Final URL is the ad-group default only.</b> The per-keyword URLs from <code>09</code> (drywall → <code>/drywall-repair.html</code>, doors/windows → <code>/door-window-repair.html</code>) are applied post-publish in Step 8 and override it.</div>
+</section>
+
+<section data-sec>
+  <h2><span class="n">STEP 6</span> Campaign assets <span class="done">✓ done</span></h2>
+  <p class="lead">All campaign-level, all free, and disproportionately valuable at $10/day — they widen the ad without costing a click. Every string below is verbatim from <code>03-ad-copy-and-assets.md</code> and re-counted against Google's limits on 2026-07-29.</p>
+  <ul class="checks">
+    <li><input type="checkbox" id="c6a"><label class="txt" for="c6a"><b>6A</b> · Call asset added, call reporting ON</label></li>
+    <li><input type="checkbox" id="c6b"><label class="txt" for="c6b">Conversion action on the call asset = <b>Calls from ads</b><span class="hint">Not <code>Lead — Phone Call</code> — that one is GTM-fired for <code>tel:</code> taps on the website. Mixing them makes CPL-by-source unreadable. Call length threshold is set later, in Step 8.</span></label></li>
+    <li><input type="checkbox" id="c6g"><label class="txt" for="c6g">Call asset schedule matched to the campaign hours</label></li>
+    <li><input type="checkbox" id="c6c"><label class="txt" for="c6c"><b>6B</b> · All 5 sitelinks added, both description lines on each</label></li>
+    <li><input type="checkbox" id="c6d"><label class="txt" for="c6d"><b>6C</b> · All 8 callouts added</label></li>
+    <li><input type="checkbox" id="c6h"><label class="txt" for="c6h"><b>6D</b> · Structured snippet added — header <b>Services</b>, 6 values</label></li>
+    <li><input type="checkbox" id="c6e"><label class="txt" for="c6e"><b>6E</b> · Google Business Profile linked as location asset</label></li>
+    <li><input type="checkbox" id="c6i"><label class="txt" for="c6i"><b>6F</b> · Promotion asset deliberately <b>skipped</b><span class="hint">Only add one if the owner wants a real offer. The free second opinion already differentiates, and a discount cuts margin on a 3–6 lead/month volume.</span></label></li>
+    <li><input type="checkbox" id="c6f"><label class="txt" for="c6f">Budget = <b>$10.00/day</b><span class="hint">Ignore the "you could get X more clicks at $25/day" nudge</span></label></li>
+  </ul>
+
+  <h3 class="sub-h"><span class="tag">6A</span> Call asset</h3>
+  <div class="sl">
+    <dl class="sl-grid">
+      <dt>Phone</dt><dd><button class="copy" data-copy="(914) 693-0009">(914) 693-0009</button></dd>
+      <dt>Call reporting</dt><dd><b>ON</b> — the dialog states "Call reporting on, call recording off" above the number. That <em>is</em> the setting; there's nothing else to toggle.</dd>
+      <dt>Conversion</dt><dd><b>Calls from ads</b></dd>
+      <dt>Schedule</dt><dd>Mon–Fri 8:00 AM–7:00 PM · Sat 8:00 AM–4:00 PM · Sun 8:00 AM–4:00 PM</dd>
+    </dl>
+  </div>
+  <div class="note"><b>Ignore <code>03</code>'s "Mon–Sat 6 AM–6 PM" for this asset.</b> That line predates the current schedule. The call asset must mirror the <em>campaign</em> ad schedule in Step 4 — otherwise the number shows during hours the ad itself never runs, or worse, disappears during hours it does.</div>
+
+  <h3 class="sub-h"><span class="tag">6B</span> Sitelinks · 5 <button class="copy all" data-copy="Same-Day Repairs&#10;Emergency Repairs&#10;Free Second Opinion&#10;Get a Fast Quote&#10;Our Service Area">Copy 5 link texts</button></h3>
+  <p class="lead">Each needs link text (≤25) plus <b>two</b> description lines (≤35 each). Google will accept a sitelink with no descriptions — don't let it; the descriptions are what make the sitelink take up two extra lines of the SERP.</p>
+
+  <div class="sl">
+    <dl class="sl-grid">
+      <dt>Text</dt><dd><button class="copy" data-copy="Same-Day Repairs">Same-Day Repairs</button><span class="cc">16/25</span></dd>
+      <dt>URL</dt><dd><button class="copy" data-copy="https://a1prohandyman.com/same-day-repairs.html">/same-day-repairs.html</button></dd>
+      <dt>Desc 1</dt><dd><button class="copy" data-copy="Call before noon">Call before noon</button><span class="cc">16/35</span></dd>
+      <dt>Desc 2</dt><dd><button class="copy" data-copy="On today's schedule">On today's schedule</button><span class="cc">19/35</span></dd>
+    </dl>
+  </div>
+  <div class="sl">
+    <dl class="sl-grid">
+      <dt>Text</dt><dd><button class="copy" data-copy="Emergency Repairs">Emergency Repairs</button><span class="cc">17/25</span></dd>
+      <dt>URL</dt><dd><button class="copy" data-copy="https://a1prohandyman.com/emergency-handyman.html">/emergency-handyman.html</button></dd>
+      <dt>Desc 1</dt><dd><button class="copy" data-copy="Urgent fixes, fast">Urgent fixes, fast</button><span class="cc">18/35</span></dd>
+      <dt>Desc 2</dt><dd><button class="copy" data-copy="Licensed &amp; insured crew">Licensed &amp; insured crew</button><span class="cc">23/35</span></dd>
+    </dl>
+  </div>
+  <div class="sl">
+    <dl class="sl-grid">
+      <dt>Text</dt><dd><button class="copy" data-copy="Free Second Opinion">Free Second Opinion</button><span class="cc">19/25</span></dd>
+      <dt>URL</dt><dd><button class="copy" data-copy="https://a1prohandyman.com/contact.html">/contact.html</button></dd>
+      <dt>Desc 1</dt><dd><button class="copy" data-copy="Got a costly quote?">Got a costly quote?</button><span class="cc">19/35</span></dd>
+      <dt>Desc 2</dt><dd><button class="copy" data-copy="We'll take a look, free">We'll take a look, free</button><span class="cc">23/35</span></dd>
+    </dl>
+  </div>
+  <div class="sl">
+    <dl class="sl-grid">
+      <dt>Text</dt><dd><button class="copy" data-copy="Get a Fast Quote">Get a Fast Quote</button><span class="cc">16/25</span></dd>
+      <dt>URL</dt><dd><button class="copy" data-copy="https://a1prohandyman.com/#quote">/#quote</button></dd>
+      <dt>Desc 1</dt><dd><button class="copy" data-copy="3 quick steps">3 quick steps</button><span class="cc">13/35</span></dd>
+      <dt>Desc 2</dt><dd><button class="copy" data-copy="A real person calls back">A real person calls back</button><span class="cc">24/35</span></dd>
+    </dl>
+  </div>
+  <div class="sl">
+    <dl class="sl-grid">
+      <dt>Text</dt><dd><button class="copy" data-copy="Our Service Area">Our Service Area</button><span class="cc">16/25</span></dd>
+      <dt>URL</dt><dd><button class="copy" data-copy="https://a1prohandyman.com/westchester-handyman.html">/westchester-handyman.html</button></dd>
+      <dt>Desc 1</dt><dd><button class="copy" data-copy="Serving Westchester">Serving Westchester</button><span class="cc">19/35</span></dd>
+      <dt>Desc 2</dt><dd><button class="copy" data-copy="Same-day slots open">Same-day slots open</button><span class="cc">19/35</span></dd>
+    </dl>
+  </div>
+  <div class="note"><b>The Rockland and Bronx/NYC sitelinks from <code>07</code> are not used here.</b> Single-county campaign — adding them sends Westchester clicks to pages for counties the ad isn't even targeting. All five URLs above verified HTTP 200 on 2026-07-29, and the <code>#quote</code> anchor exists on the homepage.</div>
+
+  <h3 class="sub-h"><span class="tag">6C</span> Callouts · 8 <button class="copy all" data-copy="Licensed &amp; Insured&#10;Same-Day Response&#10;Upfront Flat Pricing&#10;Family-Owned &amp; Local&#10;Free Quotes&#10;Work Guaranteed&#10;Real People Answer&#10;Second Opinions Welcome">Copy all 8</button></h3>
+  <p class="lead">Limit 25 chars each — longest below is 23. No links, no URLs; they're plain text fragments Google appends to the ad. Add all 8: Google picks which to show per auction, so more supply is strictly better here.</p>
+  <ol class="lines">
+    <li><span class="ln">Licensed &amp; Insured</span><span class="cc">18</span></li>
+    <li><span class="ln">Same-Day Response</span><span class="cc">17</span></li>
+    <li><span class="ln">Upfront Flat Pricing</span><span class="cc">20</span></li>
+    <li><span class="ln">Family-Owned &amp; Local</span><span class="cc">20</span></li>
+    <li><span class="ln">Free Quotes</span><span class="cc">11</span></li>
+    <li><span class="ln">Work Guaranteed</span><span class="cc">15</span></li>
+    <li><span class="ln">Real People Answer</span><span class="cc">18</span></li>
+    <li><span class="ln">Second Opinions Welcome</span><span class="cc">23</span></li>
+  </ol>
+
+  <h3 class="sub-h"><span class="tag">6D</span> Structured snippet</h3>
+  <div class="sl">
+    <dl class="sl-grid">
+      <dt>Header</dt><dd><button class="copy" data-copy="Services">Services</button><span class="cc">pick from Google's fixed list — it's near the bottom</span></dd>
+      <dt>Values</dt><dd><button class="copy all" data-copy="Drywall Repair&#10;Ceiling Repair&#10;Door &amp; Window Repair&#10;Water Damage&#10;Carpentry&#10;Painting">Copy all 6</button></dd>
+    </dl>
+    <div class="chips">
+      <span class="chip">Drywall Repair</span><span class="chip">Ceiling Repair</span><span class="chip">Door &amp; Window Repair</span><span class="chip">Water Damage</span><span class="chip">Carpentry</span><span class="chip">Painting</span>
+    </div>
+  </div>
+  <p class="lead">Minimum 3 values, max 10, ≤25 chars each — all 6 fit. Header must be <b>Services</b>, not "Types" or "Brands"; the wrong header gets the snippet quietly dropped from serving.</p>
+
+  <h3 class="sub-h"><span class="tag">6E</span> Location asset</h3>
+  <p class="lead">Link the <b>Google Business Profile</b> for the Westchester listing. Shows the map pin and address in the ad — for a local trade this is the single highest-value free asset, and it feeds the "get directions" and call paths that don't cost a click.</p>
+</section>
+
+<section data-sec>
+  <h2><span class="n">STEP 7</span> Publish, then pause <span class="done">✓ done</span></h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="c7a"><label class="txt" for="c7a">Campaign published</label></li>
+    <li><input type="checkbox" id="c7b"><label class="txt" for="c7b"><b>Campaign paused immediately</b><span class="hint">Nothing serves until verification passes</span></label></li>
+  </ul>
+</section>
+
+<section data-sec>
+  <h2><span class="n">STEP 8</span> Post-publish — not available during creation <span class="done">✓ done</span></h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="c8a"><label class="txt" for="c8a">Device bid adjustments: Mobile <b>+20%</b>, Desktop <b>−20%</b>, Tablet <b>−50%</b><span class="hint">Campaign → Settings → Devices</span></label></li>
+    <li><input type="checkbox" id="c8b"><label class="txt" for="c8b">Added the 45 junk/low-ticket negatives from <code>05</code> (list below)</label></li>
+    <li><input type="checkbox" id="c8c"><label class="txt" for="c8c">Added the 13 adjacent-geo negatives from <code>10</code> (list below)</label></li>
+    <li><input type="checkbox" id="c8d"><label class="txt" for="c8d">Per-keyword Final URLs applied from <code>09</code><span class="hint">So "emergency handyman" lands on the emergency page, not the ad group default</span></label></li>
+    <li><input type="checkbox" id="c8e"><label class="txt" for="c8e">Call length threshold set to <b>30–60 seconds</b><span class="hint">Goals → Conversions → <code>Calls from ads</code> → Edit settings → "Count calls longer than X seconds." Lives on the conversion action, not the call asset. Default 60s is fine; 30s is more forgiving for a trade where a lead qualifies fast.</span></label></li>
+  </ul>
+
+  <p class="lead">58 negatives total, all <b>Phrase</b> match, all at <b>campaign</b> level. Two ways in — either is fine:</p>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Route</th><th>How</th></tr></thead>
+    <tbody>
+      <tr><td>Google Ads Editor</td><td class="kw">Import <code>05-negative-keywords.csv</code> + <code>10-westchester-geo-negatives.csv</code> — campaign column already matches</td></tr>
+      <tr><td>Web UI</td><td class="kw">Campaign → Keywords → Negative keywords → paste the quoted lists below</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><b>The quotes are the match type.</b> In the UI's paste box, <code>"diy"</code> means Phrase and bare <code>diy</code> means Broad. The copy buttons below emit the quoted form. Paste unquoted and you get 58 broad negatives, which will strangle the campaign.</div>
+
+  <details class="neg">
+    <summary>45 junk &amp; low-ticket negatives — from <code>05</code> <button class="copy all" data-copy="&quot;diy&quot;&#10;&quot;how to&quot;&#10;&quot;tutorial&quot;&#10;&quot;youtube&quot;&#10;&quot;video&quot;&#10;&quot;jobs&quot;&#10;&quot;job&quot;&#10;&quot;hiring&quot;&#10;&quot;career&quot;&#10;&quot;careers&quot;&#10;&quot;salary&quot;&#10;&quot;wage&quot;&#10;&quot;apprentice&quot;&#10;&quot;resume&quot;&#10;&quot;part time&quot;&#10;&quot;license&quot;&#10;&quot;licensing&quot;&#10;&quot;certification&quot;&#10;&quot;training&quot;&#10;&quot;course&quot;&#10;&quot;school&quot;&#10;&quot;classes&quot;&#10;&quot;cheap&quot;&#10;&quot;free&quot;&#10;&quot;rental&quot;&#10;&quot;rent&quot;&#10;&quot;for rent&quot;&#10;&quot;home depot&quot;&#10;&quot;lowes&quot;&#10;&quot;taskrabbit&quot;&#10;&quot;thumbtack&quot;&#10;&quot;angi&quot;&#10;&quot;angies list&quot;&#10;&quot;franchise&quot;&#10;&quot;wanted&quot;&#10;&quot;tv mount&quot;&#10;&quot;tv mounting&quot;&#10;&quot;mount tv&quot;&#10;&quot;furniture assembly&quot;&#10;&quot;assemble&quot;&#10;&quot;ikea&quot;&#10;&quot;picture hanging&quot;&#10;&quot;hang shelf&quot;&#10;&quot;parts&quot;&#10;&quot;manual&quot;">Copy all 45</button></summary>
+    <div class="body">
+      <div class="chips"><span class="chip">diy</span><span class="chip">how to</span><span class="chip">tutorial</span><span class="chip">youtube</span><span class="chip">video</span><span class="chip">jobs</span><span class="chip">job</span><span class="chip">hiring</span><span class="chip">career</span><span class="chip">careers</span><span class="chip">salary</span><span class="chip">wage</span><span class="chip">apprentice</span><span class="chip">resume</span><span class="chip">part time</span><span class="chip">license</span><span class="chip">licensing</span><span class="chip">certification</span><span class="chip">training</span><span class="chip">course</span><span class="chip">school</span><span class="chip">classes</span><span class="chip">cheap</span><span class="chip">free</span><span class="chip">rental</span><span class="chip">rent</span><span class="chip">for rent</span><span class="chip">home depot</span><span class="chip">lowes</span><span class="chip">taskrabbit</span><span class="chip">thumbtack</span><span class="chip">angi</span><span class="chip">angies list</span><span class="chip">franchise</span><span class="chip">wanted</span><span class="chip">tv mount</span><span class="chip">tv mounting</span><span class="chip">mount tv</span><span class="chip">furniture assembly</span><span class="chip">assemble</span><span class="chip">ikea</span><span class="chip">picture hanging</span><span class="chip">hang shelf</span><span class="chip">parts</span><span class="chip">manual</span></div>
+      <div class="note"><b>Watch <code>"free"</code> in week 1.</b> It's there to block "free handyman services," but it also blocks "free estimate handyman westchester" — a genuinely good query. If the search-terms report shows real estimate-seekers being filtered, swap it for the narrower <code>"free handyman"</code>. Note this only affects <em>queries</em>: the "Free Quotes" callout and "Free Second Opinion" sitelink are unaffected.</div>
+    </div>
+  </details>
+
+  <details class="neg">
+    <summary>13 adjacent-geo negatives — from <code>10</code> <button class="copy all" data-copy="&quot;bronx&quot;&#10;&quot;brooklyn&quot;&#10;&quot;queens&quot;&#10;&quot;staten island&quot;&#10;&quot;manhattan&quot;&#10;&quot;nyc&quot;&#10;&quot;new york city&quot;&#10;&quot;rockland&quot;&#10;&quot;putnam&quot;&#10;&quot;nassau&quot;&#10;&quot;long island&quot;&#10;&quot;new jersey&quot;&#10;&quot;connecticut&quot;">Copy all 13</button></summary>
+    <div class="body">
+      <div class="chips"><span class="chip">bronx</span><span class="chip">brooklyn</span><span class="chip">queens</span><span class="chip">staten island</span><span class="chip">manhattan</span><span class="chip">nyc</span><span class="chip">new york city</span><span class="chip">rockland</span><span class="chip">putnam</span><span class="chip">nassau</span><span class="chip">long island</span><span class="chip">new jersey</span><span class="chip">connecticut</span></div>
+      <p class="lead">These catch someone physically <em>in</em> Westchester searching for work in another county — "Presence" targeting does not filter that. Longer than <code>07</code>'s list because Westchester-only excludes every neighbor, Rockland and Bronx included.</p>
+    </div>
+  </details>
+</section>
+
+<section data-sec>
+  <h2><span class="n">STEP 9</span> Verify before unpausing <span class="done">✓ done</span></h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="c9a"><label class="txt" for="c9a">Diagnostics shows no disapproved ads or broken Final URLs</label></li>
+    <li><input type="checkbox" id="c9b"><label class="txt" for="c9b">All Final URL pages return HTTP 200<span class="hint">Re-verified live 2026-07-29 — all 200: emergency-handyman, same-day-repairs, westchester-handyman, drywall-repair, door-window-repair, services, contact, homepage <code>#quote</code>, thank-you</span></label></li>
+    <li><input type="checkbox" id="c9c"><label class="txt" for="c9c">The three main landing pages load fast on a real phone, hero lead form visible without scrolling</label></li>
+    <li><input type="checkbox" id="c9d"><label class="txt" for="c9d">Live test form submitted → <code>thank-you.html</code> redirect fired, Formspree email arrived</label></li>
+    <li><input type="checkbox" id="c9e"><label class="txt" for="c9e">GTM Preview: <code>form_submit</code> + <code>phone_call_click</code> fire on a page reached via a <code>?gclid=</code> test URL<span class="hint">Confirms <code>js/tracking.js</code> still captures ad attribution</span></label></li>
+    <li><input type="checkbox" id="c9f"><label class="txt" for="c9f">Formspree free-tier submission headroom confirmed for the month</label></li>
+    <li><input type="checkbox" id="c9g"><label class="txt" for="c9g">Location re-checked — still reads <b>"Presence"</b><span class="hint">Worth checking twice; the UI reverts this more often than it should</span></label></li>
+    <li><input type="checkbox" id="c9h"><label class="txt" for="c9h">Ad schedule saved in Eastern</label></li>
+    <li><input type="checkbox" id="c9j"><label class="txt" for="c9j">Assets show as <b>Approved</b>, not "Under review"<span class="hint">Sitelinks and callouts review separately from the ads and can lag a few hours. Not a launch blocker — but check back, since a disapproved asset silently stops showing.</span></label></li>
+    <li><input type="checkbox" id="c9i"><label class="txt" for="c9i"><b>Campaign unpaused 🚀</b></label></li>
+  </ul>
+</section>
+
+<section data-sec>
+  <h2><span class="n">AFTER</span> Optimization checkpoints <span class="done">✓ done</span></h2>
+  <ul class="checks">
+    <li><input type="checkbox" id="c10a"><label class="txt" for="c10a"><b>Week 1</b> — daily search-terms review, add negatives aggressively<span class="hint">Expect only ~8 clicks total this week</span></label></li>
+    <li><input type="checkbox" id="c10b"><label class="txt" for="c10b"><b>Week 3</b> — if spending under $8/day, add <code>handyman near me</code> Phrase at $7.00. If spending in full, leave it out.</label></li>
+    <li><input type="checkbox" id="c10c"><label class="txt" for="c10c"><b>Week 8–10</b> — first honest CPL read; compare AG1 vs AG2 and shift bids, or pause AG2 if the split proved too thin</label></li>
+    <li><input type="checkbox" id="c10d"><label class="txt" for="c10d"><b>After 15–30 conversions</b> — consider Maximize Conversions; revisit <code>07</code> for the Rockland expansion</label></li>
+  </ul>
+</section>
+
+<footer>
+  Progress saves in this browser automatically.<br>
+  Source of truth: <code>marketing (google ads)/08-westchester-launch-plan.md</code> · copy from <code>03-ad-copy-and-assets.md</code><br>
+  Copy limits and Final URLs re-verified 2026-07-29.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY = "a1-westchester-build-v1";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('input[type=checkbox]'));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){}
+
+  function paintRow(b){ b.closest('li').classList.toggle('checked', b.checked); }
+  function paintSections(){
+    document.querySelectorAll('[data-sec]').forEach(function(s){
+      var bs = s.querySelectorAll('input[type=checkbox]');
+      var all = bs.length > 0 && Array.prototype.every.call(bs, function(b){ return b.checked; });
+      s.classList.toggle('complete', all);
+    });
+  }
+  function paintProgress(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    document.getElementById('pbar').style.width = (done / boxes.length * 100) + '%';
+    document.getElementById('pcount').textContent = done + ' / ' + boxes.length;
+  }
+  function save(){
+    var o = {};
+    boxes.forEach(function(b){ if (b.checked) o[b.id] = 1; });
+    try { localStorage.setItem(KEY, JSON.stringify(o)); } catch(e){}
+  }
+
+  boxes.forEach(function(b){
+    if (saved[b.id]) b.checked = true;
+    paintRow(b);
+    b.addEventListener('change', function(){
+      paintRow(b); paintSections(); paintProgress(); save();
+    });
+  });
+  paintSections(); paintProgress();
+
+  document.getElementById('reset').addEventListener('click', function(){
+    boxes.forEach(function(b){ b.checked = false; paintRow(b); });
+    paintSections(); paintProgress(); save();
+  });
+
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var t = btn.getAttribute('data-copy');
+      var done = function(){
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.classList.remove('copied'); }, 1200);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(done, function(){});
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = t; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch(err){}
+        document.body.removeChild(ta);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

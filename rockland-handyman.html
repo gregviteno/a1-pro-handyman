@@ -34,8 +34,8 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KFFKDW95');</script>
   <!-- End Google Tag Manager -->
-  <!-- TODO(GREG): before launch, add to the LocalBusiness schema below: "address" (office/registered address), "openingHoursSpecification" (real hours), and "sameAs" (real Google Business Profile / Facebook / Instagram URLs). Phone is the CallRail-swappable placeholder. -->
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "https://a1prohandyman.com/#business", "name": "A1 Pro Handyman", "slogan": "Don't Settle For Less, Get A Pro", "url": "https://a1prohandyman.com/", "telephone": "+1-914-693-0009", "image": "https://a1prohandyman.com/assets/img/og-image.svg", "priceRange": "$$", "areaServed": [{"@type": "AdministrativeArea", "name": "Westchester County, NY"}, {"@type": "AdministrativeArea", "name": "Rockland County, NY"}, {"@type": "AdministrativeArea", "name": "Nassau County, NY"}, {"@type": "AdministrativeArea", "name": "Putnam County, NY"}, {"@type": "AdministrativeArea", "name": "Fairfield County, CT"}, {"@type": "AdministrativeArea", "name": "Manhattan, New York, NY"}]}</script>
+  <!-- TODO(GREG): before launch, add to the LocalBusiness schema below: "openingHoursSpecification" (real hours) and "sameAs" (real Google Business Profile / Facebook / Instagram URLs). Phone is the CallRail-swappable placeholder. -->
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "https://a1prohandyman.com/#business", "name": "A1 Pro Handyman", "alternateName": "Tri-State's Pro Handyman", "address": {"@type": "PostalAddress", "streetAddress": "13 Granada Crescent", "addressLocality": "White Plains", "addressRegion": "NY", "postalCode": "10603", "addressCountry": "US"}, "slogan": "Don't Settle For Less, Get A Pro", "url": "https://a1prohandyman.com/", "telephone": "+1-914-693-0009", "image": "https://a1prohandyman.com/assets/img/og-image.svg", "priceRange": "$$", "areaServed": [{"@type": "AdministrativeArea", "name": "Westchester County, NY"}, {"@type": "AdministrativeArea", "name": "Rockland County, NY"}, {"@type": "AdministrativeArea", "name": "Nassau County, NY"}, {"@type": "AdministrativeArea", "name": "Putnam County, NY"}, {"@type": "AdministrativeArea", "name": "Fairfield County, CT"}, {"@type": "AdministrativeArea", "name": "Manhattan, New York, NY"}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which Rockland towns do you serve?", "acceptedAnswer": {"@type": "Answer", "text": "New City, Nanuet, Nyack, Suffern, Spring Valley, Pearl River, and the neighborhoods around them. If you're anywhere in Rockland County, call. We'll make it work."}}, {"@type": "Question", "name": "Can you really do same-day in Rockland?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We run Rockland routes most days, so a before-noon call usually means a same-day visit. The earlier you call, the better your window."}}, {"@type": "Question", "name": "Do you repair decks and outdoor structures?", "acceptedAnswer": {"@type": "Answer", "text": "Constantly, Rockland winters are hard on decks. Loose boards, wobbly railings, leaning fence posts, and gates that won't latch are bread-and-butter same-day calls for us, plus staining and sealing in season."}}, {"@type": "Question", "name": "Are you licensed and insured for work in Rockland?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, licensed and fully insured for handyman and small construction work in New York, and we're glad to share proof of insurance before the job starts."}}]}</script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://a1prohandyman.com/"}, {"@type": "ListItem", "position": 2, "name": "Rockland County's Same-Day Handyman", "item": "https://a1prohandyman.com/rockland-handyman.html"}]}</script>
 </head>
@@ -54,7 +54,7 @@
           <source srcset="/assets/img/a1-prohandyman-logo.webp" type="image/webp">
           <img src="/assets/img/a1-prohandyman-logo.png" alt="" width="106" height="106" class="site-logo h-[156px] w-[156px] mt-0 -mb-[50px] lg:h-[216px] lg:w-[216px] lg:-mb-[110px]">
         </picture>
-        <span class="font-display text-2xl font-bold leading-none text-navy tracking-wide">TRI-STATE<br>PRO<br>HANDYMAN</span>
+        <span class="font-display text-2xl font-bold leading-none text-navy tracking-wide">TRI-STATE'S<br>PRO<br>HANDYMAN</span>
       </a>
 
       <span class="chip-avail hidden 2xl:inline-flex"><span class="go-dot"></span>Available today in Rockland County</span>
@@ -115,7 +115,7 @@
   <main id="main">
 
   <!-- Hero -->
-  <section class="relative isolate overflow-hidden">
+  <section id="quote" class="relative isolate overflow-hidden">
     <picture>
       <source srcset="/assets/img/hero-rockland.webp" type="image/webp">
       <img src="/assets/img/hero-rockland.jpg" alt="A1 Pro Handyman serving Rockland County" width="1600" height="600" fetchpriority="high" class="absolute inset-0 -z-10 h-full w-full object-cover">
@@ -189,21 +189,9 @@
       <picture><source srcset="/assets/suburbs-onsite-handyman.webp" type="image/webp"><img src="/assets/suburbs-onsite-handyman.jpg" alt="A1 Pro Handyman crew on a local job" width="1195" height="896" loading="lazy" class="w-full rounded-card border border-line"></picture>
       <div>
         <p class="eyebrow">A Local Crew, Locally Booked</p>
-        <h2 class="h2">Handyman Service Built Around Rockland County</h2>
+        <h2 class="h2">Handyman Service Built Around You</h2>
         <div class="prose-block mt-5 text-steel"><p>From New City to Nanuet, Nyack to Suffern, we cover the rest of Rockland County too. Decks, drywall, squeaky doors: we knock out your whole list in one flat-quoted visit, done right.</p></div>
       </div>
-    </div>
-  </section>
-
-  <!-- Towns served -->
-  <section class="bg-white py-12">
-    <div class="wrap">
-      <div class="text-center max-w-3xl mx-auto">
-        <p class="eyebrow">Where We Pull Up</p>
-        <h2 class="h2 text-ink">Serving Rockland County</h2>
-      </div>
-      <ul class="mt-7 flex flex-wrap justify-center gap-3"><li class="chip-avail"><img src="/assets/img/pin-icon.svg" alt="" aria-hidden="true" class="h-4 w-4">New City</li><li class="chip-avail"><img src="/assets/img/pin-icon.svg" alt="" aria-hidden="true" class="h-4 w-4">Nanuet</li><li class="chip-avail"><img src="/assets/img/pin-icon.svg" alt="" aria-hidden="true" class="h-4 w-4">Nyack</li><li class="chip-avail"><img src="/assets/img/pin-icon.svg" alt="" aria-hidden="true" class="h-4 w-4">Suffern</li><li class="chip-avail"><img src="/assets/img/pin-icon.svg" alt="" aria-hidden="true" class="h-4 w-4">Spring Valley</li><li class="chip-avail"><img src="/assets/img/pin-icon.svg" alt="" aria-hidden="true" class="h-4 w-4">Pearl River</li></ul>
-      <p class="mt-5 text-center text-steel">Near one of these but not in it? Call, borders are suggestions.</p>
     </div>
   </section>
 
@@ -212,7 +200,7 @@
     <div class="wrap">
       <div class="text-center max-w-3xl mx-auto">
         <p class="eyebrow">Most Requested Here</p>
-        <h2 class="h2 text-ink">Top Services in Rockland County</h2>
+        <h2 class="h2 text-ink">Top Services We Handle</h2>
       </div>
       <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <a href="/emergency-handyman.html" class="card group block overflow-hidden hover:shadow-lift">
@@ -285,87 +273,13 @@
       </div>
     </div>
   </section>
-  <!-- Quote form -->
-  <section id="quote" class="bg-navy py-14 sm:py-16">
-    <div class="wrap">
-      <div class="text-center max-w-3xl mx-auto">
-        <p class="eyebrow">No Runaround</p>
-        <h2 class="h2 text-white">Get a Fast Quote in Rockland County</h2>
-        <p class="mt-3 text-white/80">Tell us what's broken and when you need it fixed. We reply fast, usually within minutes during business hours.</p>
-      </div>
-      <div class="mx-auto mt-10 max-w-2xl"><form data-lead-form data-funnel-form id="quote-rockland-main" method="post" action="https://formspree.io/f/xqerpnav" enctype="multipart/form-data" class="work-order" novalidate>
-      <div class="work-order-head">
-        <span class="work-order-no flex items-center gap-1.5"><picture><source srcset="/assets/img/favicon-mark.webp" type="image/webp"><img src="/assets/img/favicon-mark.png" alt="" aria-hidden="true" class="h-5 w-5 flex-none"></picture>Work Order · A1 Pro · Rockland County</span>
-        <span class="stamp-chip">Same-Day</span>
-      </div>
-      <p class="work-order-tagline">Best services at the best rates</p>
-      <div class="px-5 pt-2 sm:px-6">
-        <p data-funnel-progress class="funnel-progress">Step 1 of 3</p>
-      </div>
-      <div class="grid gap-4 px-5 pb-6 pt-3 sm:px-6">
-
-        <div data-funnel-step="1" class="grid gap-4 sm:grid-cols-2">
-          <div><label class="field-label" for="quote-rockland-main-name">Name</label>
-            <input class="field" id="quote-rockland-main-name" name="name" type="text" autocomplete="name" required></div>
-          <div><label class="field-label" for="quote-rockland-main-email">Email</label>
-            <input class="field" id="quote-rockland-main-email" name="email" type="email" autocomplete="email" required></div>
-          <div class="sm:col-span-2"><label class="field-label" for="quote-rockland-main-street">Street Address</label>
-            <input class="field" id="quote-rockland-main-street" name="street" type="text" autocomplete="street-address" required></div>
-          <div><label class="field-label" for="quote-rockland-main-city">City</label>
-            <input class="field" id="quote-rockland-main-city" name="city" type="text" autocomplete="address-level2" required></div>
-          <div class="grid grid-cols-2 gap-4">
-            <div><label class="field-label" for="quote-rockland-main-state">State</label>
-              <select class="field" id="quote-rockland-main-state" name="state"><option value="NY">NY</option><option value="CT">CT</option></select></div>
-            <div><label class="field-label" for="quote-rockland-main-zip">Zip</label>
-              <input class="field" id="quote-rockland-main-zip" name="zip" type="text" autocomplete="postal-code" inputmode="numeric" pattern="\d{5}" required></div>
-          </div>
-          <button type="button" data-funnel-next class="btn-primary w-full sm:col-span-2">Next <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
-        </div>
-
-        <div data-funnel-step="2" class="grid gap-4" style="display:none">
-          <button type="button" data-funnel-back class="justify-self-start inline-flex items-center gap-1 text-sm font-semibold text-steel hover:text-navy"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
-          <div><label class="field-label" for="quote-rockland-main-msg">Tell us about your project? <span class="font-normal normal-case text-steel">(optional)</span></label>
-            <textarea class="field" id="quote-rockland-main-msg" name="message" rows="4"></textarea></div>
-          <div><label class="field-label" for="quote-rockland-main-photo">Add a photo <span class="font-normal normal-case text-steel">(optional)</span></label>
-            <input class="field field-file" id="quote-rockland-main-photo" name="photo" type="file" accept="image/*,.pdf,.heic"></div>
-          <div><label class="field-label" for="quote-rockland-main-phone">Phone</label>
-            <input class="field" id="quote-rockland-main-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[\d\s\-\(\)\.\+]{7,20}" required></div>
-          <div><label class="field-label" for="quote-rockland-main-timeline">When do you need it done?</label>
-            <select class="field" id="quote-rockland-main-timeline" name="timeline">
-              <option value="Today (emergency)">Today (emergency)</option>
-              <option value="Within 48 hours">Within 48 hours</option>
-              <option value="This week">This week</option>
-              <option value="Flexible" selected>Flexible</option>
-            </select></div>
-          <button type="button" data-funnel-next class="btn-primary w-full">Next <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
-        </div>
-
-        <div data-funnel-step="3" class="grid gap-4" style="display:none">
-          <button type="button" data-funnel-back class="justify-self-start inline-flex items-center gap-1 text-sm font-semibold text-steel hover:text-navy"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</button>
-          <div><label class="field-label" for="quote-rockland-main-besttime">When's the best time to call?</label>
-            <select class="field" id="quote-rockland-main-besttime" name="best_time" required>
-              <option value="" disabled selected>Choose a time window</option>
-              <option value="Morning (8am-12pm)">Morning (8am-12pm)</option>
-              <option value="Afternoon (12-4pm)">Afternoon (12-4pm)</option>
-              <option value="Evening (4-7pm)">Evening (4-7pm)</option>
-              <option value="Anytime">Anytime</option>
-            </select></div>
-          <button type="submit" class="btn-primary w-full sm:w-auto">Get My Estimate</button>
-          <p class="text-sm text-steel">By submitting, you agree we may contact you by phone, text, or email about your project. No spam, ever.</p>
-        </div>
-
-      </div>
-      <input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="utm_term" value=""><input type="hidden" name="utm_content" value=""><input type="hidden" name="gclid" value=""><input type="hidden" name="fbclid" value=""><input type="hidden" name="landing_page" value=""><input type="hidden" name="referrer" value=""><input type="hidden" name="source_page" value=""><input type="hidden" name="form_ts" value=""><input type="hidden" name="_next" value="https://a1prohandyman.com/thank-you.html"><input type="hidden" name="_subject" value="New lead from A1 Pro Handyman website"><div class="field-company" aria-hidden="true"><label>Company website <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
-    </form></div>
-    </div>
-  </section>
 
   <!-- Local FAQ -->
   <section class="bg-paper py-14 sm:py-16">
     <div class="wrap max-w-3xl">
       <div class="text-center max-w-3xl mx-auto">
         <p class="eyebrow">Local Answers</p>
-        <h2 class="h2 text-ink">Straight Answers for Rockland County</h2>
+        <h2 class="h2 text-ink">Straight Answers</h2>
       </div>
       <div class="mt-8"><div class="grid gap-3" data-faq-group>
       <details class="faq-item" open>
@@ -422,7 +336,7 @@
         </a>
         <p class="mt-4 font-display text-lg font-semibold text-orange">Don't Settle For Less, Get A Pro</p>
         <p class="mt-3 text-sm text-white/70">Serving the Lower Hudson Valley, Long Island, NYC &amp; Fairfield County</p>
-        <!-- TODO(GREG): add office/registered address here for the footer NAP -->
+        <p class="mt-2 text-sm text-white/70">13 Granada Crescent, White Plains, NY 10603</p>
         <p class="mt-2 text-sm text-white/70"><a href="tel:+19146930009" data-call-location="footer" class="font-semibold text-white hover:text-orange">(914) 693-0009</a> · <a href="mailto:contact@a1prohandyman.com" class="hover:text-orange">contact@a1prohandyman.com</a></p>
         <p class="mt-3 text-sm text-white/70">Licensed &amp; Insured.<!-- TODO(GREG): add real HIC license numbers once available; licensing is per-county/state --></p>
       </div>
@@ -442,8 +356,8 @@
     </div>
     <div class="border-t border-white/10">
       <div class="wrap flex flex-col items-center justify-between gap-2 py-5 text-sm text-white/60 sm:flex-row">
-        <p>© 2026 A1 Pro Handyman. All rights reserved.</p>
-        <p><a href="/privacy-policy.html" class="hover:text-white">Privacy Policy</a> · Family owned &amp; operated</p>
+        <p>© 2026 A1 Pro Handyman, dba Tri-State's Pro Handyman. All rights reserved.</p>
+        <p><a href="/privacy-policy.html" class="hover:text-white">Privacy Policy</a> · <a href="/terms.html" class="hover:text-white">Terms of Service</a> · Family owned &amp; operated · <a href="https://homebuilderwiz.com/" class="hover:text-white" rel="noopener" target="_blank">Designed by HBW</a></p>
       </div>
     </div>
   </footer>
