@@ -123,8 +123,8 @@
   content: "";
   display: block;
   height: 14px;
-  border-bottom: 2px dashed #e5dfd5;
-  background-image: radial-gradient(circle at 8px 7px, #faf7f2 3px, transparent 3.5px);
+  border-bottom: 2px dashed #000;
+  background-image: radial-gradient(circle at 8px 7px, #fff 3px, transparent 3.5px);
   background-size: 24px 14px;
   background-repeat: repeat-x;
   border-radius: 0;
@@ -218,7 +218,7 @@
 /* circular trust stamp overlapping the trust photo */
 .trust-stamp {
   transform: rotate(-8deg);
-  filter: drop-shadow(0 6px 16px rgba(14, 35, 56, 0.25));
+  filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.85));
 }
 
 /* ---- Honeypot: hide from humans, keep for bots ---- */
@@ -327,10 +327,10 @@
 .hero-photo-scrim {
   background: linear-gradient(
     to bottom,
-    rgba(14, 35, 56, 0.88) 0%,
-    rgba(14, 35, 56, 0.8) 40%,
-    rgba(14, 35, 56, 0.74) 75%,
-    rgba(14, 35, 56, 0.55) 100%
+    rgba(17, 17, 17, 0.9) 0%,
+    rgba(58, 27, 9, 0.84) 40%,
+    rgba(168, 69, 11, 0.72) 75%,
+    rgba(242, 106, 27, 0.55) 100%
   );
 }
 

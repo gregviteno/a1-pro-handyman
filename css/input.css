@@ -210,6 +210,9 @@
 footer {
   border-top: 3px solid #000000;
 }
+footer.band-gradient {
+  background-image: linear-gradient(200deg, #f26a1b 0%, #d95a12 38%, #a8450b 72%, #6b2c07 100%);
+}
 
 /* Safety net: any orange foreground that ends up on a solid orange field goes
    white, then gets re-asserted as orange inside white surfaces. Catches
@@ -234,3 +237,35 @@ footer {
   background-color: #111111;
   color: #ffffff;
 }
+
+/* ---- Gradient band ------------------------------------------------------
+   Mirrors the hero (a warm street photo under a 78% black scrim) without
+   shipping an image to every section: a diagonal ramp from near-black through
+   burnt orange to full brand orange. Used on the mid-page service bands and
+   the sub-footer CTA so those sections read the same as the hero. */
+.band-gradient {
+  background-color: #f26a1b;
+  background-image: linear-gradient(160deg, #141414 0%, #3a1b09 34%, #a8450b 70%, #f26a1b 100%);
+}
+/* Same foreground handling the solid-orange bands get. */
+[class~="band-gradient"] .eyebrow {
+  background-color: #ffffff;
+  color: #111111;
+}
+[class~="band-gradient"] .btn-primary {
+  background-color: #ffffff;
+  color: #111111;
+}
+[class~="band-gradient"] .btn-primary:hover,
+[class~="band-gradient"] .btn-primary:active {
+  background-color: #fff1e6;
+}
+[class~="band-gradient"] .card .btn-primary,
+[class~="band-gradient"] .icon-tile .btn-primary {
+  background-color: #f26a1b;
+  color: #ffffff;
+}
+[class~="band-gradient"] [class~="text-orange"] { color: #ffffff; }
+[class~="band-gradient"] .card [class~="text-orange"],
+[class~="band-gradient"] .icon-tile [class~="text-orange"],
+[class~="band-gradient"] .work-order [class~="text-orange"] { color: #f26a1b; }
