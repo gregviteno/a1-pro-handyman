@@ -59,15 +59,15 @@
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-line
       font-semibold px-7 text-center whitespace-nowrap cursor-pointer select-none
-      shadow-brutal transition-all duration-100;
+      transition-all duration-100;
     min-height: 48px;
   }
   .btn:hover {
     @apply -translate-x-[1px] -translate-y-[1px];
-    box-shadow: 6px 6px 0 0 #000000;
+    box-shadow: 3px 3px 0 0 #000000;
   }
   .btn:active {
-    @apply translate-x-[2px] translate-y-[2px];
+    @apply translate-x-[1px] translate-y-[1px];
     box-shadow: 0 0 0 0 #000000;
   }
   .btn-primary {
@@ -90,8 +90,8 @@
     @apply block font-mono text-[0.72rem] font-bold uppercase tracking-[0.14em] text-navy mb-1.5;
   }
   .field {
-    @apply w-full rounded-none border-2 border-line bg-white px-3.5 text-ink placeholder-steel/60
-      shadow-brutal focus:outline-none focus:ring-2 focus:ring-orange;
+    @apply w-full rounded-none border border-line bg-white px-3.5 text-ink placeholder-steel/60
+      focus:outline-none focus:ring-2 focus:ring-orange;
     min-height: 48px;
     font-size: 1rem;
   }
@@ -100,16 +100,16 @@
     min-height: 5.5rem;
   }
   .card {
-    @apply rounded-none bg-white border-2 border-line shadow-brutal;
+    @apply rounded-none bg-white border border-line;
   }
   .chip-avail {
-    @apply inline-flex items-center gap-2 rounded-full border-2 border-line bg-white px-3.5 py-1.5
-      text-sm font-semibold text-navy whitespace-nowrap shadow-brutal;
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5
+      text-sm font-semibold text-navy whitespace-nowrap;
   }
   /* Sits on the solid-orange bands: white card, black edge, black offset. */
   .icon-tile {
-    @apply flex flex-col items-center gap-3 rounded-none border-2 border-line bg-white p-6
-      text-center text-navy shadow-brutal transition-all duration-100
+    @apply flex flex-col items-center gap-3 rounded-none border border-line bg-white p-6
+      text-center text-navy transition-all duration-100
       hover:-translate-x-[1px] hover:-translate-y-[1px] hover:bg-orange-tint hover:shadow-lift;
   }
   .faq-item {
@@ -180,10 +180,10 @@
   .check-item {
     @apply flex items-start gap-3;
   }
-  /* Brutalist tick: a solid orange chip with a black edge and hard offset,
-     rather than a hairline stroke floating on the background. Reads at a
-     glance over the hero photo, which the thin orange stroke did not. */
-  .check-chip {
+  /* Brutalist icon chip: a solid orange square with a black edge and hard
+     offset, carrying a white glyph. Used for hero ticks and region map pins so
+     small iconography reads as one system instead of assorted line art. */
+  .icon-chip {
     @apply inline-flex flex-none items-center justify-center border-2 border-line bg-orange text-white;
     width: 24px;
     height: 24px;
@@ -333,4 +333,17 @@ footer[class~="band-gradient"] [class~="text-orange"] { color: #ffffff; }
    gradient language is present on every page without forcing a text flip. */
 .hero-soft {
   background-image: linear-gradient(180deg, #ffe9d8 0%, #fff2e9 45%, #fff7f1 100%);
+}
+
+/* ---- Structural grid ----------------------------------------------------
+   The raw architecture comes from dividers between sections, not from an
+   outline around every box. Adjacent sections get a stark 2px rule; sections
+   that already sit against a dark or gradient field don't need one. */
+main > section + section {
+  border-top: 2px solid #111111;
+}
+main > section[class~="band-gradient"] + section,
+main > section + section[class~="band-gradient"],
+main > section[class~="hero-soft"] + section {
+  border-top-width: 0;
 }

@@ -43,13 +43,14 @@ module.exports = {
         card: "0px",
       },
       boxShadow: {
-        /* Hard offset, zero blur, solid black — the defining brutalist move.
-           v0 spec: X 4px, Y 4px, blur 0, spread 0, #000. `lift` is the
-           hover/emphasis step up. */
-        card: "4px 4px 0 0 #000000",
-        lift: "6px 6px 0 0 #000000",
+        /* Restrained: surfaces sit flat with a stark hairline and only pick up
+           a small hard offset on hover. `brutal`/`brutal-lg` are reserved for
+           the pieces that should carry real weight — the hero lead form and
+           the nav dropdown. */
+        card: "none",
+        lift: "3px 3px 0 0 #000000",
         brutal: "4px 4px 0 0 #000000",
-        "brutal-lg": "8px 8px 0 0 #000000",
+        "brutal-lg": "6px 6px 0 0 #000000",
       },
       maxWidth: {
         wrap: "72rem",
