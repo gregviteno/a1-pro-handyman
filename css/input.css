@@ -129,26 +129,41 @@
   .faq-body {
     @apply px-5 pb-5 text-steel;
   }
+  /* Rounded brutalist tile: the logo becomes a physical object on the page —
+     soft-rounded corners, 2px black edge, hard offset shadow, no blur. Matches
+     the pill CTAs' "rounded shape, brutalist treatment" language. Radius and
+     offset scale down with the logo so the 56px scrolled state stays in
+     proportion rather than looking like a shrunk-down big tile. */
   .site-logo {
-    transition: height 0.2s ease-out, width 0.2s ease-out, margin-bottom 0.2s ease-out;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 22px;
+    box-shadow: 5px 5px 0 0 #000000;
+    object-fit: cover;
+    transition: height 0.2s ease-out, width 0.2s ease-out, margin-bottom 0.2s ease-out,
+      border-radius 0.2s ease-out, box-shadow 0.2s ease-out;
   }
   header.is-scrolled .site-logo {
     height: 56px !important;
     width: 56px !important;
     margin-bottom: 0 !important;
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 0 #000000;
   }
-  /* Soft halo tracing the logo silhouette, only while the logo is at full size.
-     drop-shadow follows the PNG's alpha, so it hugs the actual cut-out edge
-     instead of boxing it. Fades out on its own once .is-scrolled shrinks it. */
-  header:not(.is-scrolled) .site-logo {
-    animation: logo-edge 3.6s ease-in-out infinite;
+  /* Lift on hover, press in on click — same physics as the buttons. */
+  header a:hover .site-logo {
+    transform: translate(-1px, -1px);
+    box-shadow: 7px 7px 0 0 #000000;
   }
-  @keyframes logo-edge {
-    0%, 100% { filter: drop-shadow(0 1px 2px rgba(242, 106, 27, 0.14)); }
-    50%      { filter: drop-shadow(0 2px 12px rgba(242, 106, 27, 0.42)); }
+  header.is-scrolled a:hover .site-logo {
+    box-shadow: 5px 5px 0 0 #000000;
+  }
+  header a:active .site-logo {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 0 #000000;
   }
   @media (prefers-reduced-motion: reduce) {
-    header:not(.is-scrolled) .site-logo { animation: none; }
+    .site-logo { transition: none; }
   }
   .nav-link {
     @apply inline-flex items-center gap-1 shrink-0 whitespace-nowrap rounded-none px-2.5 py-2 font-semibold text-navy hover:text-orange;
@@ -287,3 +302,27 @@ footer[class~="band-gradient"] [class~="text-orange"] { color: #ffffff; }
 [class~="band-gradient"] .card [class~="text-orange"],
 [class~="band-gradient"] .icon-tile [class~="text-orange"],
 [class~="band-gradient"] .work-order [class~="text-orange"] { color: #f26a1b; }
+
+/* ---- Hero scrim ---------------------------------------------------------
+   Heroes sit over a photo and carry white type, so they can't go light the
+   way .band-gradient does. They tie into it by hue instead: the same warm
+   ramp, held dark enough for text, easing toward orange at the base so the
+   hero and the bands below read as one family. Deliberately subtle — the
+   photo, not the gradient, is the subject. */
+.hero-scrim {
+  background-image: linear-gradient(
+    180deg,
+    rgba(17, 17, 17, 0.86) 0%,
+    rgba(58, 27, 9, 0.82) 38%,
+    rgba(168, 69, 11, 0.74) 72%,
+    rgba(242, 106, 27, 0.66) 100%
+  );
+}
+
+/* Utility pages (contact, thank-you, 404, privacy, terms) open on a light
+   section with dark type and no hero photo. They join the family with the
+   very top of the same ramp — a hint of warmth settling into paper — so the
+   gradient language is present on every page without forcing a text flip. */
+.hero-soft {
+  background-image: linear-gradient(180deg, #ffe9d8 0%, #fff2e9 45%, #fff7f1 100%);
+}
