@@ -30,6 +30,7 @@
     };
     stickyHeader.classList.toggle("is-scrolled", window.scrollY > 80);
     window.addEventListener("scroll", onHeaderScroll, { passive: true });
+
   }
 
   /* ---- Mobile nav toggle ---- */
@@ -441,5 +442,74 @@
         shake(form);
       });
     });
+  });
+
+  /* ---- "What's going on?" multi-step triage -------------------------------
+     Every panel ships in the HTML; this only toggles which one is visible and
+     tracks a back-stack, so with JS off the visitor still sees step 1 and the
+     full job directory further down the page. */
+  document.querySelectorAll("[data-triage]").forEach(function (root) {
+    var panels = Array.prototype.slice.call(root.querySelectorAll("[data-triage-panel]"));
+    var dots = Array.prototype.slice.call(root.querySelectorAll("[data-triage-dot]"));
+    var backBtn = root.querySelector("[data-triage-back]");
+    var crumb = root.querySelector("[data-triage-crumb]");
+    var live = root.querySelector("[data-triage-live]");
+    if (!panels.length) return;
+
+    var stack = [];
+    var labels = [];
+
+    var render = function (id, focus) {
+      var target = null;
+      panels.forEach(function (panel) {
+        var match = panel.getAttribute("data-triage-panel") === id;
+        panel.classList.toggle("hidden", !match);
+        if (match) target = panel;
+      });
+      if (!target) return;
+
+      var step = parseInt(target.getAttribute("data-triage-step"), 10) || 1;
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle("bg-orange", i < step);
+        dot.classList.toggle("bg-line", i >= step);
+      });
+
+      backBtn.classList.toggle("hidden", stack.length === 0);
+      backBtn.classList.toggle("inline-flex", stack.length > 0);
+      crumb.textContent = labels.join("  ›  ");
+
+      if (focus) {
+        var heading = target.querySelector("[data-triage-heading]");
+        if (heading) heading.focus({ preventScroll: true });
+        if (root.getBoundingClientRect().top < 0) {
+          root.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        if (live) live.textContent = "Step " + step + " of 3. " + (heading ? heading.textContent : "");
+      }
+    };
+
+    root.addEventListener("click", function (e) {
+      var go = e.target.closest("[data-triage-go]");
+      if (go && root.contains(go)) {
+        var current = panels.filter(function (p) { return !p.classList.contains("hidden"); })[0];
+        if (current) stack.push(current.getAttribute("data-triage-panel"));
+        labels.push(go.getAttribute("data-triage-label") || "");
+        render(go.getAttribute("data-triage-go"), true);
+        return;
+      }
+      if (e.target.closest("[data-triage-back]")) {
+        if (!stack.length) return;
+        labels.pop();
+        render(stack.pop(), true);
+        return;
+      }
+      if (e.target.closest("[data-triage-reset]")) {
+        stack = [];
+        labels = [];
+        render("start", true);
+      }
+    });
+
+    render("start", false);
   });
 })();

@@ -21,9 +21,14 @@
   }
   a:focus-visible, button:focus-visible, input:focus-visible,
   select:focus-visible, textarea:focus-visible, summary:focus-visible {
-    outline: 3px solid #f26a1b;
+    /* Black, square focus ring: orange was invisible on the new orange bands,
+       and a rounded ring contradicts the squared-off system. */
+    outline: 3px solid #111111;
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 0;
+  }
+  .btn:focus-visible, .chip-avail:focus-visible {
+    border-radius: 9999px;
   }
 }
 
@@ -31,35 +36,62 @@
   .wrap {
     @apply mx-auto max-w-wrap px-4 sm:px-6 lg:px-8;
   }
+  /* Barlow Condensed 700 is the heaviest weight we self-host; anything above
+     that would trigger synthetic bold, which smears at display sizes. */
   .h1 {
     @apply font-display font-bold uppercase text-h1;
   }
   .h2 {
-    @apply font-display font-bold text-h2;
+    @apply font-display font-bold uppercase text-h2;
   }
+  .h3 {
+    @apply font-display font-bold uppercase text-h3;
+  }
+  /* Brutalist label: boxed, black-on-orange, wide tracking, mono. */
   .eyebrow {
-    @apply inline-block font-semibold uppercase tracking-[0.14em] text-sm text-orange mb-3;
+    @apply inline-block border-2 border-line bg-navy px-2.5 py-1 font-mono text-xs
+      font-bold uppercase tracking-[0.18em] text-white mb-4;
   }
+  /* Rounded-CTA brutalism: the button is the one soft shape in the system.
+     Pill radius, but it keeps the 2px black outline and the hard offset
+     shadow that collapses on press, so it still reads as brutalist rather
+     than as a generic rounded button. Cards, fields and panels stay square. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold
-      px-7 text-center whitespace-nowrap transition-colors duration-150 cursor-pointer select-none;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-line
+      font-semibold px-7 text-center whitespace-nowrap cursor-pointer select-none
+      shadow-brutal transition-all duration-100;
     min-height: 48px;
+  }
+  .btn:hover {
+    @apply -translate-x-[1px] -translate-y-[1px];
+    box-shadow: 6px 6px 0 0 #000000;
+  }
+  .btn:active {
+    @apply translate-x-[2px] translate-y-[2px];
+    box-shadow: 0 0 0 0 #000000;
   }
   .btn-primary {
     @apply btn bg-orange text-white hover:bg-orange-press active:bg-orange-press;
   }
   .btn-outline {
-    @apply btn border-2 border-navy text-navy hover:bg-navy hover:text-white;
+    @apply btn bg-white text-navy hover:bg-orange-tint;
   }
   .btn-outline-light {
-    @apply btn border-2 border-white/80 text-white hover:bg-white hover:text-navy;
+    @apply btn border-white bg-transparent text-white hover:bg-white hover:text-navy;
+    box-shadow: 4px 4px 0 0 rgba(255, 255, 255, 0.9);
+  }
+  .btn-outline-light:hover {
+    box-shadow: 6px 6px 0 0 rgba(255, 255, 255, 0.9);
+  }
+  .btn-outline-light:active {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.9);
   }
   .field-label {
-    @apply block font-mono text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-steel mb-1;
+    @apply block font-mono text-[0.72rem] font-bold uppercase tracking-[0.14em] text-navy mb-1.5;
   }
   .field {
-    @apply w-full rounded-card border border-line bg-white px-3.5 text-ink placeholder-steel/60
-      focus:border-navy;
+    @apply w-full rounded-none border-2 border-line bg-white px-3.5 text-ink placeholder-steel/60
+      shadow-brutal focus:outline-none focus:ring-2 focus:ring-orange;
     min-height: 48px;
     font-size: 1rem;
   }
@@ -68,22 +100,24 @@
     min-height: 5.5rem;
   }
   .card {
-    @apply rounded-card bg-white border border-line shadow-card;
+    @apply rounded-none bg-white border-2 border-line shadow-brutal;
   }
   .chip-avail {
-    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5
-      text-sm font-semibold text-navy whitespace-nowrap;
+    @apply inline-flex items-center gap-2 rounded-full border-2 border-line bg-white px-3.5 py-1.5
+      text-sm font-semibold text-navy whitespace-nowrap shadow-brutal;
   }
+  /* Sits on the solid-orange bands: white card, black edge, black offset. */
   .icon-tile {
-    @apply flex flex-col items-center gap-3 rounded-card border border-white/15 p-6 text-center
-      text-white transition-colors hover:border-orange hover:bg-white/5;
+    @apply flex flex-col items-center gap-3 rounded-none border-2 border-line bg-white p-6
+      text-center text-navy shadow-brutal transition-all duration-100
+      hover:-translate-x-[1px] hover:-translate-y-[1px] hover:bg-orange-tint hover:shadow-lift;
   }
   .faq-item {
     @apply card overflow-hidden;
   }
   .faq-item > summary {
     @apply flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4
-      font-semibold text-navy;
+      font-display text-lg font-bold uppercase tracking-[-0.01em] text-navy;
     min-height: 48px;
   }
   .faq-item > summary::-webkit-details-marker {
@@ -103,18 +137,31 @@
     width: 56px !important;
     margin-bottom: 0 !important;
   }
+  /* Soft halo tracing the logo silhouette, only while the logo is at full size.
+     drop-shadow follows the PNG's alpha, so it hugs the actual cut-out edge
+     instead of boxing it. Fades out on its own once .is-scrolled shrinks it. */
+  header:not(.is-scrolled) .site-logo {
+    animation: logo-edge 3.6s ease-in-out infinite;
+  }
+  @keyframes logo-edge {
+    0%, 100% { filter: drop-shadow(0 1px 2px rgba(242, 106, 27, 0.14)); }
+    50%      { filter: drop-shadow(0 2px 12px rgba(242, 106, 27, 0.42)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    header:not(.is-scrolled) .site-logo { animation: none; }
+  }
   .nav-link {
-    @apply inline-flex items-center gap-1 shrink-0 whitespace-nowrap rounded-card px-2.5 py-2 font-semibold text-navy hover:text-orange;
+    @apply inline-flex items-center gap-1 shrink-0 whitespace-nowrap rounded-none px-2.5 py-2 font-semibold text-navy hover:text-orange;
   }
   .dropdown-panel {
-    @apply absolute left-0 top-full z-40 hidden min-w-[15rem] rounded-card border border-line
-      bg-white py-2 shadow-lift;
+    @apply absolute left-0 top-full z-40 hidden min-w-[15rem] rounded-none border-2 border-line
+      bg-white py-2 shadow-brutal-lg;
   }
   .dropdown-link {
-    @apply block px-5 py-2.5 text-[0.95rem] font-medium text-ink hover:bg-paper hover:text-orange;
+    @apply block px-5 py-2.5 text-[0.95rem] font-medium text-ink hover:bg-orange hover:text-white;
   }
   .footer-link {
-    @apply block py-1 text-[0.95rem] text-white/70 hover:text-white;
+    @apply block py-1 text-[0.95rem] text-white/85 hover:text-white hover:underline;
   }
   .check-item {
     @apply flex items-start gap-3;
@@ -122,4 +169,68 @@
   .prose-block p + p {
     @apply mt-4;
   }
+
+}
+
+/* ---- Adaptations for the solid-orange bands ----------------------------
+   Sections that used to be navy are now brand orange, so anything that was
+   orange-on-dark would vanish into the field.
+
+   Two deliberate choices here:
+   1. Written as raw CSS, outside @layer components. `.btn-primary` does
+      `@apply ... bg-orange`, and Tailwind refuses to resolve that if any
+      component-layer rule also carries `.bg-orange` in its selector.
+   2. Matched with [class~="bg-orange"] rather than `.bg-orange` so the
+      circular-dependency check never sees the utility at all. Functionally
+      identical to a class selector. */
+[class~="bg-orange"] .eyebrow {
+  background-color: #ffffff;
+  color: #111111;
+}
+/* An orange CTA on an orange field is invisible: flip it to white-on-black. */
+[class~="bg-orange"] .btn-primary {
+  background-color: #ffffff;
+  color: #111111;
+}
+[class~="bg-orange"] .btn-primary:hover,
+[class~="bg-orange"] .btn-primary:active {
+  background-color: #fff1e6;
+}
+/* ...but inside a white card on that band, orange reads fine again. */
+[class~="bg-orange"] .card .btn-primary,
+[class~="bg-orange"] .icon-tile .btn-primary {
+  background-color: #f26a1b;
+  color: #ffffff;
+}
+[class~="bg-orange"] .card .btn-primary:hover,
+[class~="bg-orange"] .icon-tile .btn-primary:hover {
+  background-color: #d95a12;
+}
+/* Hard black rule where the orange footer meets the page. */
+footer {
+  border-top: 3px solid #000000;
+}
+
+/* Safety net: any orange foreground that ends up on a solid orange field goes
+   white, then gets re-asserted as orange inside white surfaces. Catches
+   anything the static audit can't see (JS-toggled classes, future edits). */
+[class~="bg-orange"] [class~="text-orange"] { color: #ffffff; }
+[class~="bg-orange"] [class~="border-orange"] { border-color: #000000; }
+[class~="bg-orange"] .card [class~="text-orange"],
+[class~="bg-orange"] .icon-tile [class~="text-orange"],
+[class~="bg-orange"] .work-order [class~="text-orange"],
+[class~="bg-orange"] .faq-item [class~="text-orange"],
+[class~="bg-orange"] [class~="bg-white"] [class~="text-orange"] { color: #f26a1b; }
+
+/* Black bands: eyebrow inverts to white-on-black-outline, CTAs stay orange
+   (orange on black is the highest-contrast pairing in the system). */
+[class~="bg-navy-deep"] .eyebrow,
+[class~="bg-navy"] .eyebrow {
+  background-color: #ffffff;
+  color: #111111;
+}
+[class~="bg-navy-deep"] .card .eyebrow,
+[class~="bg-navy"] .card .eyebrow {
+  background-color: #111111;
+  color: #ffffff;
 }

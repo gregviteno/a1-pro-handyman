@@ -4,32 +4,52 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        navy: "#16324F",
-        "navy-deep": "#0E2338",
+        /* Neo-brutalist palette: orange-dominant, white for clarity, true
+           black for every border and shadow. `navy` is kept as a token name
+           (306 text-navy usages) but now resolves to near-black, so headings
+           read as brutalist ink rather than corporate blue. */
+        navy: "#111111",
+        "navy-deep": "#000000",
         orange: "#F26A1B",
         "orange-press": "#D95A12",
-        paper: "#FAF7F2",
-        ink: "#21272C",
-        steel: "#3F4A54",
-        line: "#E5DFD5",
+        "orange-deep": "#B8460A",
+        "orange-soft": "#FFD9C0",
+        "orange-tint": "#FFF1E6",
+        paper: "#FFF7F1",
+        ink: "#111111",
+        steel: "#333333",
+        line: "#000000",
         go: "#1F9D55",
       },
       fontFamily: {
         display: ['"Barlow Condensed"', "Arial Narrow", "sans-serif"],
         sans: ["Barlow", "Helvetica Neue", "Arial", "sans-serif"],
+        /* Was undefined, so every `font-mono` label silently fell back to the
+           OS default. v0 specifies Space Mono; we keep it a system stack to
+           honour the self-hosted-fonts-only rule (no extra download). */
+        mono: ['"SFMono-Regular"', "Menlo", "Consolas", '"Liberation Mono"', "monospace"],
       },
       fontSize: {
-        h1: ["clamp(2.75rem, 6vw + 1rem, 4.75rem)", { lineHeight: "1.05", letterSpacing: "-0.01em" }],
-        h2: ["clamp(2rem, 3vw + 1rem, 3rem)", { lineHeight: "1.15" }],
-        h3: ["clamp(1.375rem, 1.2vw + 1rem, 1.75rem)", { lineHeight: "1.25" }],
+        /* Brutalist type: tighter leading and negative tracking so the
+           condensed caps set as dense slabs. Sizes nudged up a step. */
+        h1: ["clamp(3rem, 6.5vw + 1rem, 5.25rem)", { lineHeight: "0.95", letterSpacing: "-0.02em" }],
+        h2: ["clamp(2.125rem, 3.2vw + 1rem, 3.25rem)", { lineHeight: "1.0", letterSpacing: "-0.015em" }],
+        h3: ["clamp(1.375rem, 1.2vw + 1rem, 1.75rem)", { lineHeight: "1.15", letterSpacing: "-0.01em" }],
         body: ["1.0625rem", { lineHeight: "1.7" }],
       },
       borderRadius: {
-        card: "8px",
+        /* Brutalism squares everything off. `card` is the token every surface
+           in the site routes through, so zeroing it here does the whole job. */
+        card: "0px",
       },
       boxShadow: {
-        card: "0 1px 2px rgba(14,35,56,.06), 0 4px 16px rgba(14,35,56,.08)",
-        lift: "0 2px 4px rgba(14,35,56,.08), 0 10px 28px rgba(14,35,56,.12)",
+        /* Hard offset, zero blur, solid black — the defining brutalist move.
+           v0 spec: X 4px, Y 4px, blur 0, spread 0, #000. `lift` is the
+           hover/emphasis step up. */
+        card: "4px 4px 0 0 #000000",
+        lift: "6px 6px 0 0 #000000",
+        brutal: "4px 4px 0 0 #000000",
+        "brutal-lg": "8px 8px 0 0 #000000",
       },
       maxWidth: {
         wrap: "72rem",

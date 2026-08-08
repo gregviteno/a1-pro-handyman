@@ -114,9 +114,9 @@
 .work-order {
   position: relative;
   background: #fff;
-  border: 1px solid #e5dfd5;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(14, 35, 56, 0.08), 0 10px 28px rgba(14, 35, 56, 0.12);
+  border: 2px solid #000;
+  border-radius: 0;
+  box-shadow: 6px 6px 0 0 #000;
 }
 .work-order::before {
   /* perforation: a row of punched holes just under the stub line */
@@ -127,8 +127,8 @@
   background-image: radial-gradient(circle at 8px 7px, #faf7f2 3px, transparent 3.5px);
   background-size: 24px 14px;
   background-repeat: repeat-x;
-  border-radius: 8px 8px 0 0;
-  background-color: #f3eee6;
+  border-radius: 0;
+  background-color: #fff1e6;
 }
 .work-order-head {
   display: flex;
@@ -149,9 +149,10 @@
 .stamp-chip {
   display: inline-block;
   padding: 0.2rem 0.6rem;
-  border: 2px solid #f26a1b;
-  border-radius: 4px;
-  color: #f26a1b;
+  border: 2px solid #000;
+  border-radius: 0;
+  color: #111;
+  background: #f26a1b;
   font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
@@ -292,7 +293,8 @@
   grid-template-columns: 1fr 1fr;
   height: 64px;
   padding-bottom: env(safe-area-inset-bottom);
-  box-shadow: 0 -4px 16px rgba(14, 35, 56, 0.18);
+  border-top: 3px solid #000;
+  box-shadow: 0 -6px 0 0 rgba(0, 0, 0, 0.12);
 }
 
 /* ---- Hero quote funnel: step label + gentle reveal between steps ---- */
@@ -316,10 +318,10 @@
 @media(min-width:480px){.emg-options{grid-template-columns:1fr 1fr}}
 .emg-choice{position:relative;display:block}
 .emg-choice input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
-.emg-choice span{display:flex;align-items:center;min-height:52px;padding:.6rem .85rem;border:1px solid #E5DFD5;border-radius:8px;background:#fff;font-weight:600;font-size:.95rem;line-height:1.15;color:#16324F;transition:border-color .15s,background-color .15s,box-shadow .15s}
+.emg-choice span{display:flex;align-items:center;min-height:52px;padding:.6rem .85rem;border:2px solid #000;border-radius:0;background:#fff;font-weight:600;font-size:.95rem;line-height:1.15;color:#16324F;transition:border-color .15s,background-color .15s,box-shadow .15s}
 .emg-choice input:hover + span{border-color:#C9BFAE}
-.emg-choice input:checked + span{border-color:#F26A1B;background:#FDEDE3;color:#D95A12;box-shadow:inset 0 0 0 1px #F26A1B}
-.emg-choice input:focus-visible + span{outline:3px solid #F26A1B;outline-offset:2px}
+.emg-choice input:checked + span{border-color:#000;background:#F26A1B;color:#fff;box-shadow:3px 3px 0 0 #000}
+.emg-choice input:focus-visible + span{outline:3px solid #111;outline-offset:2px}
 
 /* ---- Services hero: darken crew photo so overlaid white text stays readable ---- */
 .hero-photo-scrim {
@@ -352,8 +354,9 @@
   margin-right: 0.75rem;
   padding: 0.4rem 0.9rem;
   border: 0;
-  border-radius: 9999px;
-  background: rgb(22 50 79);
+  border-radius: 0;
+  border: 2px solid #000;
+  background: #f26a1b;
   color: #fff;
   font-family: inherit;
   font-weight: 600;

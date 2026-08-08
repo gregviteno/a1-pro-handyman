@@ -48,7 +48,7 @@
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[70] focus:bg-orange focus:text-white focus:px-4 focus:py-2 focus:rounded-card">Skip to content</a>
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
+  <header class="sticky top-0 z-50 border-b-2 border-line bg-paper/95 backdrop-blur">
     <div class="wrap 2xl:max-w-[92rem] flex items-center justify-between gap-4 py-3">
       <a href="/" class="flex flex-shrink-0 items-center gap-2.5" aria-label="A1 Pro Handyman home">
         <picture>
@@ -86,7 +86,7 @@
           </div>
         </div>
         <a href="/contact.html" class="btn-primary hidden sm:inline-flex text-[0.95rem]">Get a Fast Estimate</a>
-        <button id="nav-toggle" class="lg:hidden flex h-12 w-12 items-center justify-center rounded-card border border-line text-navy" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+        <button id="nav-toggle" class="lg:hidden flex h-12 w-12 items-center justify-center rounded-card border-2 border-line text-navy" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
           <span class="icon-menu"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></span>
           <span class="icon-close hidden"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
         </button>
@@ -94,7 +94,7 @@
     </div>
 
     <!-- Mobile menu -->
-    <nav id="mobile-menu" class="lg:hidden border-t border-line bg-navy-deep text-white" aria-label="Mobile">
+    <nav id="mobile-menu" class="lg:hidden border-t-2 border-line bg-orange text-white" aria-label="Mobile">
       <div class="wrap py-4">
         <span class="chip-avail mb-3"><span class="go-dot"></span>Available today in New York</span>
         <ul class="divide-y divide-white/10">
@@ -112,7 +112,7 @@
         <a href="/contact.html" class="btn-primary mt-4 w-full">Get a Fast Estimate</a>
       </div>
     </nav>
-  </header>
+</header>
   <main id="main">
 
   <!-- Hero -->
@@ -123,7 +123,7 @@
     </picture>
     <div class="absolute inset-0 -z-10 hero-photo-scrim"></div>
     <div class="wrap py-16 text-center sm:py-24">
-      <p class="inline-block rounded-full bg-orange px-4 py-1.5 font-display text-sm font-bold uppercase tracking-[0.14em] text-white">The Full Directory</p>
+      <p class="inline-block rounded-none bg-orange px-4 py-1.5 font-display text-sm font-bold uppercase tracking-[0.14em] text-white">The Full Directory</p>
       <h1 class="h1 mx-auto mt-5 max-w-4xl text-white">Every Service, One Local Crew</h1>
       <div class="mx-auto mt-4 max-w-2xl text-lg text-white/85"><p>Westchester, Rockland, Nassau &amp; Putnam, Manhattan/NYC, and Fairfield County, CT. Same-day slots most days.</p></div>
       <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -132,37 +132,193 @@
       </div>
     </div>
   </section>
-  <!-- What's going on? interactive triage -->
+  <!-- What's going on? 3-step triage -->
   <section class="bg-white py-14 sm:py-16">
     <div class="wrap">
       <div class="mx-auto max-w-2xl text-center">
         <p class="eyebrow">Start Here</p>
         <h2 class="h2 text-ink">What&rsquo;s Going On?</h2>
-        <p class="mt-2 text-steel">Tap one, we&rsquo;ll point you straight at the right page.</p>
+        <p class="mt-2 text-steel">Two taps and we&rsquo;ll put you on the right page.</p>
       </div>
-      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-faq-group>
-        <details class="faq-item" open>
-          <summary><span class="flex items-center gap-3"><span class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-orange/10 text-orange"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span>Something&rsquo;s Broken</span><span class="faq-chevron flex-none text-orange transition-transform"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body !pt-0"><a href="/emergency-handyman.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Emergency Repairs<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/same-day-repairs.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Same-Day Repairs<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/drywall-repair.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Drywall Repair<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/door-window-repair.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Doors &amp; Windows<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-        </details>
-        <details class="faq-item">
-          <summary><span class="flex items-center gap-3"><span class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-orange/10 text-orange"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span>Refreshing a Room</span><span class="faq-chevron flex-none text-orange transition-transform"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body !pt-0"><a href="/painting-staining.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Painting &amp; Staining<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/carpentry.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Carpentry<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/tv-mounting-furniture-assembly.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">TV Mounting &amp; Assembly<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/drywall-repair.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Drywall Repair<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-        </details>
-        <details class="faq-item">
-          <summary><span class="flex items-center gap-3"><span class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-orange/10 text-orange"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 21v-4h6v4M9 7h.01M9 11h.01M15 7h.01M15 11h.01"/></svg></span>I Manage Property</span><span class="faq-chevron flex-none text-orange transition-transform"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body !pt-0"><a href="/commercial-handyman.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Commercial Handyman<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/same-day-repairs.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Same-Day Repairs<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/emergency-handyman.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Emergency Repairs<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/contact.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Talk to Us<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-        </details>
-        <details class="faq-item">
-          <summary><span class="flex items-center gap-3"><span class="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-orange/10 text-orange"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8L12 3 3 8l9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>Moving In or Out</span><span class="faq-chevron flex-none text-orange transition-transform"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body !pt-0"><a href="/same-day-repairs.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Same-Day Repairs<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/painting-staining.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Painting &amp; Staining<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/carpentry.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Carpentry<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/contact.html" class="flex items-center justify-between gap-2 border-t border-line py-2.5 font-semibold text-navy hover:text-orange">Talk to Us<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
-        </details>
+      <div class="mx-auto mt-8 max-w-4xl" data-triage>
+        <div class="flex items-center justify-between gap-4">
+          <button type="button" data-triage-back class="hidden items-center gap-1.5 text-sm font-semibold text-steel hover:text-orange"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>Back</button>
+          <p class="min-w-0 flex-1 truncate text-sm text-steel" data-triage-crumb></p>
+          <div class="flex flex-none items-center gap-1.5" aria-hidden="true">
+            <span data-triage-dot="1" class="h-1.5 w-8 rounded-none bg-line transition-colors"></span>
+            <span data-triage-dot="2" class="h-1.5 w-8 rounded-none bg-line transition-colors"></span>
+            <span data-triage-dot="3" class="h-1.5 w-8 rounded-none bg-line transition-colors"></span>
+          </div>
+        </div>
+        <p class="sr-only" role="status" aria-live="polite" data-triage-live></p>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2" data-triage-panel="start" data-triage-step="1">
+          <button type="button" data-triage-go="s-broken" data-triage-label="Something’s Broken" class="card group flex w-full items-start gap-4 p-5 text-left hover:border-orange hover:shadow-lift">
+            <span class="flex h-11 w-11 flex-none items-center justify-center rounded-none bg-orange/10 text-orange"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span>
+            <span class="min-w-0"><span class="block font-display text-lg font-bold text-navy group-hover:text-orange">Something’s Broken</span><span class="mt-1 block text-sm text-steel">Repairs that need a truck, not a project plan.</span></span>
+          </button>
+          <button type="button" data-triage-go="s-refresh" data-triage-label="Refreshing a Room" class="card group flex w-full items-start gap-4 p-5 text-left hover:border-orange hover:shadow-lift">
+            <span class="flex h-11 w-11 flex-none items-center justify-center rounded-none bg-orange/10 text-orange"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></span>
+            <span class="min-w-0"><span class="block font-display text-lg font-bold text-navy group-hover:text-orange">Refreshing a Room</span><span class="mt-1 block text-sm text-steel">Making a space look finished again.</span></span>
+          </button>
+          <button type="button" data-triage-go="s-property" data-triage-label="I Manage Property" class="card group flex w-full items-start gap-4 p-5 text-left hover:border-orange hover:shadow-lift">
+            <span class="flex h-11 w-11 flex-none items-center justify-center rounded-none bg-orange/10 text-orange"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 21v-4h6v4M9 7h.01M9 11h.01M15 7h.01M15 11h.01"/></svg></span>
+            <span class="min-w-0"><span class="block font-display text-lg font-bold text-navy group-hover:text-orange">I Manage Property</span><span class="mt-1 block text-sm text-steel">Turnovers, punch lists, and tenants who called an hour ago.</span></span>
+          </button>
+          <button type="button" data-triage-go="s-moving" data-triage-label="Moving In or Out" class="card group flex w-full items-start gap-4 p-5 text-left hover:border-orange hover:shadow-lift">
+            <span class="flex h-11 w-11 flex-none items-center justify-center rounded-none bg-orange/10 text-orange"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8L12 3 3 8l9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span>
+            <span class="min-w-0"><span class="block font-display text-lg font-bold text-navy group-hover:text-orange">Moving In or Out</span><span class="mt-1 block text-sm text-steel">Getting a place ready before somebody sees it.</span></span>
+          </button>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="s-broken" data-triage-step="2">
+          <h3 class="font-display text-xl font-bold text-ink" tabindex="-1" data-triage-heading>Which one sounds like it?</h3>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <button type="button" data-triage-go="r-emergency" data-triage-label="It can’t wait — water, no lock, safety" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">It can’t wait — water, no lock, safety</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-sameday" data-triage-label="I need it fixed today" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">I need it fixed today</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-drywall" data-triage-label="A hole, crack, or stain in a wall or ceiling" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">A hole, crack, or stain in a wall or ceiling</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-doors" data-triage-label="A door or a window" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">A door or a window</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="s-refresh" data-triage-step="2">
+          <h3 class="font-display text-xl font-bold text-ink" tabindex="-1" data-triage-heading>Which one sounds like it?</h3>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <button type="button" data-triage-go="r-painting" data-triage-label="Fresh paint or stain" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">Fresh paint or stain</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-carpentry" data-triage-label="Trim, shelving, or built-ins" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">Trim, shelving, or built-ins</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-tv" data-triage-label="Mount a TV or build the furniture" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">Mount a TV or build the furniture</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-drywall" data-triage-label="Patch and smooth the walls first" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">Patch and smooth the walls first</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="s-property" data-triage-step="2">
+          <h3 class="font-display text-xl font-bold text-ink" tabindex="-1" data-triage-heading>Which one sounds like it?</h3>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <button type="button" data-triage-go="r-commercial" data-triage-label="A storefront, office, or commercial space" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">A storefront, office, or commercial space</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-sameday" data-triage-label="A tenant turnover or punch list" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">A tenant turnover or punch list</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-emergency" data-triage-label="Something just broke at the property" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">Something just broke at the property</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-contact" data-triage-label="A recurring maintenance route" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">A recurring maintenance route</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="s-moving" data-triage-step="2">
+          <h3 class="font-display text-xl font-bold text-ink" tabindex="-1" data-triage-heading>Which one sounds like it?</h3>
+          <div class="mt-4 grid gap-3 sm:grid-cols-2">
+            <button type="button" data-triage-go="r-painting" data-triage-label="Repaint before the walls get seen" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">Repaint before the walls get seen</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-drywall" data-triage-label="Patch the nail holes and wall damage" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">Patch the nail holes and wall damage</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-tv" data-triage-label="Mount the TV, build the furniture" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">Mount the TV, build the furniture</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <button type="button" data-triage-go="r-sameday" data-triage-label="A punch list before the walk-through" class="card group flex w-full items-center justify-between gap-3 p-4 text-left font-semibold text-navy hover:border-orange hover:text-orange hover:shadow-lift"><span class="min-w-0">A punch list before the walk-through</span><svg class="h-4 w-4 flex-none text-orange transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="r-emergency" data-triage-step="3">
+          <div class="card p-6 sm:p-8">
+            <p class="eyebrow">Here&rsquo;s Your Page</p>
+            <h3 class="mt-1 font-display text-2xl font-bold text-ink sm:text-3xl" tabindex="-1" data-triage-heading>Emergency Repairs</h3>
+            <p class="mt-3 max-w-2xl text-steel">Burst pipe, a door that won’t lock, storm damage: these jump the queue. Call and we get a truck moving.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/emergency-handyman.html" class="btn-primary">See Emergency Repairs<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a href="tel:+19146930009" data-call-location="triage" class="btn-outline"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (914) 693-0009</a>
+              <button type="button" data-triage-reset class="text-sm font-semibold text-steel underline underline-offset-4 hover:text-orange sm:ml-auto">Start over</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="r-sameday" data-triage-step="3">
+          <div class="card p-6 sm:p-8">
+            <p class="eyebrow">Here&rsquo;s Your Page</p>
+            <h3 class="mt-1 font-display text-2xl font-bold text-ink sm:text-3xl" tabindex="-1" data-triage-heading>Same-Day Repairs</h3>
+            <p class="mt-3 max-w-2xl text-steel">Call before noon most days and you’re on today’s schedule, with a flat price agreed before we pick up a tool.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/same-day-repairs.html" class="btn-primary">See Same-Day Repairs<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a href="tel:+19146930009" data-call-location="triage" class="btn-outline"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (914) 693-0009</a>
+              <button type="button" data-triage-reset class="text-sm font-semibold text-steel underline underline-offset-4 hover:text-orange sm:ml-auto">Start over</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="r-drywall" data-triage-step="3">
+          <div class="card p-6 sm:p-8">
+            <p class="eyebrow">Here&rsquo;s Your Page</p>
+            <h3 class="mt-1 font-display text-2xl font-bold text-ink sm:text-3xl" tabindex="-1" data-triage-heading>Drywall Repair</h3>
+            <p class="mt-3 max-w-2xl text-steel">Holes, cracks, water stains, popped seams and tape: patched, sanded, and painted so the repair disappears.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/drywall-repair.html" class="btn-primary">See Drywall Repair<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a href="tel:+19146930009" data-call-location="triage" class="btn-outline"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (914) 693-0009</a>
+              <button type="button" data-triage-reset class="text-sm font-semibold text-steel underline underline-offset-4 hover:text-orange sm:ml-auto">Start over</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="r-doors" data-triage-step="3">
+          <div class="card p-6 sm:p-8">
+            <p class="eyebrow">Here&rsquo;s Your Page</p>
+            <h3 class="mt-1 font-display text-2xl font-bold text-ink sm:text-3xl" tabindex="-1" data-triage-heading>Door &amp; Window Repair</h3>
+            <p class="mt-3 max-w-2xl text-steel">Doors you have to shoulder open, locks that fight back, windows that whistle: adjusted, repaired, or replaced.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/door-window-repair.html" class="btn-primary">See Door &amp; Window Repair<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a href="tel:+19146930009" data-call-location="triage" class="btn-outline"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (914) 693-0009</a>
+              <button type="button" data-triage-reset class="text-sm font-semibold text-steel underline underline-offset-4 hover:text-orange sm:ml-auto">Start over</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="r-painting" data-triage-step="3">
+          <div class="card p-6 sm:p-8">
+            <p class="eyebrow">Here&rsquo;s Your Page</p>
+            <h3 class="mt-1 font-display text-2xl font-bold text-ink sm:text-3xl" tabindex="-1" data-triage-heading>Painting &amp; Staining</h3>
+            <p class="mt-3 max-w-2xl text-steel">Interior and exterior painting and staining, including the prep and caulking that decides how long it lasts.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/painting-staining.html" class="btn-primary">See Painting &amp; Staining<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a href="tel:+19146930009" data-call-location="triage" class="btn-outline"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (914) 693-0009</a>
+              <button type="button" data-triage-reset class="text-sm font-semibold text-steel underline underline-offset-4 hover:text-orange sm:ml-auto">Start over</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="r-carpentry" data-triage-step="3">
+          <div class="card p-6 sm:p-8">
+            <p class="eyebrow">Here&rsquo;s Your Page</p>
+            <h3 class="mt-1 font-display text-2xl font-bold text-ink sm:text-3xl" tabindex="-1" data-triage-heading>Carpentry</h3>
+            <p class="mt-3 max-w-2xl text-steel">Trim, shelving, built-ins, stairs, decks, and framing repairs, cut and fit on site by a crew that does it daily.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/carpentry.html" class="btn-primary">See Carpentry<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a href="tel:+19146930009" data-call-location="triage" class="btn-outline"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (914) 693-0009</a>
+              <button type="button" data-triage-reset class="text-sm font-semibold text-steel underline underline-offset-4 hover:text-orange sm:ml-auto">Start over</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="r-tv" data-triage-step="3">
+          <div class="card p-6 sm:p-8">
+            <p class="eyebrow">Here&rsquo;s Your Page</p>
+            <h3 class="mt-1 font-display text-2xl font-bold text-ink sm:text-3xl" tabindex="-1" data-triage-heading>TV Mounting &amp; Assembly</h3>
+            <p class="mt-3 max-w-2xl text-steel">Mounted level and anchored into something real, cables hidden, and flat-pack furniture built right the first time.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/tv-mounting-furniture-assembly.html" class="btn-primary">See TV Mounting &amp; Assembly<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a href="tel:+19146930009" data-call-location="triage" class="btn-outline"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (914) 693-0009</a>
+              <button type="button" data-triage-reset class="text-sm font-semibold text-steel underline underline-offset-4 hover:text-orange sm:ml-auto">Start over</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="r-commercial" data-triage-step="3">
+          <div class="card p-6 sm:p-8">
+            <p class="eyebrow">Here&rsquo;s Your Page</p>
+            <h3 class="mt-1 font-display text-2xl font-bold text-ink sm:text-3xl" tabindex="-1" data-triage-heading>Commercial Handyman</h3>
+            <p class="mt-3 max-w-2xl text-steel">One local crew for turnovers, punch lists, storefronts, and the repairs that can’t wait in a work-order queue.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/commercial-handyman.html" class="btn-primary">See Commercial Handyman<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a href="tel:+19146930009" data-call-location="triage" class="btn-outline"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (914) 693-0009</a>
+              <button type="button" data-triage-reset class="text-sm font-semibold text-steel underline underline-offset-4 hover:text-orange sm:ml-auto">Start over</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt-5 hidden" data-triage-panel="r-contact" data-triage-step="3">
+          <div class="card p-6 sm:p-8">
+            <p class="eyebrow">Here&rsquo;s Your Page</p>
+            <h3 class="mt-1 font-display text-2xl font-bold text-ink sm:text-3xl" tabindex="-1" data-triage-heading>Let’s Talk It Through</h3>
+            <p class="mt-3 max-w-2xl text-steel">Tell us what you’ve got. We’ll say straight off whether it’s our trade, and what it takes to get it done.</p>
+            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a href="/contact.html" class="btn-primary">See Let’s Talk It Through<svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+              <a href="tel:+19146930009" data-call-location="triage" class="btn-outline"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call (914) 693-0009</a>
+              <button type="button" data-triage-reset class="text-sm font-semibold text-steel underline underline-offset-4 hover:text-orange sm:ml-auto">Start over</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Most-requested services -->
-  <section class="bg-navy py-16 sm:py-20">
+  <section class="bg-navy-deep py-16 sm:py-20">
     <div class="wrap">
       <div class="mx-auto max-w-2xl text-center">
         <p class="eyebrow">The Core Eight</p>
@@ -190,7 +346,7 @@
         <p class="mt-2 text-steel">If it&rsquo;s on your list, it&rsquo;s probably on ours. Filter it, tap it, call it in.</p>
       </div>
       <div class="mt-7 flex flex-wrap justify-center gap-2.5" role="group" aria-label="Filter jobs by category" data-filter-group>
-        <button type="button" data-filter="all" aria-pressed="true" class="chip-avail bg-orange text-white border-orange">All Jobs</button><button type="button" data-filter="repairs" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">Repairs</button><button type="button" data-filter="install" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">Installs</button><button type="button" data-filter="outdoor" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">Outdoor</button><button type="button" data-filter="rooms" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">By Room</button><button type="button" data-filter="property" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">Property Mgmt</button>
+        <button type="button" data-filter="all" aria-pressed="true" class="chip-avail bg-orange text-white">All Jobs</button><button type="button" data-filter="repairs" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">Repairs</button><button type="button" data-filter="install" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">Installs</button><button type="button" data-filter="outdoor" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">Outdoor</button><button type="button" data-filter="rooms" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">By Room</button><button type="button" data-filter="property" aria-pressed="false" class="chip-avail hover:border-orange hover:text-orange">Property Mgmt</button>
       </div>
       <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-tile-grid>
         <a href="/contact.html" data-cat="install" class="card group flex items-center justify-between gap-3 p-4 scroll-mt-28 hover:border-orange hover:shadow-lift"><span class="min-w-0"><span class="block truncate font-display text-base font-bold text-navy group-hover:text-orange">Installations</span><span class="block truncate text-sm text-steel">Faucets, fixtures &amp; hardware</span></span><svg class="h-4 w-4 flex-none transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
@@ -225,10 +381,10 @@
     </div>
   </section>
   <!-- Service areas links -->
-  <section class="border-t border-line bg-paper py-12">
+  <section class="border-t-2 border-line bg-paper py-12">
     <div class="wrap grid items-center gap-10 lg:grid-cols-[280px_1fr]">
       <div class="relative mx-auto w-full max-w-[280px] lg:mx-0">
-        <picture><source srcset="/assets/manhattan_nyc-handyman.webp" type="image/webp"><img src="/assets/manhattan_nyc-handyman.jpg" alt="A1 Pro Handyman crew working in a Manhattan/NYC neighborhood" width="896" height="672" loading="lazy" class="w-full rounded-card border border-line"></picture>
+        <picture><source srcset="/assets/manhattan_nyc-handyman.webp" type="image/webp"><img src="/assets/manhattan_nyc-handyman.jpg" alt="A1 Pro Handyman crew working in a Manhattan/NYC neighborhood" width="896" height="672" loading="lazy" class="w-full rounded-card border-2 border-line"></picture>
         <picture><source srcset="/assets/img/trust-stamp.webp" type="image/webp"><img src="/assets/img/trust-stamp.png" alt="" aria-hidden="true" class="trust-stamp absolute -bottom-5 -right-5 h-16 w-16 sm:h-20 sm:w-20"></picture>
       </div>
       <div class="text-center lg:text-left">
@@ -271,7 +427,7 @@
   </section>
 
   <!-- Final CTA band -->
-  <section class="bg-navy-deep py-16 text-center text-white sm:py-20">
+  <section class="bg-orange py-16 text-center text-white sm:py-20">
     <div class="wrap">
       <p class="h1 mx-auto max-w-4xl text-white">Don't Settle For Less, Get A Pro</p>
       <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -294,7 +450,7 @@
           </picture>
           <span class="font-display text-xl font-bold leading-none tracking-wide">PRO<br>HANDYMAN</span>
         </a>
-        <p class="mt-4 font-display text-lg font-semibold text-orange">Don't Settle For Less, Get A Pro</p>
+        <p class="mt-4 inline-block border-2 border-line bg-white px-3 py-1 font-display text-lg font-bold uppercase text-navy">Don't Settle For Less, Get A Pro</p>
         <p class="mt-3 text-sm text-white/70">Serving the Lower Hudson Valley, Long Island, NYC &amp; Fairfield County</p>
         <p class="mt-2 text-sm text-white/70">13 Granada Crescent, White Plains, NY 10603</p>
         <p class="mt-2 text-sm text-white/70"><a href="tel:+19146930009" data-call-location="footer" class="font-semibold text-white hover:text-orange">(914) 693-0009</a> · <a href="mailto:contact@a1prohandyman.com" class="hover:text-orange">contact@a1prohandyman.com</a></p>
@@ -325,7 +481,7 @@
   <!-- Sticky mobile call bar -->
   <div class="sticky-call-bar" role="navigation" aria-label="Quick contact">
     <a href="tel:+19146930009" data-call-location="sticky_bar" class="flex items-center justify-center gap-2 bg-orange font-display text-lg font-bold uppercase tracking-wide text-white active:bg-orange-press"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call Now</a>
-    <a href="/contact.html" class="flex items-center justify-center gap-2 bg-navy font-display text-lg font-bold uppercase tracking-wide text-white active:bg-navy-deep"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4a3 3 0 0 1 6 0"/><path d="M9 11h6M9 15h6M9 19h4"/></svg>Get Quote</a>
+    <a href="/contact.html" class="flex items-center justify-center gap-2 bg-orange font-display text-lg font-bold uppercase tracking-wide text-white active:bg-orange"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4a3 3 0 0 1 6 0"/><path d="M9 11h6M9 15h6M9 19h4"/></svg>Get Quote</a>
   </div>
   <!-- Page-scoped: job directory category filter (this page only) -->
   <script>
@@ -340,7 +496,6 @@
           var active = p === pill;
           p.classList.toggle('bg-orange', active);
           p.classList.toggle('text-white', active);
-          p.classList.toggle('border-orange', active);
           p.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
         tiles.forEach(function (tile) {
