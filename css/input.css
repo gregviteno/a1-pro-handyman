@@ -129,56 +129,36 @@
   .faq-body {
     @apply px-5 pb-5 text-steel;
   }
-  /* Sticker treatment: white ring, then a black edge outside it — both
-     following the PNG's alpha rather than the element box.
-
-     That distinction is the whole trick. A CSS background + border draws on
-     the image box, and since the artwork's circular crop is inset from that
-     box, it produced the white ring floating away from the photo. Stacking
-     zero-blur drop-shadows instead builds each outline off the actual
-     silhouette, so white and black sit flush against the mark.
-
-     Chained filters apply in sequence: the white pass runs first, then the
-     black pass traces the already-widened white shape — giving a clean
-     white-inside / black-outside pair.
-
-     Scrolled, the mark drops to 56px where the photo fills its box, so the
-     plain disc (white fill, black border, hard offset) is used instead. */
+  /* Brutalist disc: full circle, 2px black edge, hard offset shadow, no blur.
+     The source PNG is already a circular crop, so a 50% radius clips nothing —
+     it just tightens to the artwork. Offset scales down with the logo so the
+     56px scrolled state stays in proportion. */
   .site-logo {
-    background-color: transparent;
-    border: 2px solid transparent;
+    background-color: #ffffff;
+    border: 2px solid #000000;
     border-radius: 9999px;
-    box-shadow: none;
-    filter:
-      drop-shadow(3px 0 0 #ffffff) drop-shadow(-3px 0 0 #ffffff)
-      drop-shadow(0 3px 0 #ffffff) drop-shadow(0 -3px 0 #ffffff)
-      drop-shadow(2px 0 0 #000000) drop-shadow(-2px 0 0 #000000)
-      drop-shadow(0 2px 0 #000000) drop-shadow(0 -2px 0 #000000);
+    box-shadow: 5px 5px 0 0 #000000;
     object-fit: cover;
     transition: height 0.2s ease-out, width 0.2s ease-out, margin-bottom 0.2s ease-out,
-      border-color 0.2s ease-out, background-color 0.2s ease-out,
-      box-shadow 0.2s ease-out, filter 0.2s ease-out;
+      border-radius 0.2s ease-out, box-shadow 0.2s ease-out;
   }
   header.is-scrolled .site-logo {
     height: 56px !important;
     width: 56px !important;
     margin-bottom: 0 !important;
-    background-color: #ffffff;
-    border-color: #000000;
+    border-radius: 9999px;
     box-shadow: 3px 3px 0 0 #000000;
-    filter: none;
   }
   /* Lift on hover, press in on click — same physics as the buttons. */
   header a:hover .site-logo {
     transform: translate(-1px, -1px);
+    box-shadow: 7px 7px 0 0 #000000;
   }
   header.is-scrolled a:hover .site-logo {
     box-shadow: 5px 5px 0 0 #000000;
   }
   header a:active .site-logo {
     transform: translate(2px, 2px);
-  }
-  header.is-scrolled a:active .site-logo {
     box-shadow: 0 0 0 0 #000000;
   }
   @media (prefers-reduced-motion: reduce) {
