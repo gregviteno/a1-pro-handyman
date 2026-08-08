@@ -129,30 +129,31 @@
   .faq-body {
     @apply px-5 pb-5 text-steel;
   }
-  /* Brutalist disc, two states.
+  /* Sticker treatment: white ring, then a black edge outside it — both
+     following the PNG's alpha rather than the element box.
 
-     At full size the artwork's circular crop is inset from the image box, so a
-     white background + hard-edged border drew a visible white ring around the
-     photo. Full size therefore paints NO box at all — just a hard offset
-     drop-shadow, which follows the PNG's alpha and so traces the actual photo
-     edge instead of the element bounds.
+     That distinction is the whole trick. A CSS background + border draws on
+     the image box, and since the artwork's circular crop is inset from that
+     box, it produced the white ring floating away from the photo. Stacking
+     zero-blur drop-shadows instead builds each outline off the actual
+     silhouette, so white and black sit flush against the mark.
 
-     The edge is four zero-blur drop-shadows at ±2px, which stack into an
-     outline that hugs the alpha silhouette. A real CSS `border` can't do this:
-     it draws on the element box, which is where the white ring came from.
-     Held at 55% so it reads as a faded edge rather than a hard ring. No
-     coloured offset outside the mark — the orange lives inside the artwork.
+     Chained filters apply in sequence: the white pass runs first, then the
+     black pass traces the already-widened white shape — giving a clean
+     white-inside / black-outside pair.
 
-     Scrolled, the mark is only 56px and needs definition, so the real disc
-     comes in: white fill, solid black edge, hard offset shadow. */
+     Scrolled, the mark drops to 56px where the photo fills its box, so the
+     plain disc (white fill, black border, hard offset) is used instead. */
   .site-logo {
     background-color: transparent;
     border: 2px solid transparent;
     border-radius: 9999px;
     box-shadow: none;
-    filter: drop-shadow(2px 0 0 rgba(0, 0, 0, 0.55)) drop-shadow(-2px 0 0 rgba(0, 0, 0, 0.55))
-      drop-shadow(0 2px 0 rgba(0, 0, 0, 0.55)) drop-shadow(0 -2px 0 rgba(0, 0, 0, 0.55))
-;
+    filter:
+      drop-shadow(3px 0 0 #ffffff) drop-shadow(-3px 0 0 #ffffff)
+      drop-shadow(0 3px 0 #ffffff) drop-shadow(0 -3px 0 #ffffff)
+      drop-shadow(2px 0 0 #000000) drop-shadow(-2px 0 0 #000000)
+      drop-shadow(0 2px 0 #000000) drop-shadow(0 -2px 0 #000000);
     object-fit: cover;
     transition: height 0.2s ease-out, width 0.2s ease-out, margin-bottom 0.2s ease-out,
       border-color 0.2s ease-out, background-color 0.2s ease-out,
@@ -170,19 +171,12 @@
   /* Lift on hover, press in on click — same physics as the buttons. */
   header a:hover .site-logo {
     transform: translate(-1px, -1px);
-    filter: drop-shadow(2px 0 0 rgba(0, 0, 0, 0.7)) drop-shadow(-2px 0 0 rgba(0, 0, 0, 0.7))
-      drop-shadow(0 2px 0 rgba(0, 0, 0, 0.7)) drop-shadow(0 -2px 0 rgba(0, 0, 0, 0.7))
-;
   }
   header.is-scrolled a:hover .site-logo {
     box-shadow: 5px 5px 0 0 #000000;
-    filter: none;
   }
   header a:active .site-logo {
     transform: translate(2px, 2px);
-    filter: drop-shadow(2px 0 0 rgba(0, 0, 0, 0.55)) drop-shadow(-2px 0 0 rgba(0, 0, 0, 0.55))
-      drop-shadow(0 2px 0 rgba(0, 0, 0, 0.55)) drop-shadow(0 -2px 0 rgba(0, 0, 0, 0.55))
-;
   }
   header.is-scrolled a:active .site-logo {
     box-shadow: 0 0 0 0 #000000;
