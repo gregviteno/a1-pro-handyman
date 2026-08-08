@@ -297,14 +297,9 @@
   box-shadow: 0 -6px 0 0 rgba(0, 0, 0, 0.12);
 }
 
-/* ---- Hero quote funnel: step label + gentle reveal between steps ---- */
-.funnel-progress {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #5a6873;
-}
+/* ---- Hero quote funnel: gentle reveal between steps ----
+   The visible "Step 1 of 3" label was removed to de-clutter the card; the
+   element now ships as .sr-only so assistive tech still announces progress. */
 [data-funnel-step] {
   animation: funnel-step-in 0.25s ease;
 }
