@@ -99,8 +99,14 @@
     @apply py-3;
     min-height: 5.5rem;
   }
+  /* Flat white cards disappeared against the light end of .band-gradient.
+     A shallow warm ramp plus a soft ambient shadow lifts them off the field
+     without reintroducing the hard offset we deliberately removed. */
   .card {
-    @apply rounded-none bg-white border border-line;
+    @apply rounded-none border border-line;
+    background-color: #ffffff;
+    background-image: linear-gradient(180deg, #ffffff 0%, #fdf2e9 100%);
+    box-shadow: 0 1px 2px rgba(17, 17, 17, 0.05), 0 6px 16px rgba(17, 17, 17, 0.06);
   }
   .chip-avail {
     @apply inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5
@@ -108,9 +114,15 @@
   }
   /* Sits on the solid-orange bands: white card, black edge, black offset. */
   .icon-tile {
-    @apply flex flex-col items-center gap-3 rounded-none border border-line bg-white p-6
+    @apply flex flex-col items-center gap-3 rounded-none border border-line p-6
       text-center text-navy transition-all duration-100
-      hover:-translate-x-[1px] hover:-translate-y-[1px] hover:bg-orange-tint hover:shadow-lift;
+      hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-lift;
+    background-color: #ffffff;
+    background-image: linear-gradient(180deg, #ffffff 0%, #fdf2e9 100%);
+    box-shadow: 0 1px 2px rgba(17, 17, 17, 0.05), 0 6px 16px rgba(17, 17, 17, 0.06);
+  }
+  .icon-tile:hover {
+    background-image: linear-gradient(180deg, #ffffff 0%, #ffe4d1 100%);
   }
   .faq-item {
     @apply card overflow-hidden;
