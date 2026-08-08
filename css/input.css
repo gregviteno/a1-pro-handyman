@@ -129,41 +129,52 @@
   .faq-body {
     @apply px-5 pb-5 text-steel;
   }
-  /* Brutalist disc: full circle, 2px edge, hard offset shadow, no blur. The
-     source PNG is already a circular crop, so the radius clips nothing.
+  /* Brutalist disc, two states.
 
-     The edge and shadow are held back at full size — where the logo is huge
-     and overhangs the hero, a solid black ring competes with the headline —
-     then resolve to full-strength black as it shrinks on scroll, when the mark
-     is small and needs the definition. Both states transition together. */
+     At full size the artwork's circular crop is inset from the image box, so a
+     white background + hard-edged border drew a visible white ring around the
+     photo. Full size therefore paints NO box at all — just a hard offset
+     drop-shadow, which follows the PNG's alpha and so traces the actual photo
+     edge instead of the element bounds. It's brand orange rather than black:
+     present and warm against the hero without the black ring's harshness.
+
+     Scrolled, the mark is only 56px and needs definition, so the real disc
+     comes in: white fill, solid black edge, hard offset shadow. */
   .site-logo {
-    background-color: #ffffff;
-    border: 2px solid rgba(0, 0, 0, 0.22);
+    background-color: transparent;
+    border: 2px solid transparent;
     border-radius: 9999px;
-    box-shadow: 5px 5px 0 0 rgba(0, 0, 0, 0.18);
+    box-shadow: none;
+    filter: drop-shadow(5px 5px 0 rgba(242, 106, 27, 0.62));
     object-fit: cover;
     transition: height 0.2s ease-out, width 0.2s ease-out, margin-bottom 0.2s ease-out,
-      border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+      border-color 0.2s ease-out, background-color 0.2s ease-out,
+      box-shadow 0.2s ease-out, filter 0.2s ease-out;
   }
   header.is-scrolled .site-logo {
     height: 56px !important;
     width: 56px !important;
     margin-bottom: 0 !important;
-    border-radius: 9999px;
+    background-color: #ffffff;
     border-color: #000000;
     box-shadow: 3px 3px 0 0 #000000;
+    filter: none;
   }
   /* Lift on hover, press in on click — same physics as the buttons. */
   header a:hover .site-logo {
     transform: translate(-1px, -1px);
-    box-shadow: 7px 7px 0 0 rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(7px 7px 0 rgba(242, 106, 27, 0.8));
   }
   header.is-scrolled a:hover .site-logo {
     box-shadow: 5px 5px 0 0 #000000;
+    filter: none;
   }
   header a:active .site-logo {
     transform: translate(2px, 2px);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    filter: drop-shadow(0 0 0 rgba(242, 106, 27, 0));
+  }
+  header.is-scrolled a:active .site-logo {
+    box-shadow: 0 0 0 0 #000000;
   }
   @media (prefers-reduced-motion: reduce) {
     .site-logo { transition: none; }
