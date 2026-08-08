@@ -137,11 +137,11 @@
      drop-shadow, which follows the PNG's alpha and so traces the actual photo
      edge instead of the element bounds.
 
-     The black edge is built the same way — four zero-blur drop-shadows at
-     ±2px, which stack into an outline that hugs the alpha silhouette. A real
-     CSS `border` can't do this: it draws on the element box, which is where
-     the white ring came from. Both layers are held at matching opacity so the
-     black reads as part of the same faded treatment, not a hard ring.
+     The edge is four zero-blur drop-shadows at ±2px, which stack into an
+     outline that hugs the alpha silhouette. A real CSS `border` can't do this:
+     it draws on the element box, which is where the white ring came from.
+     Held at 55% so it reads as a faded edge rather than a hard ring. No
+     coloured offset outside the mark — the orange lives inside the artwork.
 
      Scrolled, the mark is only 56px and needs definition, so the real disc
      comes in: white fill, solid black edge, hard offset shadow. */
@@ -152,7 +152,7 @@
     box-shadow: none;
     filter: drop-shadow(2px 0 0 rgba(0, 0, 0, 0.55)) drop-shadow(-2px 0 0 rgba(0, 0, 0, 0.55))
       drop-shadow(0 2px 0 rgba(0, 0, 0, 0.55)) drop-shadow(0 -2px 0 rgba(0, 0, 0, 0.55))
-      drop-shadow(5px 5px 0 rgba(242, 106, 27, 0.62));
+;
     object-fit: cover;
     transition: height 0.2s ease-out, width 0.2s ease-out, margin-bottom 0.2s ease-out,
       border-color 0.2s ease-out, background-color 0.2s ease-out,
@@ -172,7 +172,7 @@
     transform: translate(-1px, -1px);
     filter: drop-shadow(2px 0 0 rgba(0, 0, 0, 0.7)) drop-shadow(-2px 0 0 rgba(0, 0, 0, 0.7))
       drop-shadow(0 2px 0 rgba(0, 0, 0, 0.7)) drop-shadow(0 -2px 0 rgba(0, 0, 0, 0.7))
-      drop-shadow(7px 7px 0 rgba(242, 106, 27, 0.8));
+;
   }
   header.is-scrolled a:hover .site-logo {
     box-shadow: 5px 5px 0 0 #000000;
@@ -182,7 +182,7 @@
     transform: translate(2px, 2px);
     filter: drop-shadow(2px 0 0 rgba(0, 0, 0, 0.55)) drop-shadow(-2px 0 0 rgba(0, 0, 0, 0.55))
       drop-shadow(0 2px 0 rgba(0, 0, 0, 0.55)) drop-shadow(0 -2px 0 rgba(0, 0, 0, 0.55))
-      drop-shadow(0 0 0 rgba(242, 106, 27, 0));
+;
   }
   header.is-scrolled a:active .site-logo {
     box-shadow: 0 0 0 0 #000000;
