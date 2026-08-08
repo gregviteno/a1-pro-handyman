@@ -47,4 +47,20 @@ ErrorDocument 404 /404.html
   <FilesMatch "\.(jpg|jpeg|png|webp|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
+  # HTML/CSS/JS must revalidate on every request.
+  #
+  # The host was serving these with max-age=15552000 (180 days), overriding the
+  # mod_expires rule above. Because css/styles.css has a fixed filename, a
+  # returning visitor could hold a stale HTML page against a fresh stylesheet
+  # for months - which renders as old markup styled by new CSS: purged classes
+  # collapse and sections lose their backgrounds entirely.
+  #
+  # max-age=0 + must-revalidate means the browser always asks; ETag and
+  # Last-Modified still return 304 when nothing changed, so the cost is one
+  # conditional request, not a re-download. Images and fonts keep their
+  # one-year immutable cache above.
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+    Header unset Expires
+  </FilesMatch>
 </IfModule>
