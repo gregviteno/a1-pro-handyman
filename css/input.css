@@ -211,9 +211,10 @@ footer {
   border-top: 3px solid #000000;
 }
 footer.band-gradient {
-  /* Starts on the same SEAM colour the CTA band ends on, then deepens toward
-     the page edge, so the join is invisible across the full width. */
-  background-image: linear-gradient(180deg, #d95a12 0%, #b34a0d 42%, #7a3208 100%);
+  /* Starts on the same SEAM colour the CTA band ends on, then deepens slightly
+     toward the page edge so the footer still terminates the page. Stays in the
+     orange family — no black — and carries white type. */
+  background-image: linear-gradient(180deg, #f26a1b 0%, #e3600f 45%, #c1500c 100%);
 }
 
 /* Safety net: any orange foreground that ends up on a solid orange field goes
@@ -247,32 +248,42 @@ footer.band-gradient {
    the sub-footer CTA so those sections read the same as the hero. */
 .band-gradient {
   background-color: #f26a1b;
-  /* Vertical, not diagonal. A diagonal ramp varies along the x-axis, so where
-     this band meets the footer the left edge was near-black against the
-     footer's orange while the right edge already matched — that was the
-     clash. Vertical guarantees the whole seam line is one colour. Ends on
-     SEAM (#d95a12), which footer.band-gradient starts from. */
-  background-image: linear-gradient(180deg, #141414 0%, #3a1b09 38%, #a8450b 72%, #d95a12 100%);
+  /* Light-to-orange, vertical. Vertical (not diagonal) so the whole seam line
+     is a single colour where this meets the footer — a diagonal ramp varies
+     along the x-axis and banded badly at one edge. Ends on SEAM (#f26a1b),
+     which footer.band-gradient starts from. Type on this band is dark. */
+  background-image: linear-gradient(180deg, #fff7f1 0%, #ffe4d1 30%, #f9a663 65%, #f26a1b 100%);
 }
 /* Same foreground handling the solid-orange bands get. */
+/* The band is light at the top and orange at the base, so the one fill that
+   holds contrast the whole way down is black. */
 [class~="band-gradient"] .eyebrow {
-  background-color: #ffffff;
-  color: #111111;
+  background-color: #111111;
+  color: #ffffff;
 }
 [class~="band-gradient"] .btn-primary {
-  background-color: #ffffff;
-  color: #111111;
+  background-color: #111111;
+  color: #ffffff;
 }
 [class~="band-gradient"] .btn-primary:hover,
 [class~="band-gradient"] .btn-primary:active {
-  background-color: #fff1e6;
+  background-color: #000000;
+}
+/* The footer keeps its orange field, so white type and boxes still apply. */
+footer[class~="band-gradient"] .eyebrow {
+  background-color: #ffffff;
+  color: #111111;
+}
+footer[class~="band-gradient"] .btn-primary {
+  background-color: #ffffff;
+  color: #111111;
 }
 [class~="band-gradient"] .card .btn-primary,
 [class~="band-gradient"] .icon-tile .btn-primary {
   background-color: #f26a1b;
   color: #ffffff;
 }
-[class~="band-gradient"] [class~="text-orange"] { color: #ffffff; }
+footer[class~="band-gradient"] [class~="text-orange"] { color: #ffffff; }
 [class~="band-gradient"] .card [class~="text-orange"],
 [class~="band-gradient"] .icon-tile [class~="text-orange"],
 [class~="band-gradient"] .work-order [class~="text-orange"] { color: #f26a1b; }
