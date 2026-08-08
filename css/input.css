@@ -129,15 +129,14 @@
   .faq-body {
     @apply px-5 pb-5 text-steel;
   }
-  /* Rounded brutalist tile: the logo becomes a physical object on the page —
-     soft-rounded corners, 2px black edge, hard offset shadow, no blur. Matches
-     the pill CTAs' "rounded shape, brutalist treatment" language. Radius and
-     offset scale down with the logo so the 56px scrolled state stays in
-     proportion rather than looking like a shrunk-down big tile. */
+  /* Brutalist disc: full circle, 2px black edge, hard offset shadow, no blur.
+     The source PNG is already a circular crop, so a 50% radius clips nothing —
+     it just tightens to the artwork. Offset scales down with the logo so the
+     56px scrolled state stays in proportion. */
   .site-logo {
     background-color: #ffffff;
     border: 2px solid #000000;
-    border-radius: 22px;
+    border-radius: 9999px;
     box-shadow: 5px 5px 0 0 #000000;
     object-fit: cover;
     transition: height 0.2s ease-out, width 0.2s ease-out, margin-bottom 0.2s ease-out,
@@ -147,7 +146,7 @@
     height: 56px !important;
     width: 56px !important;
     margin-bottom: 0 !important;
-    border-radius: 12px;
+    border-radius: 9999px;
     box-shadow: 3px 3px 0 0 #000000;
   }
   /* Lift on hover, press in on click — same physics as the buttons. */
