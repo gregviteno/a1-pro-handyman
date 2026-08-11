@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Static marketing site for A1 Pro Handyman (dba "Tri-State Pro Handyman" in the header wordmark), a handyman service business serving Westchester/Rockland/Nassau/Putnam Counties NY, Fairfield County CT, and Manhattan. No backend framework, no build-time templating — every page is a standalone, fully self-contained HTML file. Primary traffic is mobile users clicking through from Google Ads / Meta Ads, so **mobile load speed is the top priority** for any change.
+Static marketing site for A1 Pro Handyman, a handyman service business serving Westchester/Rockland/Nassau/Putnam Counties NY, Fairfield County CT, and Manhattan. No backend framework, no build-time templating — every page is a standalone, fully self-contained HTML file. Primary traffic is mobile users clicking through from Google Ads / Meta Ads, so **mobile load speed is the top priority** for any change.
 
 ## Stack
 
@@ -39,7 +39,7 @@ There is no test suite (`npm test` is a stub) and no linter configured.
 
 Every page repeats the same head/header/footer boilerplate rather than sharing a template (no include system):
 - `<head>` carries per-page `<title>`/meta description/canonical/OG/Twitter tags, font preloads, GTM snippet (`GTM-KFFKDW95`), and one or more `application/ld+json` schema blocks (`HomeAndConstructionBusiness` + page-relevant `FAQPage`, etc.)
-- Sticky header with logo, "TRI-STATE PRO HANDYMAN" wordmark, nav with hover/click dropdowns (`.has-dropdown`), mobile hamburger menu (`#nav-toggle` / `#mobile-menu`)
+- Sticky header with logo, "A1 PRO HANDYMAN" wordmark, nav with hover/click dropdowns (`.has-dropdown`), mobile hamburger menu (`#nav-toggle` / `#mobile-menu`)
 - Lead forms carry `data-lead-form`, hidden UTM/gclid/`landing_page`/`referrer`/`source_page`/`form_ts` inputs populated by `js/tracking.js`, and a honeypot field; they POST to Formspree
 - Hero/content images use `<picture><source type="image/webp">…<img .jpg/.png></picture>` pairs, not bare `<img>` — this was a deliberate performance fix (see Known history)
 
