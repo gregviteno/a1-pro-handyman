@@ -513,3 +513,70 @@
     render("start", false);
   });
 })();
+
+/* ---- Hero background video ------------------------------------------------
+   Primary traffic is mobile users arriving from paid ads, so the video is
+   treated as strictly optional decoration layered over the poster image:
+
+   - The <video> ships with no src at all. Nothing is fetched until this runs.
+   - It starts only after `load`, so it never competes with the LCP paint.
+   - It is skipped entirely on reduced-motion, Save-Data, and 2G/slow-2G.
+   - If autoplay is blocked (some iOS low-power states), the catch is a no-op
+     and the poster image simply stays — the hero looks identical either way.
+   - It pauses when scrolled out of view or the tab is hidden, so it isn't
+     decoding frames nobody is looking at.
+*/
+(function () {
+  var video = document.getElementById("hero-video");
+  if (!video) return;
+
+  var src = video.getAttribute("data-src");
+  if (!src) return;
+
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  if (conn) {
+    if (conn.saveData) return;
+    if (/(^|\b)(slow-2g|2g)$/.test(conn.effectiveType || "")) return;
+  }
+
+  var started = false;
+  function start() {
+    if (started) return;
+    started = true;
+
+    video.addEventListener("playing", function () {
+      video.classList.remove("opacity-0");
+    }, { once: true });
+
+    video.src = src;
+    var p = video.play();
+    if (p && p.catch) p.catch(function () { /* autoplay refused: poster stays */ });
+
+    // Don't decode frames that aren't on screen.
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (video.paused && !document.hidden) video.play().catch(function () {});
+          } else if (!video.paused) {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.01 }).observe(video);
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        if (!video.paused) video.pause();
+      } else if (video.paused) {
+        video.play().catch(function () {});
+      }
+    });
+  }
+
+  function defer() { setTimeout(start, 200); }
+  if (document.readyState === "complete") defer();
+  else window.addEventListener("load", defer);
+})();
