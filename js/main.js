@@ -206,11 +206,11 @@
      POST the whole form in one shot that was failing the ENTIRE lead — the
      customer got "Something went wrong" and we lost their name and phone along
      with the photo. So the photo is stripped out of the Formspree POST and sent
-     on its own to /photo-handler.php, which emails it as an attachment. The
+     on its own to /send-photo.php, which emails it as an attachment. The
      lead is never held hostage to the upload: if the photo send fails we still
      redirect to the thank-you page. */
 
-  var MAX_PHOTO_BYTES = 10485760; /* 10 MB — keep in sync with photo-handler.php */
+  var MAX_PHOTO_BYTES = 10485760; /* 10 MB — keep in sync with send-photo.php */
   var MAX_PHOTO_EDGE = 1600;      /* longest edge after downscaling */
   var PHOTO_TIMEOUT = 30000;
   var PHOTO_TYPES = /^(image\/(jpeg|png|webp|gif|heic|heif)|application\/pdf)$/i;
@@ -265,7 +265,7 @@
 
       var controller = window.AbortController ? new AbortController() : null;
       var timer = window.setTimeout(function () { if (controller) controller.abort(); }, PHOTO_TIMEOUT);
-      return fetch("/photo-handler.php", {
+      return fetch("/send-photo.php", {
         method: "POST",
         body: data,
         signal: controller ? controller.signal : undefined

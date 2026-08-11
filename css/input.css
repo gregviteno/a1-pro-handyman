@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================================
+   WARM ROUNDED — the neo-brutalist system with its edges softened.
+
+   What is deliberately KEPT from the brutalist build:
+     · the whole palette (orange #F26A1B, warm paper, near-black ink)
+     · the condensed-caps display type and the tight headline scale
+     · every band/contrast adaptation below (solid-orange bands, .band-gradient,
+       .hero-scrim, .hero-soft) — those were tuned against real content
+     · the pill CTA, the circular logo, the availability chip
+
+   What changes, and only this:
+     · edges: 2px true black → 1px warm hairline (`line`)
+     · corners: squared-off → `rounded-card` (16px) / `rounded-field` (10px)
+     · elevation: hard offset shadows → soft two-part ambient shadows
+     · motion: the "press the sticker down" translate becomes a gentle lift
+   ========================================================================= */
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -21,11 +38,11 @@
   }
   a:focus-visible, button:focus-visible, input:focus-visible,
   select:focus-visible, textarea:focus-visible, summary:focus-visible {
-    /* Black, square focus ring: orange was invisible on the new orange bands,
-       and a rounded ring contradicts the squared-off system. */
+    /* Still black — orange-on-orange bands was the original reason and that
+       hasn't changed. What changes is the shape: the ring no longer forces
+       square corners, so it now traces whatever radius the element carries. */
     outline: 3px solid #111111;
     outline-offset: 2px;
-    border-radius: 0;
   }
   .btn:focus-visible, .chip-avail:focus-visible {
     border-radius: 9999px;
@@ -47,79 +64,85 @@
   .h3 {
     @apply font-display font-bold uppercase text-h3;
   }
-  /* Brutalist label: boxed, black-on-orange, wide tracking, mono. */
+  /* Was a hard-outlined box; now a pill. Same fill, same mono tracking, so it
+     still reads as a label rather than as a button — the radius is what ties
+     it to the CTA and the availability chip. */
   .eyebrow {
-    @apply inline-block border-2 border-line bg-navy px-2.5 py-1 font-mono text-xs
+    @apply inline-block rounded-full bg-navy px-3 py-1 font-mono text-[0.68rem]
       font-bold uppercase tracking-[0.18em] text-white mb-4;
   }
-  /* Rounded-CTA brutalism: the button is the one soft shape in the system.
-     Pill radius, but it keeps the 2px black outline and the hard offset
-     shadow that collapses on press, so it still reads as brutalist rather
-     than as a generic rounded button. Cards, fields and panels stay square. */
+  /* The CTA was already the one soft shape in the brutalist system, so it
+     barely moves: it keeps its pill and its size, and just trades the 2px
+     black outline + hard offset for a hairline and an ambient shadow that
+     grows on hover instead of sliding. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-line
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line
       font-semibold px-7 text-center whitespace-nowrap cursor-pointer select-none
-      transition-all duration-100;
+      transition-all duration-150;
     min-height: 48px;
+    box-shadow: 0 1px 2px rgba(70, 34, 8, 0.06);
   }
   .btn:hover {
-    @apply -translate-x-[1px] -translate-y-[1px];
-    box-shadow: 3px 3px 0 0 #000000;
+    @apply -translate-y-[1px];
+    box-shadow: 0 4px 10px rgba(70, 34, 8, 0.10), 0 10px 24px rgba(70, 34, 8, 0.12);
   }
   .btn:active {
-    @apply translate-x-[1px] translate-y-[1px];
-    box-shadow: 0 0 0 0 #000000;
+    @apply translate-y-0;
+    box-shadow: 0 1px 2px rgba(70, 34, 8, 0.10);
   }
   .btn-primary {
-    @apply btn bg-orange text-white hover:bg-orange-press active:bg-orange-press;
+    @apply btn border-transparent bg-orange text-white hover:bg-orange-press active:bg-orange-press;
   }
   .btn-outline {
     @apply btn bg-white text-navy hover:bg-orange-tint;
   }
   .btn-outline-light {
-    @apply btn border-white bg-transparent text-white hover:bg-white hover:text-navy;
-    box-shadow: 4px 4px 0 0 rgba(255, 255, 255, 0.9);
+    @apply btn border-white/70 bg-transparent text-white hover:bg-white hover:text-navy;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
   }
   .btn-outline-light:hover {
-    box-shadow: 6px 6px 0 0 rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
   }
   .btn-outline-light:active {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.9);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
   }
   .field-label {
     @apply block font-mono text-[0.72rem] font-bold uppercase tracking-[0.14em] text-navy mb-1.5;
   }
   .field {
-    @apply w-full rounded-none border border-line bg-white px-3.5 text-ink placeholder-steel/60
-      focus:outline-none focus:ring-2 focus:ring-orange;
+    @apply w-full rounded-field border border-line bg-white px-3.5 text-ink placeholder-steel/60
+      focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/40;
     min-height: 48px;
     font-size: 1rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
   textarea.field {
     @apply py-3;
     min-height: 5.5rem;
   }
-  /* Flat white cards disappeared against the light end of .band-gradient.
-     A shallow warm ramp plus a soft ambient shadow lifts them off the field
-     without reintroducing the hard offset we deliberately removed. */
+  /* The warm ramp and the ambient shadow are carried over from the brutalist
+     build unchanged — they were added because flat white cards disappeared
+     against the light end of .band-gradient, and that's still true. Only the
+     corner radius and the edge colour move. */
   .card {
-    @apply rounded-none border border-line;
+    @apply rounded-card border border-line;
     background-color: #ffffff;
     background-image: linear-gradient(180deg, #ffffff 0%, #fdf2e9 100%);
-    box-shadow: 0 1px 2px rgba(17, 17, 17, 0.05), 0 6px 16px rgba(17, 17, 17, 0.06);
+    box-shadow: 0 1px 2px rgba(70, 34, 8, 0.05), 0 6px 16px rgba(70, 34, 8, 0.06);
   }
   .chip-avail {
     @apply inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5
       text-sm font-semibold text-navy whitespace-nowrap;
+    box-shadow: 0 1px 2px rgba(70, 34, 8, 0.05);
   }
-  /* Sits on the solid-orange bands: white card, black edge, black offset. */
+  /* Sits on the solid-orange bands: white surface, hairline edge, soft lift. */
   .icon-tile {
-    @apply flex flex-col items-center gap-3 rounded-none border border-line p-6
-      text-center text-navy transition-all duration-100
-      hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-lift;
+    @apply flex flex-col items-center gap-3 rounded-card border border-line p-6
+      text-center text-navy transition-all duration-150
+      hover:-translate-y-[2px] hover:shadow-lift;
     background-color: #ffffff;
     background-image: linear-gradient(180deg, #ffffff 0%, #fdf2e9 100%);
-    box-shadow: 0 1px 2px rgba(17, 17, 17, 0.05), 0 6px 16px rgba(17, 17, 17, 0.06);
+    box-shadow: 0 1px 2px rgba(70, 34, 8, 0.05), 0 6px 16px rgba(70, 34, 8, 0.06);
   }
   .icon-tile:hover {
     background-image: linear-gradient(180deg, #ffffff 0%, #ffe4d1 100%);
@@ -141,50 +164,50 @@
   .faq-body {
     @apply px-5 pb-5 text-steel;
   }
-  /* Brutalist disc: full circle, 2px black edge, hard offset shadow, no blur.
-     The source PNG is already a circular crop, so a 50% radius clips nothing —
-     it just tightens to the artwork. Offset scales down with the logo so the
-     56px scrolled state stays in proportion. */
+  /* Still a disc — the circle was always the right shape for it. The 2px black
+     ring and the hard offset become a white ring and an ambient shadow, so the
+     logo lifts off the header instead of being stamped onto it. */
   .site-logo {
     background-color: #ffffff;
-    border: 2px solid #000000;
+    border: 3px solid #ffffff;
     border-radius: 9999px;
-    box-shadow: 5px 5px 0 0 #000000;
+    box-shadow: 0 2px 6px rgba(70, 34, 8, 0.12), 0 8px 20px rgba(70, 34, 8, 0.16);
     object-fit: cover;
     transition: height 0.2s ease-out, width 0.2s ease-out, margin-bottom 0.2s ease-out,
-      border-radius 0.2s ease-out, box-shadow 0.2s ease-out;
+      transform 0.2s ease-out, box-shadow 0.2s ease-out;
   }
   header.is-scrolled .site-logo {
     height: 56px !important;
     width: 56px !important;
     margin-bottom: 0 !important;
-    border-radius: 9999px;
-    box-shadow: 3px 3px 0 0 #000000;
+    box-shadow: 0 1px 4px rgba(70, 34, 8, 0.12), 0 4px 12px rgba(70, 34, 8, 0.14);
   }
-  /* Lift on hover, press in on click — same physics as the buttons. */
+  /* Lift on hover, settle on click — same physics as the buttons. */
   header a:hover .site-logo {
-    transform: translate(-1px, -1px);
-    box-shadow: 7px 7px 0 0 #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(70, 34, 8, 0.16), 0 14px 32px rgba(70, 34, 8, 0.18);
   }
   header.is-scrolled a:hover .site-logo {
-    box-shadow: 5px 5px 0 0 #000000;
+    box-shadow: 0 4px 10px rgba(70, 34, 8, 0.14), 0 10px 24px rgba(70, 34, 8, 0.16);
   }
   header a:active .site-logo {
-    transform: translate(2px, 2px);
-    box-shadow: 0 0 0 0 #000000;
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(70, 34, 8, 0.14);
   }
   @media (prefers-reduced-motion: reduce) {
     .site-logo { transition: none; }
   }
   .nav-link {
-    @apply inline-flex items-center gap-1 shrink-0 whitespace-nowrap rounded-none px-2.5 py-2 font-semibold text-navy hover:text-orange;
+    @apply inline-flex items-center gap-1 shrink-0 whitespace-nowrap rounded-full px-3 py-2
+      font-semibold text-navy transition-colors hover:bg-orange-tint hover:text-orange;
   }
   .dropdown-panel {
-    @apply absolute left-0 top-full z-40 hidden min-w-[15rem] rounded-none border-2 border-line
-      bg-white py-2 shadow-brutal-lg;
+    @apply absolute left-0 top-full z-40 hidden min-w-[15rem] overflow-hidden rounded-card
+      border border-line bg-white py-2 shadow-brutal-lg;
   }
   .dropdown-link {
-    @apply block px-5 py-2.5 text-[0.95rem] font-medium text-ink hover:bg-orange hover:text-white;
+    @apply mx-2 block rounded-field px-3 py-2.5 text-[0.95rem] font-medium text-ink
+      transition-colors hover:bg-orange hover:text-white;
   }
   .footer-link {
     @apply block py-1 text-[0.95rem] text-white/85 hover:text-white hover:underline;
@@ -192,14 +215,14 @@
   .check-item {
     @apply flex items-start gap-3;
   }
-  /* Brutalist icon chip: a solid orange square with a black edge and hard
-     offset, carrying a white glyph. Used for hero ticks and region map pins so
-     small iconography reads as one system instead of assorted line art. */
+  /* Rounded icon chip: solid orange squircle carrying a white glyph. Used for
+     hero ticks and region map pins so small iconography reads as one system.
+     The black edge and hard offset are gone; the fill alone carries it now. */
   .icon-chip {
-    @apply inline-flex flex-none items-center justify-center border-2 border-line bg-orange text-white;
+    @apply inline-flex flex-none items-center justify-center rounded-lg bg-orange text-white;
     width: 24px;
     height: 24px;
-    box-shadow: 2px 2px 0 0 #000000;
+    box-shadow: 0 1px 3px rgba(70, 34, 8, 0.20);
   }
   .prose-block p + p {
     @apply mt-4;
@@ -241,9 +264,10 @@
 [class~="bg-orange"] .icon-tile .btn-primary:hover {
   background-color: #d95a12;
 }
-/* Hard black rule where the orange footer meets the page. */
+/* The footer's own gradient already separates it from the page, so the hard
+   black rule the brutalist build used isn't needed to mark the boundary. */
 footer {
-  border-top: 3px solid #000000;
+  border-top: 0;
 }
 footer.band-gradient {
   /* Starts on the same SEAM colour the CTA band ends on, then deepens slightly
@@ -348,11 +372,13 @@ footer[class~="band-gradient"] [class~="text-orange"] { color: #ffffff; }
 }
 
 /* ---- Structural grid ----------------------------------------------------
-   The raw architecture comes from dividers between sections, not from an
-   outline around every box. Adjacent sections get a stark 2px rule; sections
-   that already sit against a dark or gradient field don't need one. */
+   The brutalist build drew a stark 2px black rule between adjacent sections.
+   In the rounded system the section break is carried by the background change
+   and the vertical rhythm instead, so the rule drops to a warm hairline that
+   registers the seam without slicing the page. Sections that already sit
+   against a dark or gradient field still don't need one. */
 main > section + section {
-  border-top: 2px solid #111111;
+  border-top: 1px solid #F0E3D6;
 }
 main > section[class~="band-gradient"] + section,
 main > section + section[class~="band-gradient"],
