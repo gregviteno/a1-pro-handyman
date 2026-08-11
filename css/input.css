@@ -378,7 +378,7 @@ footer[class~="band-gradient"] [class~="text-orange"] { color: #ffffff; }
    registers the seam without slicing the page. Sections that already sit
    against a dark or gradient field still don't need one. */
 main > section + section {
-  border-top: 1px solid #F0E3D6;
+  border-top: 1px solid #DFD0C0;
 }
 main > section[class~="band-gradient"] + section,
 main > section + section[class~="band-gradient"],

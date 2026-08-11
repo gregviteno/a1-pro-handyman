@@ -9,7 +9,10 @@ module.exports = {
            `line`: it was true black (every edge was a hard 2px rule). In the
            rounded system edges recede and elevation does the separating, so
            `line` becomes a warm hairline in the spirit of the reference
-           template's neutral border, tinted to sit on `paper`. */
+           template's neutral border, tinted to sit on `paper`. Held a couple of
+           steps darker than a true hairline: the definition an edge gives was
+           the best part of the brutalist build, so it reads clearly rather
+           than washing out against white. */
         navy: "#111111",
         "navy-deep": "#000000",
         orange: "#F26A1B",
@@ -20,7 +23,7 @@ module.exports = {
         paper: "#FFF7F1",
         ink: "#111111",
         steel: "#333333",
-        line: "#EADFD4",
+        line: "#D4C2B0",
         go: "#1F9D55",
       },
       fontFamily: {
