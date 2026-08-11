@@ -8,7 +8,7 @@ Static marketing site for A1 Pro Handyman, a handyman service business serving W
 
 ## Stack
 
-- Static HTML5 (22 pages at repo root: homepage, 6 service pages, 6 regional/county pages, about/contact/services/privacy/404/thank-you, plus `design-system.html` — an internal noindexed style guide)
+- Static HTML5 (22 pages at repo root: homepage, 6 service pages, 6 regional/county pages, about/contact/services/privacy/terms/404/thank-you)
 - Tailwind CSS, compiled (not JIT/runtime) — `css/input.css` → `css/styles.css`
 - `css/custom.css` — hand-written CSS for things Tailwind utilities don't cover (custom animations, `@font-face`, sticky-header hysteresis states)
 - Vanilla JS, no framework: `js/main.js` (UI behavior — sticky header, mobile nav, dropdowns, FAQ accordions) and `js/tracking.js` (ad-attribution capture + dataLayer/GTM events)
