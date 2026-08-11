@@ -32,6 +32,21 @@ module.exports = {
         mono: ['"SFMono-Regular"', "Menlo", "Consolas", '"Liberation Mono"', "monospace"],
       },
       fontSize: {
+        /* ---- Readability pass -------------------------------------------
+           Every step of Tailwind's default scale moves up roughly 1px and
+           gains a more generous line-height. Doing it here rather than in the
+           markup means all 23 pages move together and stay in proportion —
+           `text-lg` (378 uses) and `text-sm` (293, much of it real footer and
+           card copy) are the two that carry most of the site's reading load.
+           Line-heights are set explicitly because Tailwind's defaults tighten
+           as size grows, which is backwards for body copy. */
+        xs: ["0.8125rem", { lineHeight: "1.5" }],
+        sm: ["0.9375rem", { lineHeight: "1.6" }],
+        base: ["1.0625rem", { lineHeight: "1.65" }],
+        lg: ["1.1875rem", { lineHeight: "1.7" }],
+        xl: ["1.3125rem", { lineHeight: "1.6" }],
+        "2xl": ["1.5625rem", { lineHeight: "1.45" }],
+        "3xl": ["1.9375rem", { lineHeight: "1.35" }],
         /* Type scale is retained verbatim. The condensed caps and the tight
            leading are the site's voice; softening the shapes shouldn't soften
            the headline. Only h3 loosens a hair now that it sits on rounded
@@ -39,7 +54,7 @@ module.exports = {
         h1: ["clamp(3rem, 6.5vw + 1rem, 5.25rem)", { lineHeight: "0.95", letterSpacing: "-0.02em" }],
         h2: ["clamp(2.125rem, 3.2vw + 1rem, 3.25rem)", { lineHeight: "1.0", letterSpacing: "-0.015em" }],
         h3: ["clamp(1.375rem, 1.2vw + 1rem, 1.75rem)", { lineHeight: "1.18", letterSpacing: "-0.01em" }],
-        body: ["1.0625rem", { lineHeight: "1.7" }],
+        body: ["1.125rem", { lineHeight: "1.75" }],
       },
       borderRadius: {
         /* `card` is the single token every surface routes through, so the

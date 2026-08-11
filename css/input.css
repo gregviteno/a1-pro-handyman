@@ -68,8 +68,8 @@
      still reads as a label rather than as a button — the radius is what ties
      it to the CTA and the availability chip. */
   .eyebrow {
-    @apply inline-block rounded-full bg-navy px-3 py-1 font-mono text-[0.68rem]
-      font-bold uppercase tracking-[0.18em] text-white mb-4;
+    @apply inline-block rounded-full bg-navy px-3.5 py-1.5 font-mono text-[0.76rem]
+      font-bold uppercase tracking-[0.16em] text-white mb-4;
   }
   /* The CTA was already the one soft shape in the brutalist system, so it
      barely moves: it keeps its pill and its size, and just trades the 2px
@@ -81,6 +81,16 @@
       transition-all duration-150;
     min-height: 48px;
     box-shadow: 0 1px 2px rgba(70, 34, 8, 0.06);
+  }
+  /* .btn is whitespace-nowrap, so it cannot reflow. The longest label in the
+     site ("See TV Mounting & Assembly") clears a 360px viewport at the new
+     body size but grazes 320px, so the narrowest phones get the pre-bump size
+     and tighter side padding rather than a clipped CTA. */
+  @media (max-width: 380px) {
+    .btn {
+      font-size: 1.0625rem;
+      @apply px-5;
+    }
   }
   .btn:hover {
     @apply -translate-y-[1px];
@@ -107,13 +117,13 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.14);
   }
   .field-label {
-    @apply block font-mono text-[0.72rem] font-bold uppercase tracking-[0.14em] text-navy mb-1.5;
+    @apply block font-mono text-[0.8rem] font-bold uppercase tracking-[0.12em] text-navy mb-1.5;
   }
   .field {
     @apply w-full rounded-field border border-line bg-white px-3.5 text-ink placeholder-steel/60
       focus:outline-none focus:border-orange focus:ring-2 focus:ring-orange/40;
-    min-height: 48px;
-    font-size: 1rem;
+    min-height: 52px;
+    font-size: 1.0625rem;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
   textarea.field {
@@ -152,7 +162,7 @@
   }
   .faq-item > summary {
     @apply flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4
-      font-display text-lg font-bold uppercase tracking-[-0.01em] text-navy;
+      font-display text-xl font-bold uppercase tracking-[-0.01em] text-navy;
     min-height: 48px;
   }
   .faq-item > summary::-webkit-details-marker {
@@ -162,7 +172,7 @@
     transform: rotate(180deg);
   }
   .faq-body {
-    @apply px-5 pb-5 text-steel;
+    @apply px-5 pb-5 text-base text-steel;
   }
   /* Still a disc — the circle was always the right shape for it. The 2px black
      ring and the hard offset become a white ring and an ambient shadow, so the
@@ -197,20 +207,27 @@
   @media (prefers-reduced-motion: reduce) {
     .site-logo { transition: none; }
   }
+  /* Pinned to 1.0625rem rather than inheriting the new larger body size.
+     The bar already runs four nav items plus two CTA pills; letting it grow
+     with the readability pass pushes it to wrap at laptop widths. */
   .nav-link {
     @apply inline-flex items-center gap-1 shrink-0 whitespace-nowrap rounded-full px-3 py-2
       font-semibold text-navy transition-colors hover:bg-orange-tint hover:text-orange;
+    font-size: 1.0625rem;
+  }
+  header .btn {
+    font-size: 1.0625rem;
   }
   .dropdown-panel {
     @apply absolute left-0 top-full z-40 hidden min-w-[15rem] overflow-hidden rounded-card
       border border-line bg-white py-2 shadow-brutal-lg;
   }
   .dropdown-link {
-    @apply mx-2 block rounded-field px-3 py-2.5 text-[0.95rem] font-medium text-ink
+    @apply mx-2 block rounded-field px-3 py-3 text-base font-medium text-ink
       transition-colors hover:bg-orange hover:text-white;
   }
   .footer-link {
-    @apply block py-1 text-[0.95rem] text-white/85 hover:text-white hover:underline;
+    @apply block py-1.5 text-base text-white/95 hover:text-white hover:underline;
   }
   .check-item {
     @apply flex items-start gap-3;
